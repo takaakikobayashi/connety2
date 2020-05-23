@@ -40,9 +40,15 @@
     </table>
     <%# タスクボックス　%>
     <div class="task">
+      <p>今日までのタスク</p>
+      <% @tasks.each do |task| %>
+      <li><%= task.name %></li>
+      <% end %>
     </div>
     <%# グラフボックス%>
     <div class="graph">
+    </div>
+    <div class="dot-graph">
     </div>
   </div>
 </div>
