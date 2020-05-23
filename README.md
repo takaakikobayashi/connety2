@@ -1,24 +1,37 @@
-# README
+# コネティー（connety）
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+仕事オファー機能を持った学習管理サイト
+法人、個人それぞれで仕事案件の発注、求職オファーが行える。
+ユーザーは日々の学習管理を行える。
 
-Things you may want to cover:
+### サイトテーマ
+仕事オファー機能を持った学習管理サイト
 
-* Ruby version
+### テーマを選んだ理由
+昨今、Twitter上においてプログラミングや動画編集などを学習、発信し、
+仲間を作ること、モチベーションの維持、仕事の獲得を行う人が増えている一方で、
+途中で挫折してしまう人などもいる状況です。
 
-* System dependencies
+その一端としてちゃんと仕事を獲得できるようになるのかなど、
+今後に対する不安や情報不足が大きく起因しています。
 
-* Configuration
+受験勉強においてはStudyplusが話題になっていましたが、
+プログラミングや動画編集といったスキルを身につける上で、
+そういった環境がなかったのと、より挑戦へのハードルを下げたいという想いから
+今回このテーマを選んでみることにしました。
 
-* Database creation
+### ターゲットユーザ
+大学生
+メインターゲットとしては、就職活動を控えた大学1、2、3年生。
+将来への不安や経済的な自立を目指し、
+動画編集やプログラミングといったスキルの習得を目指し始めた学生
 
-* Database initialization
+### 主な利用シーン
+プログラミングや動画編集などを身につけるために学習をしている時
 
-* How to run the test suite
+## 設計書
+<img width="653" alt="ER図" src="https://user-images.githubusercontent.com/47805823/82396419-d059d780-9a88-11ea-89d8-3d7fc5c39735.png">
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 機能一覧
+https://docs.google.com/spreadsheets/d/13EqbePyJrSjqL1tWEmb6nN7IuXXRJhwRCTUshOM4iMo/edit?usp=sharing
