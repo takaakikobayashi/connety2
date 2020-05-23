@@ -1,0 +1,2 @@
+module Requesters::RegistrationsHelper
+end

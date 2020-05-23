@@ -1,0 +1,58 @@
+<header class="navbar navbar-fixed-top navbar-light">
+    <div class="container">
+      <% if user_signed_in? %>
+        <div class="logo-box navber-brand">
+          <%=link_to "#", root_path %>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="header-name"><%= current_user.last_name %></li>
+          <li class="header-link"><%= link_to "マイページ", user_path(current_user), class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "About", home_about_path, class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "募集企業を探す", user_offers_path(current_user), class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-default" %></li>
+        </ul>
+        <% elsif requester_signed_in? %>
+        <div class="logo-box navber-brand">
+          <%=link_to "#", root_path %>
+        </div>
+         <ul class="nav navbar-nav navbar-right">
+          <li class="header-name"><%= current_requester.name %></li>
+          <li class="header-link"><%= link_to "マイページ", "#", class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "About", "#", class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "ユーザー一覧", "#", class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "ログアウト", "#", method: :delete, class: "btn btn-default" %></li>
+        </ul>
+        <% elsif company_signed_in? %>
+        <div class="logo-box navber-brand">
+          <%=link_to "#", root_path %>
+        </div>
+         <ul class="nav navbar-nav navbar-right">
+          <li class="header-name"><%= current_company.name %></li>
+          <li class="header-link"><%= link_to "マイページ", "#", class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "商品一覧", "#", class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "カート", "#", class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "ログアウト", "#", method: :delete, class: "btn btn-default" %></li>
+        </ul>
+        <% elsif admin_signed_in? %>
+        <div class="logo-box navber-brand">
+          <%=link_to "#", root_path %>
+        </div>
+         <ul class="nav navbar-nav navbar-right">
+          <li class="header-name"><%= current_admin.name %></li>
+          <li class="header-link"><%= link_to "マイページ", "#", class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "商品一覧", "#", class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "カート", "#", class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "ログアウト", "#", method: :delete, class: "btn btn-default" %></li>
+        </ul>
+        <% else %>
+        <div class="logo-box navber-brand">
+          <%=link_to "#", root_path %>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="header-link"><%= link_to "About", home_about_path, class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "新規登録", new_user_registration_path, class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "ログイン", new_user_session_path, class: "btn btn-default" %></li>
+        </ul>
+      <% end %>
+    </div>
+</header>

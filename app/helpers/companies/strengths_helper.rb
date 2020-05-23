@@ -1,0 +1,2 @@
+module Companies::StrengthsHelper
+end

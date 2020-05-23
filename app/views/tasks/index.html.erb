@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+
+    <%= form_for @newtask, url: user_tasks_path do |f| %>
+    <div class="field row">
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+    </div>
+
+    <div class="field row">
+        <%= f.label :deadline %>
+        <%= f.date_select :deadline, autofocus: true, autocomplete: "deadline", class: "form-control" %>
+    </div>
+
+    <div class="actions row">
+        <%= f.submit class: "btn btn-primary col-xs-12" %>
+    </div>
+<% end %>
+
+<table class="table table-bordered">
+    	<tr>
+    		<th>タスク名</th>
+    		<th>タスク期日</th>
+    		<th>編集、削除</th>
+            <th>完了</th>
+    	</tr>
+        <% @tasks.each do |task| %>
+    	<tr>
+    		<td><%= task.name %></td>
+    		<td><%= task.deadline %></td>
+    		<td></td>
+            <td></td>
+    	</tr>
+        <% end %>
+    </table>
+</div>
+</div>

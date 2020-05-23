@@ -1,0 +1,2 @@
+module Requesters::ProblemSolutionsHelper
+end

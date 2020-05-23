@@ -1,0 +1,2 @@
+module Requesters::StrengthsHelper
+end

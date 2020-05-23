@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  target: MyString
+  milestone_date1: 
+  milestone_date2: 
+  milestone_date3: 
+  milestone_date4: 
+  concern: MyText
+  commitment: MyText
+
+two:
+  target: MyString
+  milestone_date1: 
+  milestone_date2: 
+  milestone_date3: 
+  milestone_date4: 
+  concern: MyText
+  commitment: MyText

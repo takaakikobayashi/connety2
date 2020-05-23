@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  industry: MyString
+  occupation: MyString
+  work_location: MyString
+  appeal_point: MyText
+  job_description: MyText
+  employment_status: MyString
+  working_hour: 1
+  salary: 1
+  application_condition: MyText
+  vacation: MyText
+  welfare: MyText
+  is_active: false
+  image_id: MyString
+
+two:
+  industry: MyString
+  occupation: MyString
+  work_location: MyString
+  appeal_point: MyText
+  job_description: MyText
+  employment_status: MyString
+  working_hour: 1
+  salary: 1
+  application_condition: MyText
+  vacation: MyText
+  welfare: MyText
+  is_active: false
+  image_id: MyString

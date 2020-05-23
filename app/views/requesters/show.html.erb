@@ -1,0 +1,83 @@
+<div class="mypage-title">
+  <mark style="font-size: 20px;">マイページ</mark>
+</div>
+
+<div class="row">
+  <div class="col-xs-7">
+    <div>
+      <h1 class="main-title">登録情報</h1>
+      <%=  link_to "編集する", "#", class:"btn btn-primary" %>
+      <%=  link_to "パスワードを変更する", "#", class:"btn btn-primary",style:"margin-left:10px;" %>
+    </div>
+    <table class="table table-bordered">
+      <tr>
+        <th>名前</th>
+        <td>
+          <%= current_requester.name %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>メールアドレス</th>
+        <td>
+          <%= current_requester.email %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>会社名/個人事業主</th>
+        <td>
+          <%= current_requester.business_name %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>郵便番号</th>
+        <td>
+          <%= current_requester.postal_code %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>住所</th>
+        <td>
+          <%= current_requester.address %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>電話番号</th>
+        <td>
+          <%= current_requester.phone_number %>
+        </td>
+      </tr>
+
+      
+    </table>
+    <div>
+      <h1 class="main-title" style="margin-right:26px;">配送先</h1>
+      <%=  link_to "一覧を見る", "#", class:"btn btn-primary"%>
+    </div>
+
+    <div>
+      <h1 class="main-title">注文履歴</h1>
+      <%=  link_to "一覧を見る", "#", class:"btn btn-primary" %>
+    </div>
+    <table class="table table-bordered">
+    	<tr>
+    		<th>発注相手</th>
+    		<th>依頼内容</th>
+    		<th>依頼詳細</th>
+    		<th>依頼額</th>
+    		<th>進捗ステータス</th>
+    	</tr>
+    	<tr>
+    		<td></td>
+    		<td></td>
+    		<td></td>
+    		<td></td>
+    		<td></td>
+    	</tr>
+    </table>
+  </div>
+</div>

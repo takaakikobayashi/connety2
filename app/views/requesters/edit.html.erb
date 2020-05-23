@@ -1,0 +1,67 @@
+<div class="edit-title">
+  <mark style="font-size: 20px;">登録情報</mark>
+</div>
+
+  <div class="row">
+    <div class="col-xs-5">
+  	  <%= form_for @requester do |f| %>
+  	  <table class="margin-30">
+        <tr style="height:70px">
+            <th>名前</th>
+            <td>
+              <% f.label :name %>
+              <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>会社名/個人事業主</th>
+            <td>
+              <% f.label :business_name %>
+              <%= f.text_field :business_name, autofocus: true, autocomplete: "business_name", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>郵便番号</th>
+            <td>
+              <% f.label :postal_code %>
+              <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>住所</th>
+            <td>
+              <% f.label :address %>
+              <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>メールアドレス</th>
+            <td>
+              <% f.label :email %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>電話番号(ハイフンなし)</th>
+            <td>
+              <% f.label :phone_number %>
+              <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control" %>
+            </td>
+        </tr> 
+
+      </table>
+        <div class="button-box margin-30">
+          <%= f.submit '編集内容を保存する',class: 'btn btn-primary', style:"margin-right:130px" %>
+
+          <%= link_to "退会する", "#", class: 'btn btn-danger'%>
+
+        </div>
+        <%= link_to "戻る", :back %>
+    <% end %>
+  </div>
+</div>  

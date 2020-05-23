@@ -10,6 +10,18 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "layouts/header" %>
+    <div id="body" class="container">
+      <%= yield %>
+    </div>
+    <%= render "layouts/footer" %>
   </body>
+
+  <script>
+    $(function () {
+      var height = $("header").height();
+      $("#body").css("margin-top", height + 50);//10pxだけ余裕をもたせる
+    });
+  </script>
+  
 </html>

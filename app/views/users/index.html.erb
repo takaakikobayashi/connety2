@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+
+    <div class="mypage-title" style="margin-left: 5%;">
+	  <mark style="font-size: 20px;">会員一覧</mark>
+	</div>
+
+	<table class="table table-inverse margin-30">
+	    <thead>
+	      <tr class="active">
+		    <th style="width:20%">プロフィール画像</th>
+		    <th style="width:30%">ユーザーネーム</th>
+		    <th style="width:25%">学年</th>
+		    <th style="width:25%">総学習時間</th>
+		  </tr>
+	    </thead>
+	  <% @users.each do |user| %>
+	    <tbody>
+		  <tr>
+		    <td><%= attachment_image_tag user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'80x80' %></td>
+			<td><%=link_to user.user_name, "/users/#{user.id}" %></td>
+			<td><%= user.grade %></td>
+			<td>
+	          
+			</td>
+		  </tr>
+		</tbody>
+	  <% end %>
+	</table>
+
+  </div>
+</div>

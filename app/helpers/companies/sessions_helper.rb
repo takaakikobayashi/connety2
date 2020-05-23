@@ -1,0 +1,2 @@
+module Companies::SessionsHelper
+end

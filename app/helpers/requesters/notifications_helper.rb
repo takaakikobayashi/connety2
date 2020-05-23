@@ -1,0 +1,2 @@
+module Requesters::NotificationsHelper
+end

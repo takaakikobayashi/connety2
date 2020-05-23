@@ -1,0 +1,2 @@
+module Companies::NotificationsHelper
+end

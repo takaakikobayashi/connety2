@@ -1,0 +1,105 @@
+
+
+  <div class="row">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-8">
+      <div class="sign_up">
+        <mark>新規会員登録</mark>
+      </div>
+
+      
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <table border="0">
+        <tr style="height:70px">
+            <th class="form">名前</th>
+            <td>（姓）</td>
+            <td>
+              <% f.label :last_name %>
+              <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control" %>
+            </td>
+            <td>（名）</td>
+            <td>
+              <% f.label :first_name %>
+              <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>ユーザーネーム</th>
+            <td></td>
+            <td>
+              <% f.label :user_name %>
+              <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>学年</th>
+            <td></td>
+            <td>
+              <% f.label :grade %>
+              <%= f.text_field :grade, autofocus: true, autocomplete: "grade", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>その他</th>
+            <td></td>
+            <td>
+              <% f.label :other_grade %>
+              <%= f.text_field :other_grade, autofocus: true, autocomplete: "other_grade", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>メールアドレス</th>
+            <td></td>
+            <td>
+              <% f.label :email %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>電話番号(ハイフンなし)</th>
+            <td></td>
+            <td>
+              <% f.label :phone_number %>
+              <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>パスワード</th>
+            <td></td>
+            <td>
+              <% f.label :password %>
+              <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>パスワード確認</th>
+            <td></td>
+            <td>
+              <% f.label :password_confirmation %>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+            </td>
+        </tr>
+
+      </table>
+      <div class="actions">
+        <%= f.submit "新規登録", class:"btn btn-success center-block", style:"width:150px" %>
+      </div>
+      
+      <% end %>
+      
+
+      <div class="sign_in_page">
+        <mark>既に登録済みの方</mark>
+        <p><%= render "users/shared/links" %>からログインしてください</p>
+      </div>
+    </div>
+  </div>

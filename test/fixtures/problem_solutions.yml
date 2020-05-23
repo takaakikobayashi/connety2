@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  worked: MyText
+  not_worked: MyText
+  solution: MyText
+  improvement_point: MyText
+
+two:
+  worked: MyText
+  not_worked: MyText
+  solution: MyText
+  improvement_point: MyText
