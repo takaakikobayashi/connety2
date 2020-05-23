@@ -50,7 +50,7 @@ Rails.application.routes.draw do
   resources :users, only:[:index, :show, :edit, :update, :destroy] do
     resources :scholastic_records, only:[:index, :create]
     resources :tasks, except:[:show, :new]
-    resources :reviews, only:[:index, :create]
+    resources :reviews, only:[:index, :create, :new]
     resources :setting_goals, only:[:new, :show, :create, :update]
     resources :problem_solutions, only:[:index, :create]
     resources :strengths, only:[:show, :create, :update, :destroy]
