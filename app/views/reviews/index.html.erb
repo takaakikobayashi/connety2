@@ -10,12 +10,14 @@
     		<th>できたこと</th>
             <th>できなかったこと</th>
     	</tr>
+        <% @reviews.each do |review| %>
     	<tr>
-    		<td></td>
-    		<td></td>
-    		<td></td>
-            <td></td>
+    		<td><%= review.created_at.strftime('%Y/%m/%d') %></td>
+    		<td><%= review.theme %></td>
+    		<td><%= review.completion %></td>
+            <td><%= review.halfway %></td>
     	</tr>
+        <% end %>
     </table>
 
 </div>

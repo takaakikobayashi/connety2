@@ -48,19 +48,29 @@ Rails.application.routes.draw do
   	resources :about, only:[:show]
   end
   resources :users, only:[:index, :show, :edit, :update, :destroy] do
+    get "delete"  => "users#delete", as: "delete_user"
     resources :scholastic_records, only:[:index, :create]
-    resources :tasks, except:[:show, :new]
-    resources :reviews, only:[:index, :create, :new]
-    resources :setting_goals, only:[:new, :show, :create, :update]
-    resources :problem_solutions, only:[:index, :create]
-    resources :strengths, only:[:show, :create, :update, :destroy]
+    resources :tasks, only:[:index, :create, :edit, :destroy]
+    patch "tasks/:id/edit" => "tasks#update"
+    patch "tasks/:id/complete" => "tasks#complete", as: "complete_task"
+    resources :reviews, only:[:index, :new]
+    post "reviews/new" => "reviews#create"
+    resources :setting_goals, only:[:new, :show, :edit]
+    post "setting_goals/new" => "setting_goals#create"
+    patch "setting_goals/:id/edit" => "setting_goals#update"
+    resources :problem_solutions, only:[:index, :new]
+    post "problem_solutions/new" => "problem_solutions#create"
+    resources :strengths, only:[:new, :edit, :show]
+    post "strengths/new" => "strengths#create"
+    patch "strengths/edit" => "strengths#update"
+    patch "strengths" => "strengths#destroy"
     resources :orders, only:[:index, :show, :create, :destroy]
     resources :offers, only:[:index, :show, :create, :destroy]
     resources :notifications, only:[:index]
     resources :comments, only:[:index, :create, :destroy]
     resources :likes, only:[:create, :destroy]
   end
-  get  "users/:id/delete"  => "users#delete", as: "delete_user"
+  
   resources :rooms, only:[:index, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -5,6 +5,7 @@ class CreateStrengths < ActiveRecord::Migration[5.2]
       t.text :appeal_point
       t.text :expection
       t.text :portfolio
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

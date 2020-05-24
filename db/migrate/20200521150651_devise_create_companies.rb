@@ -36,7 +36,7 @@ class DeviseCreateCompanies < ActiveRecord::Migration[5.2]
       t.string :phone_number, null: false
       t.string :postal_code, null: false
       t.string :address, null: false
-      t.boolean :is_active, null: false
+      t.boolean :is_active, default: true, null: false
       t.timestamps null: false
     end
 

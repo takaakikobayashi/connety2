@@ -15,8 +15,11 @@
         <tr style="height:70px">
             <th class="form">今日のテーマ</th>
             <td>
-              <% f.label :theme %>
-              <%= f.text_field :theme, autofocus: true, autocomplete: "theme", class: "form-control" %>
+              <% if @reviews.nil? %>
+              <p>登録がありません</p>
+              <% else %>
+              <%= @reviews.theme %>
+              <% end %> 
             </td>
         </tr>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_23_103933) do
+ActiveRecord::Schema.define(version: 2020_05_24_053615) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 2020_05_23_103933) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.integer "scholastic_records_id"
-    t.index ["scholastic_records_id"], name: "index_comments_on_scholastic_records_id"
+    t.integer "scholastic_record_id"
+    t.index ["scholastic_record_id"], name: "index_comments_on_scholastic_record_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2020_05_23_103933) do
     t.string "phone_number", null: false
     t.string "postal_code", null: false
     t.string "address", null: false
-    t.boolean "is_active", null: false
+    t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_companies_on_email", unique: true
@@ -62,8 +62,8 @@ ActiveRecord::Schema.define(version: 2020_05_23_103933) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.integer "scholastic_records_id"
-    t.index ["scholastic_records_id"], name: "index_likes_on_scholastic_records_id"
+    t.integer "scholastic_record_id"
+    t.index ["scholastic_record_id"], name: "index_likes_on_scholastic_record_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
@@ -81,18 +81,18 @@ ActiveRecord::Schema.define(version: 2020_05_23_103933) do
 
   create_table "notifications", force: :cascade do |t|
     t.string "action"
-    t.boolean "checked"
+    t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "requester_id"
     t.integer "company_id"
-    t.integer "scholastic_records_id"
+    t.integer "scholastic_record_id"
     t.integer "comment_id"
     t.index ["comment_id"], name: "index_notifications_on_comment_id"
     t.index ["company_id"], name: "index_notifications_on_company_id"
     t.index ["requester_id"], name: "index_notifications_on_requester_id"
-    t.index ["scholastic_records_id"], name: "index_notifications_on_scholastic_records_id"
+    t.index ["scholastic_record_id"], name: "index_notifications_on_scholastic_record_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
@@ -119,7 +119,7 @@ ActiveRecord::Schema.define(version: 2020_05_23_103933) do
     t.text "application_condition", null: false
     t.text "vacation", null: false
     t.text "welfare", null: false
-    t.boolean "is_active", null: false
+    t.boolean "is_active", default: true, null: false
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -216,7 +216,7 @@ ActiveRecord::Schema.define(version: 2020_05_23_103933) do
   create_table "tasks", force: :cascade do |t|
     t.string "name"
     t.date "deadline"
-    t.boolean "progress_status"
+    t.boolean "progress_status", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"

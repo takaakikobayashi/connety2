@@ -1,0 +1,70 @@
+
+
+  <div class="row">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-8">
+      <div class="sign_up">
+        <mark>新規会員登録</mark>
+      </div>
+
+      
+
+      <%= form_for @strengths, url: edit_user_strength_path do |f| %>
+      
+      <table border="0">
+        <tr style="height:70px">
+            <th class="form">名前</th>
+            <td>
+              <%= current_user.last_name %>
+              <%= current_user.first_name %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>学年</th>
+            <td><%= current_user.grade %></td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>スキル</th>
+            <td>
+              <% f.label :skill %>
+              <%= f.text_field :skill, autofocus: true, autocomplete: "skill", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>希望</th>
+            <td>
+              <% f.label :expection %>
+              <%= f.text_field :expection, autofocus: true, autocomplete: "expection", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>アピールポイント</th>
+            <td>
+              <% f.label :apeal_point %>
+              <%= f.text_field :apeal_point, autofocus: true, autocomplete: "apeal_point", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>ポートフォリオ</th>
+            <td>
+              <% f.label :portfolio %>
+              <%= f.text_field :portfolio, autofocus: true, autocomplete: "portfolio", class: "form-control" %>
+            </td>
+        </tr>
+
+      </table>
+      <div class="actions">
+        <%= f.submit "編集", class:"btn btn-success center-block", style:"width:150px" %>
+      </div>
+      
+      <% end %>
+      
+
+      
+    </div>
+  </div>
