@@ -5,6 +5,8 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.text :request_detail, null: false
       t.integer :cost, null: false
       t.integer :progress_status, null: false
+      t.references :user, foreign_key: true
+      t.references :requester, foreign_key: true
 
       t.timestamps
     end

@@ -4,6 +4,7 @@ class CreateSettingGoals < ActiveRecord::Migration[5.2]
       t.string :target
       t.text :concern
       t.text :commitment
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

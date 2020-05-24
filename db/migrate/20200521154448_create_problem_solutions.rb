@@ -5,6 +5,7 @@ class CreateProblemSolutions < ActiveRecord::Migration[5.2]
       t.text :not_worked
       t.text :solution
       t.text :improvement_point
+      t.references :user, foreign_key: true
 
       t.timestamps
     end
