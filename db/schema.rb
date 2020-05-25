@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_24_053615) do
+ActiveRecord::Schema.define(version: 2020_05_25_075747) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 2020_05_24_053615) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "scholastic_record_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["scholastic_record_id"], name: "index_comments_on_scholastic_record_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -59,21 +59,21 @@ ActiveRecord::Schema.define(version: 2020_05_24_053615) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "scholastic_record_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["scholastic_record_id"], name: "index_likes_on_scholastic_record_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
     t.text "mail"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "requester_id"
     t.integer "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_messages_on_company_id"
     t.index ["requester_id"], name: "index_messages_on_requester_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
@@ -82,13 +82,13 @@ ActiveRecord::Schema.define(version: 2020_05_24_053615) do
   create_table "notifications", force: :cascade do |t|
     t.string "action"
     t.boolean "checked", default: false, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "requester_id"
     t.integer "company_id"
     t.integer "scholastic_record_id"
     t.integer "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["comment_id"], name: "index_notifications_on_comment_id"
     t.index ["company_id"], name: "index_notifications_on_company_id"
     t.index ["requester_id"], name: "index_notifications_on_requester_id"
@@ -97,11 +97,11 @@ ActiveRecord::Schema.define(version: 2020_05_24_053615) do
   end
 
   create_table "offer_applications", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "offer_id"
     t.integer "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_offer_applications_on_company_id"
     t.index ["offer_id"], name: "index_offer_applications_on_offer_id"
     t.index ["user_id"], name: "index_offer_applications_on_user_id"
@@ -121,10 +121,10 @@ ActiveRecord::Schema.define(version: 2020_05_24_053615) do
     t.text "welfare", null: false
     t.boolean "is_active", default: true, null: false
     t.string "image_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_offers_on_company_id"
     t.index ["user_id"], name: "index_offers_on_user_id"
   end
@@ -134,10 +134,10 @@ ActiveRecord::Schema.define(version: 2020_05_24_053615) do
     t.text "request_detail", null: false
     t.integer "cost", null: false
     t.integer "progress_status", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "requester_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["requester_id"], name: "index_orders_on_requester_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -147,9 +147,9 @@ ActiveRecord::Schema.define(version: 2020_05_24_053615) do
     t.text "not_worked"
     t.text "solution"
     t.text "improvement_point"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
     t.index ["user_id"], name: "index_problem_solutions_on_user_id"
   end
 
@@ -174,21 +174,22 @@ ActiveRecord::Schema.define(version: 2020_05_24_053615) do
     t.string "theme"
     t.text "completion"
     t.text "halfway"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "scholastic_records", force: :cascade do |t|
     t.integer "learning_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "category_id"
-    t.integer "task_id"
+    t.string "learning_content"
+    t.text "learning_detail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "learning_time_min"
     t.index ["category_id"], name: "index_scholastic_records_on_category_id"
-    t.index ["task_id"], name: "index_scholastic_records_on_task_id"
     t.index ["user_id"], name: "index_scholastic_records_on_user_id"
   end
 
@@ -196,9 +197,9 @@ ActiveRecord::Schema.define(version: 2020_05_24_053615) do
     t.string "target"
     t.text "concern"
     t.text "commitment"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
     t.index ["user_id"], name: "index_setting_goals_on_user_id"
   end
 
@@ -207,9 +208,9 @@ ActiveRecord::Schema.define(version: 2020_05_24_053615) do
     t.text "appeal_point"
     t.text "expection"
     t.text "portfolio"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
     t.index ["user_id"], name: "index_strengths_on_user_id"
   end
 
@@ -217,9 +218,9 @@ ActiveRecord::Schema.define(version: 2020_05_24_053615) do
     t.string "name"
     t.date "deadline"
     t.boolean "progress_status", default: true, null: false
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 

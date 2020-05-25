@@ -49,7 +49,8 @@ Rails.application.routes.draw do
   end
   resources :users, only:[:index, :show, :edit, :update, :destroy] do
     get "delete"  => "users#delete", as: "delete_user"
-    resources :scholastic_records, only:[:index, :create]
+    resources :scholastic_records, only:[:index, :new]
+    post "scholastic_records/new" => "scholastic_records#create"
     resources :tasks, only:[:index, :create, :edit, :destroy]
     patch "tasks/:id/edit" => "tasks#update"
     patch "tasks/:id/complete" => "tasks#complete", as: "complete_task"

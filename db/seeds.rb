@@ -48,3 +48,7 @@ Company.create!(
    password: 'requester1',
    password_confirmation:'requester1'
 )
+
+Category.create!(
+  [{name: "プログラミング"},{name: "動画編集"},{name: "デザイン"},{name: "マーケティング"},{name: "その他"}]
+)
