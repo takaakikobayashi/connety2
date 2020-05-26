@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get  "home/about"  => "home#about"
   get  "home/requesters"  => "home#requesters"
   get  "home/companies"  => "home#companies"
+  get "requesters/about"  => "requesters/about#show"
+  get "companies/about"  => "companies/about#show"
   devise_for :admins, controllers:{
     sessions: "admins/sessions",
     passwords: "admins/passwords",
@@ -36,20 +38,24 @@ Rails.application.routes.draw do
   	resources :offers, except:[:destroy]
   	resources :reviews, only:[:index]
   	resources :problem_solutions, only:[:index]
-  	resources :strengths, only:[:index, :show]
-  	resources :about, only:[:show]
+    get "strengths"  => "companies/strengths#index"
+    get "strengths"  => "companies/strengths#show"
   end
   resources :requesters, only:[:show, :edit, :update] do
   	resources :notifications, only:[:index]
   	resources :orders, only:[:index, :new, :create, :destroy]
   	resources :reviews, only:[:index]
   	resources :problem_solutions, only:[:index]
-  	resources :strengths, only:[:index, :show]
-  	resources :about, only:[:show]
+    get "strengths"  => "requesters/strengths#index"
+    get "strengths"  => "requesters/strengths#show"
   end
   resources :users, only:[:index, :show, :edit, :update, :destroy] do
     get "delete"  => "users#delete", as: "delete_user"
-    resources :scholastic_records, only:[:index, :new]
+    resources :scholastic_records, only:[:index, :new, :show] do
+      resources :comments, only:[:create, :destroy]
+      resources :likes, only:[:create]
+      delete "likes" => "likes#destroy"
+    end
     post "scholastic_records/new" => "scholastic_records#create"
     resources :tasks, only:[:index, :create, :edit, :destroy]
     patch "tasks/:id/edit" => "tasks#update"
@@ -63,13 +69,11 @@ Rails.application.routes.draw do
     post "problem_solutions/new" => "problem_solutions#create"
     resources :strengths, only:[:new, :edit, :show]
     post "strengths/new" => "strengths#create"
-    patch "strengths/edit" => "strengths#update"
+    patch "strengths/:id/edit" => "strengths#update"
     patch "strengths" => "strengths#destroy"
     resources :orders, only:[:index, :show, :create, :destroy]
     resources :offers, only:[:index, :show, :create, :destroy]
     resources :notifications, only:[:index]
-    resources :comments, only:[:index, :create, :destroy]
-    resources :likes, only:[:create, :destroy]
   end
   
   resources :rooms, only:[:index, :show]

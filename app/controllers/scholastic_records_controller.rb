@@ -3,8 +3,16 @@ class ScholasticRecordsController < ApplicationController
   	@categories = Category.all
   	@user = User.find(params[:user_id])
   	@setting_goals = SettingGoal.all
+  	#% @setting_goal = SettingGoal.find() %>
     @strengths = Strength.all
     @scholastic_records = ScholasticRecord.all
+    now = Date.today
+    @review = Review.find_by(created_at: now.yesterday)
+  end
+
+  def show
+  	@scholastic_record = ScholasticRecord.find(params[:id])
+  	@comment = Comment.new
   end
 
   def new

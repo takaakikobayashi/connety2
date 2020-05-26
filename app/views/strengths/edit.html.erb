@@ -9,7 +9,7 @@
 
       
 
-      <%= form_for @strengths, url: edit_user_strength_path do |f| %>
+      <%= form_for @strength, url: edit_user_strength_path do |f| %>
       
       <table border="0">
         <tr style="height:70px">
@@ -44,8 +44,8 @@
         <tr style="height:70px">
             <th>アピールポイント</th>
             <td>
-              <% f.label :apeal_point %>
-              <%= f.text_field :apeal_point, autofocus: true, autocomplete: "apeal_point", class: "form-control" %>
+              <% f.label :appeal_point %>
+              <%= f.text_field :appeal_point, autofocus: true, autocomplete: "appeal_point", class: "form-control" %>
             </td>
         </tr>
 
