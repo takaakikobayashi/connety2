@@ -25,25 +25,28 @@
 
         <tr style="height:70px">
             <th>スキル</th>
-            <td><% @strength.skill %></td>
+            <td><%= @strengths.skill %></td>
         </tr>
 
         <tr style="height:70px">
             <th>希望</th>
-            <td><% @strength.expection %></td>
+            <td><%= @strengths.expection %></td>
         </tr>
 
         <tr style="height:70px">
             <th>アピールポイント</th>
-            <td><% @strength.apeal_point %></td>
+            <td><%= @strengths.appeal_point %></td>
         </tr>
 
         <tr style="height:70px">
             <th>ポートフォリオ</th>
-            <td><% @strength.portfolio %></td>
+            <td><%= @strengths.portfolio %></td>
         </tr>
 
       </table>
+
+      <%=link_to "編集", edit_user_strength_path(user_id: params[:user_id],id: params[:id]),class: "btn btn-primary", style:"margin-right:30px" %>
+      <%= link_to "非公開にする", user_strengths_path, method: :patch, class: 'btn btn-danger' %>
       
 
       

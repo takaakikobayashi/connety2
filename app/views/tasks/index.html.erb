@@ -31,7 +31,7 @@
     		<td><%= task.deadline %></td>
     		<td>
                 <%=link_to "編集", edit_user_task_path(user_id: params[:user_id],id: task.id),class: "btn btn-primary", style:"margin-right:30px" %>
-                <%= link_to "削除", user_task_path(user_id: params[:user_id],id: task.id), method: :delete, class: "btn btn-danger" %>
+                <%= link_to "削除", user_task_path(user_id: params[:user_id],id: task.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
             </td>
             <td><%= link_to "完了", user_complete_task_path(user_id: params[:user_id],id: task.id), method: :patch,class: "btn btn-success" %></td>
     	</tr>
