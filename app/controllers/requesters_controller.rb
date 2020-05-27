@@ -7,6 +7,22 @@ class RequestersController < ApplicationController
   end
 
   def show
+    @orders = Order.where(progress_status: 0)
+  end
+
+  def update
+    @requester = Requester.find(current_requester.id)
+    if @requester.update(requester_params)
+      redirect_to requester_path(@requester)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @requester = Requester.find(current_requester.id)
+    @requester.destroy
+    redirect_to root_path
   end
 
   private

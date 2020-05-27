@@ -15,6 +15,12 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(current_user.id)
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
   end
 
   def delete
@@ -22,6 +28,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = User.find(current_user.id)
+    @user.destroy
+    redirect_to root_path
   end
 
 private
@@ -34,7 +43,7 @@ private
       :other_grade,
       :email,
       :phone_number, 
-      :learning_status,
+      :learning_status
     )
   end
 
