@@ -69,6 +69,7 @@
     		<th>依頼詳細</th>
     		<th>依頼額</th>
     		<th>進捗ステータス</th>
+        <th></th>
     	</tr>
       <% @orders.each do |order| %>
     	<tr>
@@ -77,6 +78,10 @@
     		<td><%= order.request_detail %></td>
     		<td><%= order.cost %></td>
     		<td><%= order.progress_status %></td>
+        <td>
+          <%=  link_to "完了", requester_complete_orders_path(requester_id: current_requester.id,id: order.id), class:"btn btn-success"%>
+          <%=  link_to "破断", requester_delete_orders_path(requester_id: current_requester.id,id: order.id), class:"btn btn-danger"%>
+        </td>
     	</tr>
       <% end %>
     </table>

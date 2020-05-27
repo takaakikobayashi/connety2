@@ -14,8 +14,7 @@ class StrengthsController < ApplicationController
   def create
   	@strength = Strength.new(strength_params)
   	@strength.user_id = current_user.id
-  	if  current_user.is_active = true
-  		@strength.save
+  	if  @strength.save
   		redirect_to user_strength_path(user_id: current_user.id,id: 1)
   	else
   		render action: :new
@@ -37,8 +36,14 @@ class StrengthsController < ApplicationController
     redirect_to user_strength_path(current_user.id)
   end
 
+  def release
+  	@strength = Strength.find(params[:id])
+    @strength.update(is_active: true)
+    redirect_to user_strength_path(current_user.id)
+  end
+
   private
   def strength_params
-    params.require(:strength).permit(:skill, :expection, :apeal_point, :portfolio)
+    params.require(:strength).permit(:skill, :expection, :appeal_point, :portfolio)
   end
 end

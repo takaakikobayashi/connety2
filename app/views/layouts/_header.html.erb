@@ -19,7 +19,7 @@
           <li class="header-name"><%= current_requester.name %></li>
           <li class="header-link"><%= link_to "マイページ", requester_path(current_requester), class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "About", requesters_about_path, class: "btn btn-default" %></li>
-          <li class="header-link"><%= link_to "ユーザー一覧", requester_strengths_path(current_requester), class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "ユーザー一覧", requester_requester_strengths_path(current_requester), class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "ログアウト", destroy_requester_session_path, method: :delete, class: "btn btn-default" %></li>
         </ul>
         <% elsif company_signed_in? %>

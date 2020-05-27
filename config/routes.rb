@@ -44,13 +44,15 @@ Rails.application.routes.draw do
   resources :requesters, only:[:show, :edit, :update] do
   	resources :notifications, only:[:index]
   	resources :orders, only:[:index, :new, :create, :destroy]
-  	resources :reviews, only:[:index]
-  	resources :problem_solutions, only:[:index]
-    get "strengths"  => "requesters/strengths#index"
-    get "strengths"  => "requesters/strengths#show"
+    patch "orders/:id/complete"  => "requesters/orders#complete", as: "complete_orders"
+    patch "orders/:id/delete"  => "requesters/orders#delete", as: "delete_orders"
+    get "users/reviews"  => "requesters/reviews#index", as: "requester_reviews"
+    get "users/problem_solutions"  => "requesters/problem_solutions#index", as: "requester_problem_solutions"
+    get "users/strengths"  => "requesters/strengths#index", as: "requester_strengths"
+    get "users/:user_id/strengths"  => "requesters/strengths#show", as: "requester_strength"
   end
+  get "users/:id/delete"  => "users#delete", as: "delete_user"
   resources :users, only:[:index, :show, :edit, :update, :destroy] do
-    get "delete"  => "users#delete", as: "delete_user"
     resources :scholastic_records, only:[:index, :new, :show] do
       resources :comments, only:[:create, :destroy]
       resources :likes, only:[:create]
@@ -70,7 +72,8 @@ Rails.application.routes.draw do
     resources :strengths, only:[:new, :edit, :show]
     post "strengths/new" => "strengths#create"
     patch "strengths/:id/edit" => "strengths#update"
-    patch "strengths" => "strengths#destroy"
+    patch "strengths/:id" => "strengths#destroy", as: "destroy_strengths"
+    patch "strength/:id" => "strengths#release", as: "release_strengths"
     resources :orders, only:[:index, :show, :create, :destroy]
     resources :offers, only:[:index, :show, :create, :destroy]
     resources :notifications, only:[:index]

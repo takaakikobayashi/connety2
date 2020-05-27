@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_054034) do
+ActiveRecord::Schema.define(version: 2020_05_21_155351) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -133,7 +133,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_054034) do
     t.string "request_content", null: false
     t.text "request_detail", null: false
     t.integer "cost", null: false
-    t.integer "progress_status", null: false
+    t.integer "progress_status", default: 0, null: false
     t.integer "user_id"
     t.integer "requester_id"
     t.datetime "created_at", null: false
@@ -182,13 +182,13 @@ ActiveRecord::Schema.define(version: 2020_05_26_054034) do
 
   create_table "scholastic_records", force: :cascade do |t|
     t.integer "learning_time"
+    t.integer "learning_time_min"
     t.integer "user_id"
     t.integer "category_id"
     t.string "learning_content"
     t.text "learning_detail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "learning_time_min"
     t.index ["category_id"], name: "index_scholastic_records_on_category_id"
     t.index ["user_id"], name: "index_scholastic_records_on_user_id"
   end
@@ -208,10 +208,10 @@ ActiveRecord::Schema.define(version: 2020_05_26_054034) do
     t.text "appeal_point"
     t.text "expection"
     t.text "portfolio"
+    t.boolean "is_active", default: false, null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_active", default: false, null: false
     t.index ["user_id"], name: "index_strengths_on_user_id"
   end
 

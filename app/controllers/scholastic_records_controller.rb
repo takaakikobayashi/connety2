@@ -3,7 +3,7 @@ class ScholasticRecordsController < ApplicationController
   	@categories = Category.all
   	@user = User.find(params[:user_id])
   	@setting_goals = SettingGoal.all
-  	#% @setting_goal = SettingGoal.find() %>
+  	@setting_goal = SettingGoal.find(1)
     @strengths = Strength.all
     @scholastic_records = ScholasticRecord.all
     now = Date.today
