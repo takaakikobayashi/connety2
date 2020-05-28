@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :review
   has_many :like
   has_many :task
-  has_many :offer
+  belongs_to :offer
   has_many :order
   has_many :problem_solution
   has_many :notification

@@ -40,6 +40,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :phone_number, null: false
       t.string :image_id
       t.boolean :learning_status, default: false, null: false
+      t.references :offer, foreign_key: true
       t.timestamps null: false
     end
 

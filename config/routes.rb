@@ -34,8 +34,17 @@ Rails.application.routes.draw do
   end
   resources :companies, only:[:show, :edit, :update] do
   	resources :notifications, only:[:index]
-  	resources :offer_applications, only:[:index, :show, :create, :destroy]
-  	resources :offers, except:[:destroy]
+    get "offer_applications"  => "companies/offer_applications#index", as: "offer_applications"
+    post "offer_applications/new"  => "companies/offer_applications#create", as: "create_offer_applications"
+    get "offer_applications/:id"  => "companies/offer_applications#show", as: "show_offer_applications"
+    delete "offer_applications/:id"  => "companies/offer_applications#destroy", as: "destroy_offer_applications"
+    get "offers"  => "companies/offers#index", as: "offers"
+    get "offers/new"  => "companies/offers#new", as: "new_offers"
+    post "offers/new"  => "companies/offers#create", as: "create_offers"
+    get "offers/:id"  => "companies/offers#show", as: "show_offers"
+    get "offers/:id/edit"  => "companies/offers#edit", as: "edit_offers"
+    patch "offers/:id/edit"  => "companies/offers#update", as: "update_offers"
+    patch "offers/:id"  => "companies/offers#delete", as: "delete_offers"
   	resources :reviews, only:[:index]
   	resources :problem_solutions, only:[:index]
     get "strengths"  => "companies/strengths#index"

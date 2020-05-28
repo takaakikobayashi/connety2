@@ -5,4 +5,9 @@ class Requesters::ReviewsController < ApplicationController
 
   def show
   end
+
+  private
+  def review_params
+    params.require(:review).permit(:theme, :completion, :halfway)
+  end
 end
