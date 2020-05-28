@@ -1,5 +1,7 @@
 class Offer < ApplicationRecord
-	belongs_to :user
+	has_many :user
 	belongs_to :company
-	has_many :ofer_application
+	has_many :offer_application
+
+	attachment :image
 end

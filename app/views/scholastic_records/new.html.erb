@@ -1,0 +1,59 @@
+
+
+  <div class="row">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-8">
+      <div class="sign_up">
+        <mark>新規会員登録</mark>
+      </div>
+
+      
+
+      <%= form_for @scholastic_record, url: new_user_scholastic_record_path do |f| %>
+      
+      <table border="0">
+        <tr style="height:70px">
+            <th class="form">カテゴリ</th>
+            <td>
+              <% f.label :category_id %>
+              <%= f.collection_select :category_id, Category.all, :id, :name, prompt: "カテゴリを選択してください", autofocus: true, autocomplete: "category_id", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>学習内容</th>
+            <td>
+              <% f.label :learning_content %>
+              <%= f.text_field :learning_content, autofocus: true, autocomplete: "learning_content", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>学習コメント</th>
+            <td>
+              <% f.label :learning_detail %>
+              <%= f.text_field :learning_detail, autofocus: true, autocomplete: "learning_detail", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>学習時間</th>
+            <td>
+              <% f.label :learning_time %>
+              <%= f.select :learning_time,[*0..23], {}, { autocomplete: "learning_time", class: 'form-control'} %><p>時間</p>
+              <% f.label :learning_time_min %>
+              <%= f.select :learning_time_min,[*0..59], {}, { autocomplete: "learning_time_min", class: 'form-control'} %><p>分</p>
+            </td>
+        </tr>
+
+      </table>
+      <div class="actions">
+        <%= f.submit "新規登録", class:"btn btn-success center-block", style:"width:150px" %>
+      </div>
+      
+      <% end %>
+      
+
+      
+    </div>
+  </div>

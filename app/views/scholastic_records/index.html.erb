@@ -1,0 +1,98 @@
+<div class="row">
+  <div class="col-xs-2 col-xs-offset-1">
+  	<%# ボックス　%>
+    <div class="prof">
+      <div class="image-box">
+        <%= attachment_image_tag @user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'80x80' %>
+      </div>
+      <div>
+        <li class="title">ユーザーネーム</li>
+      	<li><%= @user.user_name %></li>
+        <% if @setting_goals.none? %>
+        <li></li>
+        <% else %>
+        <li class="title">目標</li>
+        <li><%= @setting_goal.target %></li>
+        <% end %>
+        <% if  %>
+        <li class="title">今日のテーマ</li>
+        <li></li>
+        <% else %>
+        <li><%=  %></li>
+        <% end %>
+      	<li class="title">今日</li>
+      	<li><%=  %>時間</li>
+        <li class="title">今週</li>
+        <li><%=  %>時間</li>
+        <li class="title">今月</li>
+        <li><%=  %>時間</li>
+      </div>
+
+      <%= link_to "マイページ", user_path(current_user.id), class: 'btn btn-primary'%>
+    </div>
+    <%# カテゴリボックス　%>
+    <div class="category">
+      <% @categories.each do |category| %>
+      <li><%= link_to category.name, user_scholastic_records_path(user_id: current_user.id,category_id: category.id) %></li>
+      <% end %>
+    </div>
+    <%# リンクボックス　%>
+    <div class="link">
+      <li><%= link_to "問題解決記録", user_problem_solutions_path(user_id: params[:user_id]) %></li>
+      <li><%= link_to "タスク管理", user_tasks_path(user_id: params[:user_id]) %></li>
+      <li><%= link_to "日々の振り返り", user_reviews_path(user_id: params[:user_id]) %></li>
+      <li>
+        <% if @setting_goals.none? %>
+        <%= link_to "目標新規登録", new_user_setting_goal_path(user_id: params[:user_id]) %>
+        <% else %>
+        <%= link_to "目標確認", user_setting_goal_path(user_id: params[:user_id],id: 1) %>
+        <% end %>
+      </li>
+      <li>
+        <% if @strengths.none? %>
+        <%= link_to "自己PRを作成する", new_user_strength_path(user_id: params[:user_id]) %>
+        <% else %>
+        <%= link_to "自己PRを確認する", user_strength_path(user_id: params[:user_id],id: 1) %>
+        <% end %>
+      </li>
+      <li><a href="#" class="">募集企業を探す</a></li>
+      <li><a href="#" class="">オファーを確認する</a></li>
+    </div>
+  </div>
+  <div class="col-xs-8">
+  	<%# タイムライン %>
+  	<div class="">
+            <% @scholastic_records.each do |scholastic_record| %>
+            <%= attachment_image_tag scholastic_record.user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'80x80' %>
+            <%= link_to user_path(@user.id) do %>
+                     <i class="fa fa-map-marker"></i><%= scholastic_record.user.user_name %>
+                  <% end %>
+                  <%= link_to user_scholastic_record_path(user_id: scholastic_record.user.id,id: scholastic_record.id) do %>
+                  <div>
+                    <p>学習内容</p>
+                    <%= scholastic_record.learning_content %>
+                    <p>学習詳細</p>
+                    <%= scholastic_record.learning_detail %>
+                  </div>
+                  <% end %>
+                      <% if scholastic_record.liked_by?(current_user) %>
+<li>
+    <%= link_to user_scholastic_record_likes_path(user_id: current_user.id,scholastic_record_id: scholastic_record.id), method: :delete do %>
+    <span class="glyphicon glyphicon-heart" style="color: red;"></span><%= scholastic_record.like.count %>
+    <% end %>
+</li>
+<% else %>
+<li>
+    <%= link_to user_scholastic_record_likes_path(user_id: current_user.id,scholastic_record_id: scholastic_record.id), method: :post do %>
+    <span class="glyphicon glyphicon-heart-empty"><%= scholastic_record.like.count %></span>
+    <% end %>
+</li>
+<% end %>
+                    <%= link_to scholastic_record.comment.count, user_scholastic_record_path(user_id: scholastic_record.user.id,id: scholastic_record.id) %>
+            <% end %>
+        </div>
+<span id="back">
+    <%= link_to image_tag("scholastic-record.png", size:'100x100'), new_user_scholastic_record_path(user_id: params[:user_id]) %>
+    </span>
+</div>
+</div>

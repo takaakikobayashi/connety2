@@ -17,10 +17,10 @@
         </div>
          <ul class="nav navbar-nav navbar-right">
           <li class="header-name"><%= current_requester.name %></li>
-          <li class="header-link"><%= link_to "マイページ", "#", class: "btn btn-default" %></li>
-          <li class="header-link"><%= link_to "About", "#", class: "btn btn-default" %></li>
-          <li class="header-link"><%= link_to "ユーザー一覧", "#", class: "btn btn-default" %></li>
-          <li class="header-link"><%= link_to "ログアウト", "#", method: :delete, class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "マイページ", requester_path(current_requester), class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "About", requesters_about_path, class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "ユーザー一覧", requester_requester_strengths_path(current_requester), class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "ログアウト", destroy_requester_session_path, method: :delete, class: "btn btn-default" %></li>
         </ul>
         <% elsif company_signed_in? %>
         <div class="logo-box navber-brand">
@@ -28,10 +28,10 @@
         </div>
          <ul class="nav navbar-nav navbar-right">
           <li class="header-name"><%= current_company.name %></li>
-          <li class="header-link"><%= link_to "マイページ", "#", class: "btn btn-default" %></li>
-          <li class="header-link"><%= link_to "商品一覧", "#", class: "btn btn-default" %></li>
-          <li class="header-link"><%= link_to "カート", "#", class: "btn btn-default" %></li>
-          <li class="header-link"><%= link_to "ログアウト", "#", method: :delete, class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "マイページ",company_path(current_company), class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "About", companies_about_path, class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "ユーザー一覧", company_strengths_path(current_company), class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "ログアウト", destroy_company_session_path, method: :delete, class: "btn btn-default" %></li>
         </ul>
         <% elsif admin_signed_in? %>
         <div class="logo-box navber-brand">

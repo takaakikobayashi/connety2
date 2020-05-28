@@ -1,2 +1,110 @@
-<h1>Companies::Offers#edit</h1>
-<p>Find me in app/views/companies/offers/edit.html.erb</p>
+<%= form_for @offer, url: edit_company_offer_path(company_id: current_company.id,id params[:id]) do |f| %>
+      
+      <table border="0">
+      	<tr style="height:70px">
+            <th>画像</th>
+            <td>
+              <% f.label :image %>
+        	<%= f.attachment_field :image %>
+        	</td>
+        </tr>
+
+        <tr style="height:70px">
+            <th class="form">会社名</th>
+            <td><%= current_company.name %></td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>業種</th>
+            <td>
+              <% f.label :industry %>
+              <%= f.text_field :industry, autofocus: true, autocomplete: "industry", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>職種</th>
+            <td>
+              <% f.label :occupation %>
+              <%= f.text_field :occupation, autofocus: true, autocomplete: "occupation", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>勤務地</th>
+            <td>
+              <% f.label :work_location %>
+              <%= f.text_field :work_location, autofocus: true, autocomplete: "work_location", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>アピールポイント</th>
+            <td>
+              <% f.label :appeal_point %>
+              <%= f.text_field :appeal_point, autofocus: true, autocomplete: "appeal_point", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>仕事内容</th>
+            <td>
+              <% f.label :job_description %>
+              <%= f.text_field :job_description, autofocus: true, autocomplete: "job_description", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>雇用形態</th>
+            <td>
+              <% f.label :employment_status %>
+              <%= f.text_field :employment_status, autofocus: true, autocomplete: "employment_status", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>勤務時間</th>
+            <td>
+              <% f.label :working_hour %>
+              <%= f.text_field :working_hour, autofocus: true, autocomplete: "working_hour", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>給与</th>
+            <td>
+              <% f.label :salary %>
+              <%= f.text_field :salary, autofocus: true, autocomplete: "salary", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>募集要件</th>
+            <td>
+              <% f.label :application_condition %>
+              <%= f.text_field :application_condition, autofocus: true, autocomplete: "application_condition", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>休日休暇</th>
+            <td>
+              <% f.label :vacation %>
+              <%= f.text_field :vacation, autofocus: true, autocomplete: "vacation", class: "form-control" %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>福利厚生</th>
+            <td>
+              <% f.label :welfare %>
+              <%= f.text_field :welfare, autofocus: true, autocomplete: "welfare", class: "form-control" %>
+            </td>
+        </tr>
+
+      </table>
+      <div class="actions">
+        <%= f.submit "編集", class:"btn btn-success center-block", style:"width:150px" %>
+      </div>
+      
+      <% end %>

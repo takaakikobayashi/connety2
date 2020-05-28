@@ -39,7 +39,7 @@
             <td></td>
             <td>
               <% f.label :grade %>
-              <%= f.text_field :grade, autofocus: true, autocomplete: "grade", class: "form-control" %>
+              <%= f.select :grade, User.grades.keys.to_a, {prompt: "学年を選択してください"}, {class: "form-control"} %>
             </td>
         </tr>
 
@@ -74,7 +74,7 @@
         <div class="button-box margin-30">
           <%= f.submit '編集内容を保存する',class: 'btn btn-primary', style:"margin-right:130px" %>
 
-          <%= link_to "退会する", "/users/#{@user.id}/delete", class: 'btn btn-danger'%>
+          <%= link_to "退会する", "/users/#{current_user.id}/delete", class: 'btn btn-danger'%>
 
         </div>
         <%= link_to "戻る", :back %>

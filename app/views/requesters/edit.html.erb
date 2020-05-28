@@ -4,7 +4,7 @@
 
   <div class="row">
     <div class="col-xs-5">
-  	  <%= form_for @requester do |f| %>
+  	  <%= form_for @requester, url: requester_path(current_requester.id) do |f| %>
   	  <table class="margin-30">
         <tr style="height:70px">
             <th>名前</th>

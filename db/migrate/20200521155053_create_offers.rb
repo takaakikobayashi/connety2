@@ -12,8 +12,9 @@ class CreateOffers < ActiveRecord::Migration[5.2]
       t.text :application_condition, null: false
       t.text :vacation, null: false
       t.text :welfare, null: false
-      t.boolean :is_active, null: false
+      t.boolean :is_active, default: true, null: false
       t.string :image_id
+      t.references :company, foreign_key: true
 
       t.timestamps
     end

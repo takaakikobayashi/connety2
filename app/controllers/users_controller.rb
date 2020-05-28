@@ -5,6 +5,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @tasks = Task.where(deadline: Date.today)
+    @setting_goals = SettingGoal.all
+    @strengths = Strength.all
   end
 
   def edit
@@ -12,13 +15,22 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(current_user.id)
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
   end
 
   def delete
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
   end
 
   def destroy
+    @user = User.find(current_user.id)
+    @user.destroy
+    redirect_to root_path
   end
 
 private
@@ -31,7 +43,7 @@ private
       :other_grade,
       :email,
       :phone_number, 
-      :learning_status,
+      :learning_status
     )
   end
 
