@@ -1,2 +1,49 @@
-<h1>Companies::Strengths#show</h1>
-<p>Find me in app/views/companies/strengths/show.html.erb</p>
+
+
+  <div class="row">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-8">
+      <div class="sign_up">
+        <mark>新規会員登録</mark>
+      </div>
+
+      
+     <table border="0">
+        <tr style="height:70px">
+            <th class="form">名前</th>
+            <td><%= @user.user_name %></td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>学年</th>
+            <td><%= @user.grade %></td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>スキル</th>
+            <td><%= @strength.skill %></td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>希望</th>
+            <td><%= @strength.expection %></td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>アピールポイント</th>
+            <td><%= @strength.appeal_point %></td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>ポートフォリオ</th>
+            <td><%= @strength.portforio %></td>
+        </tr>
+
+      </table>
+      
+      <%=link_to "日々の振り返り", "#",class: "btn btn-primary", style:"margin-right:30px" %>
+      <%=link_to "問題解決", "#",class: "btn btn-primary", style:"margin-right:30px" %>
+      <%=link_to "オファーする", "#",class: "btn btn-primary", style:"margin-right:30px" %>
+      
+    </div>
+  </div>
