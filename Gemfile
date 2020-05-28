@@ -74,3 +74,6 @@ gem 'jp_prefecture'
 gem 'kaminari'
 gem 'bootstrap-sass'
 gem 'pry-rails'
+group :production do
+  gem 'mysql2'
+end
