@@ -4,7 +4,7 @@ class StrengthsController < ApplicationController
   end
 
   def show
-  	@strengths = Strength.find(params[:user_id], params[:id])
+  	@strengths = Strength.find(params[:user_id])
   end
 
   def edit
@@ -15,7 +15,7 @@ class StrengthsController < ApplicationController
   	@strength = Strength.new(strength_params)
   	@strength.user_id = current_user.id
   	if  @strength.save
-  		redirect_to user_strength_path(user_id: current_user.id,id: 1)
+  		redirect_to user_strength_path(user_id: current_user.id)
   	else
   		render action: :new
   	end

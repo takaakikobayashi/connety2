@@ -3,7 +3,7 @@
 <%# カテゴリボックス　%>
     <div class="category">
       <%#<% @categories.each do |category| %>
-      <%#<li><%= link_to category.name, user_scholastic_records_path(user_id: current_user.id,category_id: category.id) %></li>
+      <%#<li><%= link_to category.name, user_scholastic_records_path(user_id: current_user.id,category_id: category.id) %>
       <%#<% end %>
     </div>
   <div class="col-xs-8">
@@ -13,14 +13,17 @@
               <%= attachment_image_tag user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'80x80' %>
             </div>
             <div class="product-index-info">
-              <p><%= link_to user.user_name, "#" %></p>
+              <p><%= link_to user.user_name, requester_requester_strength_path(requester_id: current_requester.id,user_id: user.id) %></p>
               <p>
-              	<% user.strength.each do |strength| %>
+              	<% user.strengths.each do |strength| %>
                 <%= strength.appeal_point %>
                 <% end %>
                   <span style="color:red">評価</span>
               </p>
             </div>
           </div>
-      </div>
     <% end %>
+    </div>
+
+</div>
+</div>

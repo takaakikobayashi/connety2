@@ -6,7 +6,7 @@ class Companies::StrengthsController < ApplicationController
 
   def show
   	@user = User.find(params[:user_id])
-  	@strength = Strength.find(params[:id])
+  	@strength = Strength.find(1)
   end
 
   private

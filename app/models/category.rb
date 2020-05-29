@@ -1,3 +1,3 @@
 class Category < ApplicationRecord
-	has_many :scholastic_record
+	has_many :scholastic_records
 end

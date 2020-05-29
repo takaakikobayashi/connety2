@@ -4,7 +4,10 @@ class Requester < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :message
-  has_many :notification
-  has_many :order
+  has_many :messages
+  has_many :notifications
+  has_many :orders, through: :orders
+  has_many :entries
+
+
 end

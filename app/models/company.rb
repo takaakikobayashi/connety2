@@ -4,8 +4,9 @@ class Company < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :offer_application
-  has_many :message
-  has_many :notification
-  has_many :offer
+  has_many :offer_applications
+  has_many :messages
+  has_many :notifications
+  has_many :offers
+  has_many :entries
 end

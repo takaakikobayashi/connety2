@@ -52,7 +52,10 @@ Rails.application.routes.draw do
   end
   resources :requesters, only:[:show, :edit, :update] do
   	resources :notifications, only:[:index]
-  	resources :orders, only:[:index, :new, :create, :destroy]
+  	resources :orders, only:[:destroy]
+    get "orders"  => "requesters/orders#index", as: "index_orders"
+    get "users/:user_id/orders/new"  => "requesters/orders#new", as: "new_orders"
+    post "users/:user_id/orders/new"  => "requesters/orders#create", as: "create_orders"
     patch "orders/:id/complete"  => "requesters/orders#complete", as: "complete_orders"
     patch "orders/:id/delete"  => "requesters/orders#delete", as: "delete_orders"
     get "users/reviews"  => "requesters/reviews#index", as: "requester_reviews"
@@ -73,21 +76,26 @@ Rails.application.routes.draw do
     patch "tasks/:id/complete" => "tasks#complete", as: "complete_task"
     resources :reviews, only:[:index, :new]
     post "reviews/new" => "reviews#create"
-    resources :setting_goals, only:[:new, :show, :edit]
+    resources :setting_goals, only:[:new, :edit]
+    get "setting_goals/show" => "setting_goals#show"
     post "setting_goals/new" => "setting_goals#create"
     patch "setting_goals/:id/edit" => "setting_goals#update"
     resources :problem_solutions, only:[:index, :new]
     post "problem_solutions/new" => "problem_solutions#create"
-    resources :strengths, only:[:new, :edit, :show]
+    resources :strengths, only:[:new, :edit]
+    get "strengths/show" => "strengths#show"
     post "strengths/new" => "strengths#create"
     patch "strengths/:id/edit" => "strengths#update"
     patch "strengths/:id" => "strengths#destroy", as: "destroy_strengths"
     patch "strength/:id" => "strengths#release", as: "release_strengths"
-    resources :orders, only:[:index, :show, :create, :destroy]
+    resources :orders, only:[:index, :show]
+    patch "orders/:id/asset" => "orders#asset", as: "asset_orders"
+    patch "orders/:id/refuse" => "orders#refuse", as: "refuse_orders"
     resources :offers, only:[:index, :show, :create, :destroy]
     resources :notifications, only:[:index]
   end
   
-  resources :rooms, only:[:index, :show]
+  resources :rooms, only:[:index, :show, :create]
+  resources :messages, only:[:create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
