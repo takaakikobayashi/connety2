@@ -20,21 +20,21 @@
       <li><%= link_to "タスク管理", user_tasks_path(user_id: params[:id]) %></li>
       <li><%= link_to "日々の振り返り", user_reviews_path(user_id: params[:id]) %></li>
       <li>
-        <% if @setting_goals.none? %>
+        <% if current_user.setting_goals.none? %>
         <%= link_to "目標新規登録", new_user_setting_goal_path(user_id: params[:id]) %>
         <% else %>
-        <%= link_to "目標確認", user_setting_goal_path(user_id: params[:id],id: 1) %>
+        <%= link_to "目標確認", user_setting_goals_show_path(user_id: params[:id]) %>
         <% end %>
       </li>
       <li>
-        <% if @strengths.none? %>
+        <% if current_user.strengths.none? %>
         <%= link_to "自己PRを作成する", new_user_strength_path(user_id: params[:id]) %>
         <% else %>
-        <%= link_to "自己PRを確認する", user_strength_path(user_id: params[:id],id: 1) %>
+        <%= link_to "自己PRを確認する", user_strengths_show_path(user_id: params[:id]) %>
         <% end %>
       </li>
       <li><a href="#" class="">募集企業を探す</a></li>
-      <li><a href="#" class="">オファーを確認する</a></li>
+      <li><%= link_to "オファーを確認する", user_orders_path(user_id: current_user.id) %></li>
     </div>
   </div>
   <div class="col-xs-8">

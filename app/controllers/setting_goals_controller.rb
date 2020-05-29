@@ -4,14 +4,14 @@ class SettingGoalsController < ApplicationController
   end
 
   def show
-  	@setting_goal = SettingGoal.find(1)
+  	@setting_goal = SettingGoal.find(params[:user_id])
   end
 
   def create
   	@setting_goal = SettingGoal.new(setting_goal_params)
   	@setting_goal.user_id = current_user.id
   	if @setting_goal.save
-  		redirect_to user_setting_goal_path(user_id: current_user.id,id: 1)
+  		redirect_to user_setting_goal_path(user_id: current_user.id)
   	else
   		render action: :new
   	end

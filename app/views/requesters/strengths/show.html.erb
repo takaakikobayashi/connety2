@@ -36,14 +36,14 @@
 
         <tr style="height:70px">
             <th>ポートフォリオ</th>
-            <td><%= @strength.portforio %></td>
+            <td><%= @strength.portfolio %></td>
         </tr>
 
       </table>
       
-      <%=link_to "日々の振り返り", "#",class: "btn btn-primary", style:"margin-right:30px" %>
-      <%=link_to "問題解決", "#",class: "btn btn-primary", style:"margin-right:30px" %>
-      <%=link_to "オファーする", "#",class: "btn btn-primary", style:"margin-right:30px" %>
+      <%=link_to "日々の振り返り", requester_requester_reviews_path(current_requester.id),class: "btn btn-primary", style:"margin-right:30px" %>
+      <%=link_to "問題解決", requester_requester_problem_solutions_path(current_requester.id),class: "btn btn-primary", style:"margin-right:30px" %>
+      <%=link_to "オファーする", requester_new_orders_path(requester_id: current_requester.id,user_id: @user.id),class: "btn btn-primary", style:"margin-right:30px" %>
       
     </div>
   </div>

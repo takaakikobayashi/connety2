@@ -7,7 +7,9 @@ class RequestersController < ApplicationController
   end
 
   def show
-    @orders = Order.where(progress_status: 0)
+    @orders = Order.where(progress_status: 1)
+    @room = Room.new
+    @entry = Entry.new
   end
 
   def update

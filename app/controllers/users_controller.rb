@@ -6,8 +6,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @tasks = Task.where(deadline: Date.today)
-    @setting_goals = SettingGoal.all
-    @strengths = Strength.all
   end
 
   def edit
