@@ -82,7 +82,7 @@
         <td>
           <%#初めてのDM%>
           <%=  form_for @room, url: rooms_path do |f| %>
-          <%= f.fields_for @entry do |e| %>
+          <%= fields_for @entry do |e| %>
           <%= e.hidden_field :user_id, :value=> order.user.id %>
           <% end %>
           <%= f.submit "DM",class: 'btn btn-primary', style:"margin-right:130px" %>
