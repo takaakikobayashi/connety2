@@ -1,7 +1,10 @@
 class Notification < ApplicationRecord
-	belongs_to :user
-	belongs_to :requester
-	belongs_to :company
-	belongs_to :scholastic_record
-	belongs_to :comment
+	default_scope -> { order(created_at: :desc) }
+	belongs_to :user, optional: true
+	belongs_to :requester, optional: true
+	belongs_to :company, optional: true
+	belongs_to :scholastic_record, optional: true
+	belongs_to :comment, optional: true
+	belongs_to :visitor, class_name: 'User', foreign_key: 'visitor_id', optional: true
+  belongs_to :visited, class_name: 'User', foreign_key: 'visited_id', optional: true
 end

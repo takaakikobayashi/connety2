@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_29_083724) do
+ActiveRecord::Schema.define(version: 2020_05_31_080813) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -87,8 +87,10 @@ ActiveRecord::Schema.define(version: 2020_05_29_083724) do
     t.integer "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "room_id"
     t.index ["company_id"], name: "index_messages_on_company_id"
     t.index ["requester_id"], name: "index_messages_on_requester_id"
+    t.index ["room_id"], name: "index_messages_on_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -99,9 +101,11 @@ ActiveRecord::Schema.define(version: 2020_05_29_083724) do
     t.integer "requester_id"
     t.integer "company_id"
     t.integer "scholastic_record_id"
-    t.integer "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "comment_id"
+    t.integer "visitor_id"
+    t.integer "visited_id"
     t.index ["comment_id"], name: "index_notifications_on_comment_id"
     t.index ["company_id"], name: "index_notifications_on_company_id"
     t.index ["requester_id"], name: "index_notifications_on_requester_id"
@@ -147,9 +151,9 @@ ActiveRecord::Schema.define(version: 2020_05_29_083724) do
     t.integer "progress_status", default: 0, null: false
     t.integer "user_id"
     t.integer "requester_id"
+    t.integer "order_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "order_status", default: 0
     t.index ["requester_id"], name: "index_orders_on_requester_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -197,19 +201,23 @@ ActiveRecord::Schema.define(version: 2020_05_29_083724) do
     t.integer "message_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "requester_id"
     t.index ["entry_id"], name: "index_rooms_on_entry_id"
     t.index ["message_id"], name: "index_rooms_on_message_id"
+    t.index ["requester_id"], name: "index_rooms_on_requester_id"
+    t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 
   create_table "scholastic_records", force: :cascade do |t|
     t.integer "learning_time"
     t.integer "learning_time_min"
     t.integer "user_id"
-    t.integer "category_id"
     t.string "learning_content"
     t.text "learning_detail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "category_id"
     t.index ["category_id"], name: "index_scholastic_records_on_category_id"
     t.index ["user_id"], name: "index_scholastic_records_on_user_id"
   end

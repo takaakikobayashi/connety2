@@ -1,0 +1,19 @@
+
+<% if @mynotifications.exists? %>
+<%= @visitor.user_name %>さんが
+  <% case @notification.action %>
+  <% when like then %>
+  <%= link_to 'あなたの投稿', notification.scholastic_record, style: "font-weight: bold;" %>にいいねしました
+  <% when comment then %>
+    <% if notification.scholastic_record.user_id == visited.id %>
+    <%= link_to "あなたの投稿", notification.scholastic_record, style: "font-weight: bold;" %>
+    <% else %>
+    <%= notification.scholastic_record.user.user_name %>さんの投稿にコメントしました
+    <p><%= @comment.content %></p>
+    <%= time_ago_in_words(notification.created_at).upcase %>
+    <% end %>
+  <% else %>
+  <% end %>
+<% else %>
+<p>通知はありません</p>
+<% end %>

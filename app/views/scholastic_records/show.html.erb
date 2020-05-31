@@ -9,24 +9,24 @@
             <% if @scholastic_record.liked_by?(current_user) %>
 <li>
     <%= link_to user_scholastic_record_likes_path(user_id: current_user.id,scholastic_record_id: @scholastic_record.id), method: :delete do %>
-    <span class="glyphicon glyphicon-heart" style="color: red;"></span><%= @scholastic_record.like.count %>
+    <span class="glyphicon glyphicon-heart" style="color: red;"></span><%= @scholastic_record.likes.count %>
     <% end %>
 </li>
 <% else %>
 <li>
     <%= link_to user_scholastic_record_likes_path(user_id: current_user.id,scholastic_record_id: @scholastic_record.id), method: :post do %>
-    <span class="glyphicon glyphicon-heart-empty"><%= @scholastic_record.like.count %></span>
+    <span class="glyphicon glyphicon-heart-empty"><%= @scholastic_record.likes.count %></span>
     <% end %>
 </li>
 <% end %>
 <i class="fa fa-comment"></i>
         <div class="comment-list bt style-2" id="comments">
     <div class="float-wrapper">
-        <p><%= @scholastic_record.comment.count %>件コメント</p>
+        <p><%= @scholastic_record.comments.count %>件コメント</p>
     </div>
     </div>
     <ol>
-    <% @scholastic_record.comment.each do |comment| %>
+    <% @scholastic_record.comments.each do |comment| %>
         <li class="comment">
             <div class="comment-body bb">
                 <div class="comment-avatar">

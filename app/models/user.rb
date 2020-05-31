@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :likes
   has_many :tasks
-  belongs_to :offer
+  belongs_to :offer, optional: true
   has_many :orders
   has_many :problem_solutions
   has_many :notifications
@@ -19,6 +19,9 @@ class User < ApplicationRecord
   has_many :strengths
   has_many :requesters, through: :orders
   has_many :entries
+  has_many :companies
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   attachment :image
 

@@ -1,0 +1,26 @@
+<table border="0">
+        <tr style="height:70px">
+            <th class="form">依頼額</th>
+            <td>
+              <%= @order.cost %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>依頼内容</th>
+            <td>
+              <%= @order.request_content %>
+            </td>
+        </tr>
+
+        <tr style="height:70px">
+            <th>依頼詳細</th>
+            <td>
+              <%= @order.request_detail %>
+            </td>
+        </tr>
+
+      </table>
+
+      <%=  link_to "DM", room_path(@room.id), class:"btn btn-primary"%>
+    
