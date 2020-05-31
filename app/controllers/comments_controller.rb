@@ -4,9 +4,10 @@ class CommentsController < ApplicationController
 
   def create
   	@scholastic_record = ScholasticRecord.find(params[:scholastic_record_id])
-    @comment = current_user.comment.new(comment_params)
+    @comment = current_user.comments.new(comment_params)
     @comment.scholastic_record_id = params[:scholastic_record_id].to_i
     if @comment.save
+      @scholastic_record.create_notification_comment!(current_user, @scholastic_record.id)
     redirect_to user_scholastic_record_path(user_id: params[:user_id],id: params[:scholastic_record_id])
 else
 	render 'scholastic_record/show'

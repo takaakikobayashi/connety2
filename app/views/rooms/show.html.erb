@@ -1,15 +1,32 @@
 <h1>DM</h1>
 
 <h4>参加者</h4>
-<% "#{@rmember.name} #{@umember.full_name}" %>
+<%= @user.full_name %>
+<%= @requester.name %>
+
 
 <hr>
 <% if @messages.present? %>
-  <% @messages.each do |m| %>
+<% @messages.each do |m| %>
+<% if m.mail == m.user.mail %>
+<strong><%= m.mail %></strong>
+    <small>by <strong><%= @user.full_name %>さん</a></strong></small>
+    <% else %>
     <strong><%= m.mail %></strong>
-    <small>by <strong><%= "#{m.user.full_name}#{m.requester.name}" %>さん</a></strong></small>
+    <small>by <strong><%= @requester.name %>さん</a></strong></small>
+    <% end %>
+    <% end %>
+<% elsif @user_messages.present? %>
+  <% @user_messages.each do |m| %>
+    <strong><%= m.mail %></strong>
+    <small>by <strong><%= @user.full_name %>さん</a></strong></small>
+    <% end %>
+    <% elsif @requester_messages.present? %>
+    <% @requester_messages.each do |m| %>
+    <strong><%= m.mail %></strong>
+    <small>by <strong><%= @user.full_name %>さん</a></strong></small>
+    <% end %>
     <hr>
-  <% end %>
 <% else %>
   <h3 class="text-center">メッセージはまだありません</h3>
 <% end %>
@@ -17,6 +34,8 @@
 <%= form_for @message do |f| %>
   <%= f.text_field :mail, :placeholder => "メッセージを入力して下さい" , :size => 70 %>
   <%= f.hidden_field :room_id, :value => @room.id %>
+  <%= f.hidden_field :user_id, :value => @user.id %>
+  <%= f.hidden_field :requester_id, :value => @requester.id %>
   <br>
   <%= f.submit "投稿する" %>
 <% end %>

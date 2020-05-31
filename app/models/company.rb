@@ -9,4 +9,5 @@ class Company < ApplicationRecord
   has_many :notifications
   has_many :offers
   has_many :entries
+  has_many :users
 end

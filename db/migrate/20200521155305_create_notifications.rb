@@ -7,7 +7,7 @@ class CreateNotifications < ActiveRecord::Migration[5.2]
       t.references :requester, foreign_key: true
       t.references :company, foreign_key: true
       t.references :scholastic_record, foreign_key: true
-      t.references :comment, foreign_key: true
+      #t.references :comment, foreign_key: true
 
       t.timestamps
     end

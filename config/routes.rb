@@ -91,6 +91,7 @@ Rails.application.routes.draw do
     resources :orders, only:[:index, :show]
     patch "orders/:id/asset" => "orders#asset", as: "asset_orders"
     patch "orders/:id/refuse" => "orders#refuse", as: "refuse_orders"
+    patch "orders/:id/cansel" => "orders#cansel", as: "cansel_orders"
     resources :offers, only:[:index, :show, :create, :destroy]
     resources :notifications, only:[:index]
   end

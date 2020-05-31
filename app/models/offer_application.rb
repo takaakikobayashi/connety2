@@ -1,5 +1,5 @@
 class OfferApplication < ApplicationRecord
 	belongs_to :user
 	belongs_to :company
-	belongs_to :offer
+	belongs_to :offer, optional: true
 end

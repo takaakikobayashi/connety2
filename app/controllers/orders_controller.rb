@@ -4,6 +4,8 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @room = Room.find_by(user_id: current_user.id,requester_id: @order.requester.id)
   end
 
   def refuse
@@ -17,6 +19,12 @@ class OrdersController < ApplicationController
     @order.update(order_status: 1,progress_status: 1)
     redirect_to user_orders_path(current_user.id)
 end
+
+def cansel
+  @order = Order.find(params[:id])
+    @order.update(order_status: 3,progress_status: 3)
+    redirect_to user_orders_path(current_user.id)
+  end
 
 private
   def order_params

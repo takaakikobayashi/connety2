@@ -50,11 +50,11 @@
 
       </table>
 
-      <%=link_to "編集", edit_user_strength_path(user_id: params[:user_id],id: params[:id]),class: "btn btn-primary", style:"margin-right:30px" %>
+      <%=link_to "編集", edit_user_strength_path(user_id: params[:user_id],id: 1),class: "btn btn-primary", style:"margin-right:30px" %>
       <% if @strengths.is_active == true %>
-      <%= link_to "非公開にする", user_destroy_strengths_path, method: :patch, class: 'btn btn-danger' %>
+      <%= link_to "非公開にする", user_destroy_strengths_path(user_id: params[:user_id],id: 1), method: :patch, class: 'btn btn-danger' %>
       <% else %>
-      <%= link_to "公開する", user_release_strengths_path, method: :patch, class: 'btn btn-success' %>
+      <%= link_to "公開する", user_release_strengths_path(user_id: params[:user_id],id: 1), method: :patch, class: 'btn btn-success' %>
       <% end %>
 
       

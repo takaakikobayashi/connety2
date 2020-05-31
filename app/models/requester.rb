@@ -8,6 +8,7 @@ class Requester < ApplicationRecord
   has_many :notifications
   has_many :orders, through: :orders
   has_many :entries
+  has_many :users
 
 
 end

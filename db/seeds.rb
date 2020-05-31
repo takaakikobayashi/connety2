@@ -8,7 +8,7 @@
 
 Admin.create!(
    name: '管理者',
-   email: 'admin@email.com',
+   email: 'admin1ab@mail.com',
    password: 'admin1',
    password_confirmation:'admin1'
 )
@@ -16,11 +16,11 @@ Admin.create!(
 User.create!(
    [
      {
-       email: 'test1@email.com',
+       email: 'test1ab@mail.com',
        last_name: '小林',
        first_name: '孝明',
        user_name: 'たかぽん',
-       grade: '2',
+       grade: '大学1年生',
        phone_number: '07011111111',
        learning_status: false,
        other_grade: '',
@@ -29,11 +29,11 @@ User.create!(
        password_confirmation:'test1111'
     },
     {
-       email: 'test2@email.com',
+       email: 'test2ab@mail.com',
        last_name: '林',
        first_name: '孝明',
        user_name: 'たかさん',
-       grade: '0',
+       grade: '大学2年生',
        phone_number: '0702222222',
        learning_status: false,
        other_grade: '',
@@ -42,11 +42,11 @@ User.create!(
        password_confirmation:'test2222'
     },
     {
-       email: 'test3@email.com',
+       email: 'test3ab@mail.com',
        last_name: '小林',
        first_name: '明',
        user_name: 'たか',
-       grade: '1',
+       grade: '大学3年生',
        phone_number: '0703333333',
        learning_status: false,
        other_grade: '',
@@ -55,14 +55,14 @@ User.create!(
        password_confirmation:'test3333'
     },
     {
-       email: 'test4@email.com',
+       email: 'test4ab@mail.com',
        last_name: '林',
        first_name: '明',
        user_name: 'はやし',
-       grade: '6',
+       grade: '大学4年生',
        phone_number: '0704444444',
        learning_status: true,
-       other_grade: '社会人',
+       other_grade: '',
        image_id: '',
        password: 'test4444',
        password_confirmation:'test4444'
@@ -71,7 +71,7 @@ User.create!(
 )
 
 Requester.create!(
-   email: 'requester1@email.com',
+   email: 'requester1ab@mail.com',
    name: '小林',
    business_name: '株式会社小林',
    postal_code: '1111111',
@@ -82,7 +82,7 @@ Requester.create!(
 )
 
 Company.create!(
-   email: 'company1@email.com',
+   email: 'company1ab@mail.com',
    name: '株式会社小林',
    postal_code: '1111111',
    address: '東京都台東区',
