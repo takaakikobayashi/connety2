@@ -6,16 +6,16 @@
 <table class="table table-bordered">
     	<tr>
     		<th>日付</th>
-    		<th>テーマ</th>
     		<th>できたこと</th>
             <th>できなかったこと</th>
+            <th>明日のテーマ</th>
     	</tr>
         <% @reviews.each do |review| %>
     	<tr>
     		<td><%= review.created_at.strftime('%Y/%m/%d') %></td>
-    		<td><%= review.theme %></td>
     		<td><%= review.completion %></td>
             <td><%= review.halfway %></td>
+            <td><%= review.theme %></td>
     	</tr>
         <% end %>
     </table>

@@ -13,9 +13,9 @@
               <%= attachment_image_tag user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'80x80' %>
             </div>
             <div class="product-index-info">
-              <p><%= link_to user.user_name, "#" %></p>
+              <p><%= link_to user.user_name, company_company_strength_path(company_id: current_company.id,user_id: user.id) %></p>
               <p>
-              	<% user.strength.each do |strength| %>
+              	<% user.strengths.each do |strength| %>
                 <%= strength.appeal_point %>
                 <% end %>
                   <span style="color:red">評価</span>
