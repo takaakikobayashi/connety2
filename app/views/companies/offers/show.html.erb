@@ -7,6 +7,13 @@
         	</td>
         </tr>
 
+        <tr><th>公開状態</th>
+      <td><% if @offer.is_active == true %>
+      <p>公開</p>
+      <% else %>
+      <p>非公開</p>
+      <% end %></td></tr>
+
         <tr style="height:70px">
             <th class="form">会社名</th>
             <td><%= current_company.name %></td>
@@ -90,3 +97,9 @@
         </tr>
 
       </table>
+
+      <% if @offer.is_active == true %>
+      <%= link_to "非公開にする", company_delete_offers_path(company_id: current_company.id,id: @offer.id), method: :patch, class:"btn btn-danger"%>
+      <% else %>
+      <%= link_to "公開する", company_release_offers_path(company_id: current_company.id,id: @offer.id), method: :patch, class: 'btn btn-success' %>
+      <% end %>

@@ -75,36 +75,14 @@
     		<td><%= offer.application_condition %></td>
     		<td>募集中</td>
     		<td>
-          <%=  link_to "確認する", company_offer_applications_path(current_company.id), class:"btn btn-success"%>
+          <%=  link_to "確認する", company_offer_applications_path(company_id: current_company.id,offer_id: offer.id), class:"btn btn-success"%>
           </td>
         <td>
-          <%=  link_to "募集終了", company_delete_offers_path(company_id: current_company.id,id: offer.id), class:"btn btn-danger"%>
+          <%=  link_to "募集終了", company_delete_offers_path(company_id: current_company.id,id: offer.id), method: :patch, class:"btn btn-danger"%>
         </td>
     	</tr>
       <% end %>
     </table>
 
-    <div>
-      <h1 class="main-title">オファーリスト</h1>
-    </div>
-    <table class="table table-bordered">
-      <tr>
-        <th>オファー相手</th>
-        <th>オファー内容</th>
-        <th>オファー詳細</th>
-        <th></th>
-      </tr>
-      <%#<% @orders.each do |order| %>
-      <tr>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-        <td>
-          <%=  link_to "キャンセル", "#", class:"btn btn-danger"%>
-        </td>
-      </tr>
-      <%#<% end %>
-    </table>
   </div>
 </div>

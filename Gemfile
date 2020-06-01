@@ -74,6 +74,8 @@ gem 'jp_prefecture'
 gem 'kaminari'
 gem 'bootstrap-sass'
 gem 'pry-rails'
+gem 'chartkick'
+gem 'groupdate'
 group :production do
   gem 'mysql2'
 end

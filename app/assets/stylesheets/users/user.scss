@@ -42,3 +42,16 @@
   right: 20px;
   bottom: 200px;
 }
+
+.dot-graph {
+border: 1px solid;
+display: flex;
+  flex-wrap: wrap;
+}
+
+.square-frame {
+    border: 1px solid;
+    height: 20px;
+    width: 20px;
+    margin: 10px;
+}

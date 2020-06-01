@@ -34,21 +34,26 @@ Rails.application.routes.draw do
   end
   resources :companies, only:[:show, :edit, :update] do
   	resources :notifications, only:[:index]
-    get "offer_applications"  => "companies/offer_applications#index", as: "offer_applications"
-    post "offer_applications/new"  => "companies/offer_applications#create", as: "create_offer_applications"
-    get "offer_applications/:id"  => "companies/offer_applications#show", as: "show_offer_applications"
-    delete "offer_applications/:id"  => "companies/offer_applications#destroy", as: "destroy_offer_applications"
+    get "offer/:offer_id/offer_applications"  => "companies/offer_applications#index", as: "offer_applications"
+    post "offer/:offer_id/offer_applications/new"  => "companies/offer_applications#create", as: "create_offer_applications"
+    get "offer/:offer_id/offer_applications/:id"  => "companies/offer_applications#show", as: "show_offer_applications"
+    delete "offer/:offer_id/offer_applications/:id"  => "companies/offer_applications#destroy", as: "destroy_offer_applications"
+    patch "offer/:offer_id/offer_applications/:id/asset"  => "companies/offer_applications#asset", as: "asset_offer_applications"
+    patch "offer/:offer_id/offer_applications/:id/refuse"  => "companies/offer_applications#refuse", as: "refuse_offer_applications"
+    patch "offer/:offer_id/offer_applications/:id/adoption"  => "companies/offer_applications#adoption", as: "adoption_offer_applications"
+    patch "offer/:offer_id/offer_applications/:id/not_adoption"  => "companies/offer_applications#not_adoption", as: "not_adoption_offer_applications"
     get "offers"  => "companies/offers#index", as: "offers"
     get "offers/new"  => "companies/offers#new", as: "new_offers"
     post "offers/new"  => "companies/offers#create", as: "create_offers"
     get "offers/:id"  => "companies/offers#show", as: "show_offers"
     get "offers/:id/edit"  => "companies/offers#edit", as: "edit_offers"
     patch "offers/:id/edit"  => "companies/offers#update", as: "update_offers"
-    patch "offers/:id"  => "companies/offers#delete", as: "delete_offers"
-  	resources :reviews, only:[:index]
-  	resources :problem_solutions, only:[:index]
-    get "strengths"  => "companies/strengths#index"
-    get "strengths"  => "companies/strengths#show"
+    patch "offers/:id/delete"  => "companies/offers#delete", as: "delete_offers"
+    patch "offers/:id/release"  => "companies/offers#release", as: "release_offers"
+    get "users/:user_id/reviews"  => "companies/reviews#index", as: "company_reviews"
+  	get "users/:user_id/problem_solutions"  => "companies/problem_solutions#index", as: "company_problem_solutions"
+    get "users/strengths"  => "companies/strengths#index", as: "company_strengths"
+    get "users/:user_id/strengths"  => "companies/strengths#show", as: "company_strength"
   end
   resources :requesters, only:[:show, :edit, :update] do
   	resources :notifications, only:[:index]
@@ -58,8 +63,8 @@ Rails.application.routes.draw do
     post "users/:user_id/orders/new"  => "requesters/orders#create", as: "create_orders"
     patch "orders/:id/complete"  => "requesters/orders#complete", as: "complete_orders"
     patch "orders/:id/delete"  => "requesters/orders#delete", as: "delete_orders"
-    get "users/reviews"  => "requesters/reviews#index", as: "requester_reviews"
-    get "users/problem_solutions"  => "requesters/problem_solutions#index", as: "requester_problem_solutions"
+    get "users/:user_id/reviews"  => "requesters/reviews#index", as: "requester_reviews"
+    get "users/:user_id/problem_solutions"  => "requesters/problem_solutions#index", as: "requester_problem_solutions"
     get "users/strengths"  => "requesters/strengths#index", as: "requester_strengths"
     get "users/:user_id/strengths"  => "requesters/strengths#show", as: "requester_strength"
   end
@@ -92,7 +97,9 @@ Rails.application.routes.draw do
     patch "orders/:id/asset" => "orders#asset", as: "asset_orders"
     patch "orders/:id/refuse" => "orders#refuse", as: "refuse_orders"
     patch "orders/:id/cansel" => "orders#cansel", as: "cansel_orders"
-    resources :offers, only:[:index, :show, :create, :destroy]
+    resources :offers, only:[:index, :destroy]
+    get "companies/:company_id/offers/:id"  => "offers#show", as: "show_offers"
+    post "companies/:company_id/offers/:id"  => "offers#create", as: "create_offers"
     resources :notifications, only:[:index]
   end
   

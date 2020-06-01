@@ -33,7 +33,7 @@
         <%= link_to "自己PRを確認する", user_strengths_show_path(user_id: params[:id]) %>
         <% end %>
       </li>
-      <li><a href="#" class="">募集企業を探す</a></li>
+      <li><%= link_to "募集企業を探す", user_offers_path(user_id: current_user.id) %></li>
       <li><%= link_to "オファーを確認する", user_orders_path(user_id: current_user.id) %></li>
     </div>
   </div>
@@ -59,11 +59,19 @@
       <% end %>
     </div>
     <%# グラフボックス%>
+    <div class="col-xs-6">
     <div class="graph">
-    </div>
-    <div class="dot-graph">
+      <%= column_chart @scholastic_record_data %>
     </div>
   </div>
+    <div class="col-xs-6">
+      <div class="dot-graph">
+      <% 30.times do %>
+      <div class="square-frame"></div>
+      <% end %>
+    </div>
+  </div>
+</div>
   <span id="back">
     <%= link_to image_tag("scholastic-record.png", size:'100x100'), new_user_scholastic_record_path(user_id: params[:id]) %>
     </span>

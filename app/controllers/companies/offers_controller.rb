@@ -34,6 +34,18 @@ class Companies::OffersController < ApplicationController
     end
   end
 
+  def delete
+    @offer = Offer.find(params[:id])
+    @offer.update(is_active: false)
+    redirect_to company_path(current_company.id)
+  end
+
+  def release
+    @offer = Offer.find(params[:id])
+    @offer.update(is_active: true)
+    redirect_to company_path(current_company.id)
+  end
+
   private
   def offer_params
     params.require(:offer).permit(:industry, :occupation, :work_location, :appeal_point, :job_description, :working_hour, :salary, :vacation, :welfare, :application_condition, :employment_status)

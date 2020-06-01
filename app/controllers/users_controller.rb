@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @tasks = Task.where(deadline: Date.today)
+    @scholastic_record_data= ScholasticRecord.group(:learning_time, :learning_time_min).group_by_day_of_week(:created_at).count
   end
 
   def edit
@@ -22,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def delete
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
   end
 
   def destroy
