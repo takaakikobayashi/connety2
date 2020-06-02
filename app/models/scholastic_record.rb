@@ -4,12 +4,13 @@ class ScholasticRecord < ApplicationRecord
 	has_many :likes
 	has_many :comments
 	has_many :notifications, dependent: :destroy
+  
 
 	def liked_by?(user)
-            likes.where(user_id: user.id).exists?
-        end
+    likes.where(user_id: user.id).exists?
+  end
 
-        def create_notification_like!(current_user)
+  def create_notification_like!(current_user)
     # すでに「いいね」されているか検索
     temp = Notification.where(["visitor_id = ? and visited_id = ? and scholastic_record_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
     # いいねされていない場合のみ、通知レコードを作成

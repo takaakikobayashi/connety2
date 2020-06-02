@@ -19,7 +19,7 @@ class RoomsController < ApplicationController
     redirect_to room_path(@room.id)
   end
 
-private
+  private
   def user_params
     params.require(:user).permit(:user_id)
   end

@@ -7,11 +7,11 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.scholastic_record_id = params[:scholastic_record_id].to_i
     if @comment.save
-      @scholastic_record.create_notification_comment!(current_user, @scholastic_record.id)
-    redirect_to user_scholastic_record_path(user_id: params[:user_id],id: params[:scholastic_record_id])
-else
-	render 'scholastic_record/show'
-end
+       @scholastic_record.create_notification_comment!(current_user, @scholastic_record.id)
+       redirect_to user_scholastic_record_path(user_id: params[:user_id],id: params[:scholastic_record_id])
+    else
+	     render 'scholastic_record/show'
+    end
   end
 
   def destroy
@@ -22,6 +22,5 @@ end
   private
   def comment_params
     params.require(:comment).permit(:content)
-end
-
+  end
 end
