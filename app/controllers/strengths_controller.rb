@@ -24,9 +24,9 @@ class StrengthsController < ApplicationController
   def update
   	@strength = Strength.find(params[:id])
     if @strength.update(strength_params)
-      redirect_to user_strength_path(current_user.id)
+       redirect_to user_strength_path(current_user.id)
     else
-      render action: :edit
+       render action: :edit
     end
   end
 
@@ -44,6 +44,11 @@ class StrengthsController < ApplicationController
 
   private
   def strength_params
-    params.require(:strength).permit(:skill, :expection, :appeal_point, :portfolio)
+    params.require(:strength).permit(
+      :skill,
+      :expection,
+      :appeal_point,
+      :portfolio
+    )
   end
 end

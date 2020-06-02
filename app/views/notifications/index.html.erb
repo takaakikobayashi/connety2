@@ -1,16 +1,14 @@
 
 <% if @mynotifications.exists? %>
 <%=  %>さんが
-  <% case @mynotifications.action %>
+  <% case @notification.action %>
   <% when like then %>
-  <%= link_to 'あなたの投稿', @notification.scholastic_record, style: "font-weight: bold;" %>にいいねしました
+  <%= link_to 'あなたの投稿', @mynotification.scholastic_record, style: "font-weight: bold;" %>にいいねしました
   <% when comment then %>
-    <% if @notification.scholastic_record.user_id == @visited.id %>
-    <%= link_to "あなたの投稿", @notification.scholastic_record, style: "font-weight: bold;" %>
+    <% if @mynotification.scholastic_record.user_id == @visited.id %>
+    <%= link_to "あなたの投稿", @mynotification.scholastic_record, style: "font-weight: bold;" %>にコメントしました
     <% else %>
-    <%= @notification.scholastic_record.user.user_name %>さんの投稿にコメントしました
-    <p><% @comment.content %></p>
-    <%= time_ago_in_words(@notification.created_at).upcase %>
+    <%= @mynotification.scholastic_record.user.user_name %>さんの投稿にコメントしました
     <% end %>
   <% else %>
   <% end %>

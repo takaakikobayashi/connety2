@@ -8,8 +8,8 @@
           <li class="header-name"><%= current_user.last_name %></li>
           <li class="header-link"><%= link_to "通知", user_notifications_path(current_user), class: "btn btn-default" %></li>
           <%# if unchecked_notifications.any? %>
-    <%#i class="fa fa-circle notification-circle"></i>
-  <% end %>
+          <%#i class="fa fa-circle notification-circle"></i>
+          <% end %>
           <li class="header-link"><%= link_to "マイページ", user_path(current_user), class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "About", home_about_path, class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "募集企業を探す", user_offers_path(current_user), class: "btn btn-default" %></li>

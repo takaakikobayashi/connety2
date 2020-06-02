@@ -11,43 +11,44 @@
 
       <%= form_for @problem_solution, url: new_user_problem_solution_path do |f| %>
       
-      <table border="0">
-        <tr style="height:70px">
+        <table border="0">
+          <tr style="height:70px">
             <th class="form">達成できたこと</th>
             <td>
               <% f.label :worked %>
               <%= f.text_field :worked, autofocus: true, autocomplete: "worked", class: "form-control" %>
             </td>
-        </tr>
+          </tr>
 
-        <tr style="height:70px">
+          <tr style="height:70px">
             <th>達成できなかった原因</th>
             <td>
               <% f.label :not_worked %>
               <%= f.text_field :not_worked, autofocus: true, autocomplete: "not_worked", class: "form-control" %>
             </td>
-        </tr>
+          </tr>
 
-        <tr style="height:70px">
+          <tr style="height:70px">
             <th>どのようにすれば解決できたか</th>
             <td>
               <% f.label :solution %>
               <%= f.text_field :solution, autofocus: true, autocomplete: "solution", class: "form-control" %>
             </td>
-        </tr>
+          </tr>
 
-        <tr style="height:70px">
+          <tr style="height:70px">
             <th>繰り返さないための解決策</th>
             <td>
               <% f.label :improvement_point %>
               <%= f.text_field :improvement_point, autofocus: true, autocomplete: "improvement_point", class: "form-control" %>
             </td>
-        </tr>
+          </tr>
 
-      </table>
-      <div class="actions">
-        <%= f.submit "登録", class:"btn btn-success center-block", style:"width:150px" %>
-      </div>
+        </table>
+
+        <div class="actions">
+          <%= f.submit "登録", class:"btn btn-success center-block", style:"width:150px" %>
+        </div>
       
       <% end %>
       

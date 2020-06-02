@@ -1,5 +1,5 @@
-<%= form_for @order, url: requester_create_orders_path(requester_id: current_requester.id,user_id: params[:user_id]) do |f| %>
-  <table border="0">
+  <%= form_for @order, url: requester_create_orders_path(requester_id: current_requester.id,user_id: params[:user_id]) do |f| %>
+      <table border="0">
         <tr style="height:70px">
             <th class="form">依頼額</th>
             <td>
@@ -29,4 +29,4 @@
         <%= f.submit "オファーする", class:"btn btn-success center-block", style:"width:150px" %>
       </div>
       
-      <% end %>
+  <% end %>

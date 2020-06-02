@@ -1,58 +1,58 @@
-<div class="post-meta-top">
+    <div class="post-meta-top">
     　 <div class="post-image">
       　 <%= attachment_image_tag @scholastic_record.user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'80x80' %>
     　 </div>
   　 </div>
-    <div class="post-content">
+     <div class="post-content">
         <%= @scholastic_record.user.user_name %>
             <i class="fa fa-calendar"></i><%= @scholastic_record.created_at.strftime('%Y/%m/%d') %>
             <% if @scholastic_record.liked_by?(current_user) %>
-<li>
-    <%= link_to user_scholastic_record_likes_path(user_id: current_user.id,scholastic_record_id: @scholastic_record.id), method: :delete do %>
-    <span class="glyphicon glyphicon-heart" style="color: red;"></span><%= @scholastic_record.likes.count %>
-    <% end %>
-</li>
-<% else %>
-<li>
-    <%= link_to user_scholastic_record_likes_path(user_id: current_user.id,scholastic_record_id: @scholastic_record.id), method: :post do %>
-    <span class="glyphicon glyphicon-heart-empty"><%= @scholastic_record.likes.count %></span>
-    <% end %>
-</li>
-<% end %>
-<i class="fa fa-comment"></i>
-        <div class="comment-list bt style-2" id="comments">
-    <div class="float-wrapper">
-        <p><%= @scholastic_record.comments.count %>件コメント</p>
-    </div>
-    </div>
-    <ol>
-    <% @scholastic_record.comments.each do |comment| %>
-        <li class="comment">
-            <div class="comment-body bb">
-                <div class="comment-avatar">
+              <li>
+                <%= link_to user_scholastic_record_likes_path(user_id: current_user.id,scholastic_record_id: @scholastic_record.id), method: :delete do %>
+                <span class="glyphicon glyphicon-heart" style="color: red;"></span><%= @scholastic_record.likes.count %>
+            <% end %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to user_scholastic_record_likes_path(user_id: current_user.id,scholastic_record_id: @scholastic_record.id), method: :post do %>
+                <span class="glyphicon glyphicon-heart-empty"><%= @scholastic_record.likes.count %></span>
+                <% end %>
+              </li>
+            <% end %>
+            <i class="fa fa-comment"></i>
+            <div class="comment-list bt style-2" id="comments">
+              <div class="float-wrapper">
+                <p><%= @scholastic_record.comments.count %>件コメント</p>
+              </div>
+            </div>
+            <ol>
+            <% @scholastic_record.comments.each do |comment| %>
+              <li class="comment">
+                <div class="comment-body bb">
+                  <div class="comment-avatar">
                     <div class="avatar">
                         <%= attachment_image_tag comment.user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'80x80' %>
                     </div>
-                </div>
+                  </div>
                 <div class="comment-text">
-                    <div class="comment-author clearfix">
-                        <a href="#" class="link-author"><%= comment.user.user_name %></a>
-                        <span class="comment-meta">
-                        <span class="comment-date"><%= comment.created_at.strftime('%Y/%m/%d') %></span>
-                        </span>
-                    </div>
-                    <div class="comment-entry"><%= comment.content %></div>
+                <div class="comment-author clearfix">
+                  <a href="#" class="link-author"><%= comment.user.user_name %></a>
+                    <span class="comment-meta">
+                      <span class="comment-date"><%= comment.created_at.strftime('%Y/%m/%d') %></span>
+                    </span>
+                </div>
+                <div class="comment-entry"><%= comment.content %></div>
                     <% if comment.user == current_user%>
-  <div>
-    <%= link_to "削除", user_scholastic_record_comment_path(user_id: current_user.id,scholastic_record_id: params[:id],id: comment.id), method: :delete, class: "btn btn-danger pull-right" %>
-  </div>
-<% end %>
+                <div>
+            <%= link_to "削除", user_scholastic_record_comment_path(user_id: current_user.id,scholastic_record_id: params[:id],id: comment.id), method: :delete, class: "btn btn-danger pull-right" %>
+    </div>
+            <% end %>
                 </div>
             </div>
         </li>
     <% end %>
 </ol>
-<%= form_for [@scholastic_record, @comment], url: user_scholastic_record_comments_path(scholastic_record_id: params[:id]) do |f| %>
+      <%= form_for [@scholastic_record, @comment], url: user_scholastic_record_comments_path(scholastic_record_id: params[:id]) do |f| %>
     <div class="row">
         <div class="col-sm-12">
             <%= f.text_area :content, rows:'5', class: "form-control",placeholder: "コメントをここに" %>

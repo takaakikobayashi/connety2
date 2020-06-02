@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @tasks = Task.where(deadline: Date.today)
-    @scholastic_record_data= ScholasticRecord.group(:learning_time, :learning_time_min).group_by_day_of_week(:created_at).count
+    @scholastic_record_data = ScholasticRecord.where(user_id: current_user.id).group_by_day_of_week(:created_at, format: "%a").sum(:total_time)
   end
 
   def edit
@@ -16,9 +16,9 @@ class UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
     if @user.update(user_params)
-      redirect_to user_path(@user)
+       redirect_to user_path(@user)
     else
-      render :edit
+       render :edit
     end
   end
 
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-private
+  private
   def user_params
     params.require(:user).permit(
       :last_name,
@@ -45,5 +45,4 @@ private
       :learning_status
     )
   end
-
 end

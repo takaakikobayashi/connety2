@@ -15,9 +15,9 @@ class RequestersController < ApplicationController
   def update
     @requester = Requester.find(current_requester.id)
     if @requester.update(requester_params)
-      redirect_to requester_path(@requester)
+       redirect_to requester_path(@requester)
     else
-      render :edit
+       render :edit
     end
   end
 

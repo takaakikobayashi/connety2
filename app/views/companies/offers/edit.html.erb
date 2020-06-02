@@ -1,12 +1,12 @@
-<%= form_for @offer, url: edit_company_offer_path(company_id: current_company.id,id params[:id]) do |f| %>
+    <%= form_for @offer, url: edit_company_offer_path(company_id: current_company.id,id params[:id]) do |f| %>
       
       <table border="0">
       	<tr style="height:70px">
             <th>画像</th>
             <td>
               <% f.label :image %>
-        	<%= f.attachment_field :image %>
-        	</td>
+        	    <%= f.attachment_field :image %>
+        	  </td>
         </tr>
 
         <tr style="height:70px">
@@ -103,8 +103,9 @@
         </tr>
 
       </table>
+
       <div class="actions">
         <%= f.submit "編集", class:"btn btn-success center-block", style:"width:150px" %>
       </div>
       
-      <% end %>
+    <% end %>

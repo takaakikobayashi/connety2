@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_01_083440) do
+ActiveRecord::Schema.define(version: 2020_06_02_064355) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -95,7 +95,6 @@ ActiveRecord::Schema.define(version: 2020_06_01_083440) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.string "action"
     t.boolean "checked", default: false, null: false
     t.integer "user_id"
     t.integer "requester_id"
@@ -106,6 +105,7 @@ ActiveRecord::Schema.define(version: 2020_06_01_083440) do
     t.integer "comment_id"
     t.integer "visitor_id"
     t.integer "visited_id"
+    t.string "action", default: "", null: false
     t.index ["comment_id"], name: "index_notifications_on_comment_id"
     t.index ["company_id"], name: "index_notifications_on_company_id"
     t.index ["requester_id"], name: "index_notifications_on_requester_id"
@@ -219,6 +219,7 @@ ActiveRecord::Schema.define(version: 2020_06_01_083440) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "category_id"
+    t.float "total_time"
     t.index ["category_id"], name: "index_scholastic_records_on_category_id"
     t.index ["user_id"], name: "index_scholastic_records_on_user_id"
   end

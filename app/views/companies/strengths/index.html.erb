@@ -6,8 +6,9 @@
       <%#<li><%= link_to category.name, user_scholastic_records_path(user_id: current_user.id,category_id: category.id) %></li>
       <%#<% end %>
     </div>
-  <div class="col-xs-8">
-<% @users.each do |user| %>
+
+    <div class="col-xs-8">
+      <% @users.each do |user| %>
           <div class="product-index-box">
             <div class="product-index-image">
               <%= attachment_image_tag user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'80x80' %>
@@ -16,11 +17,11 @@
               <p><%= link_to user.user_name, company_company_strength_path(company_id: current_company.id,user_id: user.id) %></p>
               <p>
               	<% user.strengths.each do |strength| %>
-                <%= strength.appeal_point %>
+                  <%= strength.appeal_point %>
                 <% end %>
-                  <span style="color:red">評価</span>
+                <span style="color:red">評価</span>
               </p>
             </div>
           </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>

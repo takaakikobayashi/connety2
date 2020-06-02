@@ -1,18 +1,18 @@
-<table class="table table-bordered">
-    	<tr>
+        <table class="table table-bordered">
+    	  <tr>
     		<th>日付</th>
     		<th>達成できたこと</th>
     		<th>できなかった原因</th>
             <th>どのようにすれば</th>
             <th>解決策</th>
-    	</tr>
+    	  </tr>
         <% @problem_solutions.each do |problem_solution| %>
-    	<tr>
+    	  <tr>
     		<td><%= problem_solution.created_at.strftime('%Y/%m/%d') %></td>
     		<td><%= problem_solution.worked %></td>
     		<td><%= problem_solution.not_worked %></td>
             <td><%= problem_solution.solution %></td>
             <td><%= problem_solution.improvement_point %></td>
-    	</tr>
+    	  </tr>
         <% end %>
-    </table>
+        </table>

@@ -5,15 +5,14 @@ class CompaniesController < ApplicationController
 
   def show
     @offers = Offer.where(is_active: true)
-    #% @orders = Order. %>
   end
 
-def update
+  def update
     @company = Company.find(current_company.id)
     if @company.update(company_params)
-      redirect_to company_path(@company)
+       redirect_to company_path(@company)
     else
-      render :edit
+       render :edit
     end
   end
 

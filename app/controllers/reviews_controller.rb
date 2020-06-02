@@ -21,6 +21,10 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:theme, :completion, :halfway)
+    params.require(:review).permit(
+      :theme,
+      :completion,
+      :halfway
+    )
   end
 end

@@ -21,16 +21,25 @@ class ScholasticRecordsController < ApplicationController
 
   def create
   	@scholastic_record = ScholasticRecord.new(scholastic_record_params)
+    @scholastic_record.total_time = scholastic_record_params[:learning_time].to_i + scholastic_record_params[:learning_time_min].to_f/60.round.to_i
   	@scholastic_record.user_id = current_user.id
   	@scholastic_record.category_id = scholastic_record_params[:category_id].to_i
   	if @scholastic_record.save
-  		redirect_to user_scholastic_records_path(current_user.id)
+  		 redirect_to user_scholastic_records_path(current_user.id)
   	else
-  		render action: :new
+  		 render action: :new
   	end
   end
+
   private
   def scholastic_record_params
-    params.require(:scholastic_record).permit(:category_id, :learning_content, :learning_detail, :learning_time, :learning_time_min)
+    params.require(:scholastic_record).permit(
+      :category_id,
+      :learning_content,
+      :learning_detail,
+      :learning_time,
+      :learning_time_min,
+      :total_time
+    )
   end
 end

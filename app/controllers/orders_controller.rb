@@ -18,16 +18,22 @@ class OrdersController < ApplicationController
   	@order = Order.find(params[:id])
     @order.update(order_status: 1,progress_status: 1)
     redirect_to user_orders_path(current_user.id)
-end
+  end
 
-def cansel
-  @order = Order.find(params[:id])
+  def cansel
+    @order = Order.find(params[:id])
     @order.update(order_status: 3,progress_status: 3)
     redirect_to user_orders_path(current_user.id)
   end
 
-private
+  private
   def order_params
-    params.require(:order).permit(:request_content, :request_detail, :cost, :progress_status, :order_status)
+    params.require(:order).permit(
+      :request_content,
+      :request_detail,
+      :cost,
+      :progress_status,
+      :order_status
+    )
   end
 end

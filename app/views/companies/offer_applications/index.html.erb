@@ -1,38 +1,43 @@
-<table class="table table-bordered">
+    <table class="table table-bordered">
+
     	<tr>
     		<th>申込受付日</th>
-            <th>募集求人</th>
+        <th>募集求人</th>
     		<th>応募者名</th>
     		<th>応募者学年</th>
-            <th>応募ステータス</th>
-            <th>求人詳細</th>
-            <th></th>
+        <th>応募ステータス</th>
+        <th>求人詳細</th>
+        <th></th>
     	</tr>
-        <% @offer_applications.each do |offer_application| %>
+
+      <% @offer_applications.each do |offer_application| %>
+
     	<tr>
     		<td><%= offer_application.created_at.strftime('%Y/%m/%d') %></td>
     		<td><%= offer_application.offer.appeal_point %></td>
     		<td><%= offer_application.user.full_name %></td>
-            <td><%= offer_application.user.grade %></td>
-            <td><%= offer_application.offer_application_status %></td>
-            <td><%=  link_to "詳細", company_show_offer_applications_path(company_id: current_company.id,offer_id: params[:offer_id],id: offer_application.id), class:"btn btn-primary"%></td>
-            <td>
-                <% case offer_application.offer_application_status %>
-                <% when "応募確認中" then %>
-                <%=  link_to "受諾", company_asset_offer_applications_path(company_id: current_company.id,offer_id: params[:offer_id],id: offer_application.id), method: :patch, class:"btn btn-success"%>
-          <%=  link_to "お断り", company_refuse_offer_applications_path(company_id: current_company.id,offer_id: params[:offer_id],id: offer_application.id), method: :patch, class:"btn btn-danger"%>
-          <% when "選考中" then %>
+        <td><%= offer_application.user.grade %></td>
+        <td><%= offer_application.offer_application_status %></td>
+        <td><%=  link_to "詳細", company_show_offer_applications_path(company_id: current_company.id,offer_id: params[:offer_id],id: offer_application.id), class:"btn btn-primary"%></td>
+        <td>      
+          <% case offer_application.offer_application_status %>
+            <% when "応募確認中" then %>
+              <%=  link_to "受諾", company_asset_offer_applications_path(company_id: current_company.id,offer_id: params[:offer_id],id: offer_application.id), method: :patch, class:"btn btn-success"%>
+              <%=  link_to "お断り", company_refuse_offer_applications_path(company_id: current_company.id,offer_id: params[:offer_id],id: offer_application.id), method: :patch, class:"btn btn-danger"%>
+            <% when "選考中" then %>
               <%=  link_to "採用", company_adoption_offer_applications_path(company_id: current_company.id,offer_id: params[:offer_id],id: offer_application.id), method: :patch, class:"btn btn-success"%>
               <%=  link_to "不採用", company_not_adoption_offer_applications_path(company_id: current_company.id,offer_id: params[:offer_id],id: offer_application.id), method: :patch, class:"btn btn-danger"%>
-              <% when "お断り" then %>
+            <% when "お断り" then %>
               <p>お断りしました</p>
-              <% when "採用" then %>
+            <% when "採用" then %>
               <p>採用しました</p>
-              <% when "不採用" then %>
+            <% when "不採用" then %>
               <p>不採用になりました</p>
-              <% else %>
-              <% end %>
-              </td>
+            <% else %>
+          <% end %>
+        </td>
     	</tr>
-        <% end %>
+
+      <% end %>
+      
     </table>
