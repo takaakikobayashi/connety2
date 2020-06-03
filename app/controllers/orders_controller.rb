@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @room = Room.find_by(user_id: current_user.id,requester_id: @order.requester.id)
+    @newroom = Room.new
   end
 
   def refuse

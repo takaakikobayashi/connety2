@@ -80,12 +80,15 @@
     		<td><%= order.cost %></td>
     		<td><%= order.progress_status %></td>
         <td>
-          <%#初めてのDM%>
-          <%=  form_for @room, url: rooms_path do |f| %>
-          <%= fields_for @user do |u| %>
-          <%= u.hidden_field :user_id, :value=> order.user.id %>
-          <% end %>
-          <%= f.submit "DM",class: 'btn btn-primary', style:"margin-right:130px" %>
+          <% if @room.present? %>
+            <%=  link_to "DM", requester_show_rooms_path(requester_id: current_requester.id,id: @room.id), class:"btn btn-primary"%>
+          <% else %>
+            <%=  form_for @newroom, url: requester_create_rooms_path do |f| %>
+              <%= fields_for @user do |u| %>
+                <%= u.hidden_field :user_id, :value=> order.user.id %>
+              <% end %>
+              <%= f.submit "DM",class: 'btn btn-primary', style:"margin-right:130px" %>
+            <% end %>
           <% end %>
         </td>
         <td>

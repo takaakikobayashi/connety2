@@ -22,5 +22,14 @@
 
       </table>
 
-      <%=  link_to "DM", room_path(@room.id), class:"btn btn-primary"%>
+      <% if @room.present? %>
+        <%=  link_to "DM", user_room_path(user_id: current_user.id,id: @room.id), class:"btn btn-primary"%>
+      <% else %>
+        <%=  form_for @newroom, url: user_rooms_path do |f| %>
+          <%= fields_for @requester do |u| %>
+            <%= u.hidden_field :requester_id, :value=> @order.requester.id %>
+          <% end %>
+          <%= f.submit "DM",class: 'btn btn-primary', style:"margin-right:130px" %>
+        <% end %>
+      <% end %>
     

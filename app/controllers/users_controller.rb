@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @tasks = Task.where(deadline: Date.today)
+    @scholastic_record = ScholasticRecord.find(@user.id)
     @scholastic_record_data = ScholasticRecord.where(user_id: current_user.id).group_by_day_of_week(:created_at, format: "%a").sum(:total_time)
   end
 

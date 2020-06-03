@@ -8,7 +8,7 @@
 
 Admin.create!(
    name: '管理者',
-   email: 'admin1ab@mail.com',
+   email: 'admin1@email.com',
    password: 'admin1',
    password_confirmation:'admin1'
 )
@@ -16,7 +16,7 @@ Admin.create!(
 User.create!(
    [
      {
-       email: 'test1ab@mail.com',
+       email: 'test1@email.com',
        last_name: '小林',
        first_name: '孝明',
        user_name: 'たかぽん',
@@ -29,7 +29,7 @@ User.create!(
        password_confirmation:'test1111'
     },
     {
-       email: 'test2ab@mail.com',
+       email: 'test2@email.com',
        last_name: '林',
        first_name: '孝明',
        user_name: 'たかさん',
@@ -42,7 +42,7 @@ User.create!(
        password_confirmation:'test2222'
     },
     {
-       email: 'test3ab@mail.com',
+       email: 'test3@email.com',
        last_name: '小林',
        first_name: '明',
        user_name: 'たか',
@@ -55,7 +55,7 @@ User.create!(
        password_confirmation:'test3333'
     },
     {
-       email: 'test4ab@mail.com',
+       email: 'test4@email.com',
        last_name: '林',
        first_name: '明',
        user_name: 'はやし',
@@ -71,7 +71,7 @@ User.create!(
 )
 
 Requester.create!(
-   email: 'requester1ab@mail.com',
+   email: 'requester1@email.com',
    name: '小林',
    business_name: '株式会社小林',
    postal_code: '1111111',
@@ -82,7 +82,7 @@ Requester.create!(
 )
 
 Company.create!(
-   email: 'company1ab@mail.com',
+   email: 'company1@email.com',
    name: '株式会社小林',
    postal_code: '1111111',
    address: '東京都台東区',
@@ -95,3 +95,14 @@ Company.create!(
 Category.create!(
   [{name: "プログラミング"},{name: "動画編集"},{name: "デザイン"},{name: "マーケティング"},{name: "その他"}]
 )
+
+150.times do |i|
+  ScholasticRecord.create!(
+    learning_time: "3",
+    learning_time_min: "15",
+    learning_content: "プログラミング",
+    learning_detail: "rails",
+    user_id: "4",
+    category_id: "1"
+  )
+end

@@ -1,83 +1,92 @@
 <div class="edit-title">
-  <mark style="font-size: 20px;">登録情報</mark>
+  <mark style="font-size: 20px;">登録情報編集</mark>
 </div>
 
-  <div class="row">
-    <div class="col-xs-5">
-      <div class="image-box">
-        
+<div class="row">
+    <%= form_for @user, url: edit_user_path(params[:id]), method: :patch do |f| %>
+
+    <div class="col-xs-5 col-xs-offset-1">
+      <div class="image-form">
+        <div class="prof-box">
+          <% if @user.image_id.blank? %>
+            <%= image_tag "no-image.jpg", alt:"写真", width:"350px", height:"250px" %>
+          <% else %>
+            <%= attachment_image_tag @user, :image, :fill, 350, 250, format: "jpg" %>
+          <% end %>
+        </div>
+          <%= f.attachment_field :image, style:"margin-left:80px" %>
       </div>
     </div>
+
     <div class="col-xs-5">
-  	  <%= form_for @user do |f| %>
   	  <table class="margin-30">
         <tr style="height:70px">
-            <th class="form">名前</th>
-            <td>（姓）</td>
-            <td>
-              <% f.label :last_name %>
-              <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control" %>
-            </td>
-            <td>（名）</td>
-            <td>
-              <% f.label :first_name %>
-              <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>
-            </td>
+          <th class="form">名前</th>
+          <td>（姓）</td>
+          <td>
+            <% f.label :last_name %>
+            <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control" %>
+          </td>
+          <td>（名）</td>
+          <td>
+            <% f.label :first_name %>
+            <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>
+          </td>
         </tr>
 
         <tr style="height:70px">
-            <th>ユーザーネーム</th>
-            <td></td>
-            <td>
-              <% f.label :user_name %>
-              <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name", class: "form-control" %>
-            </td>
+          <th>ユーザーネーム</th>
+          <td></td>
+          <td>
+            <% f.label :user_name %>
+            <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name", class: "form-control" %>
+          </td>
         </tr>
 
         <tr style="height:70px">
-            <th>学年</th>
-            <td></td>
-            <td>
-              <% f.label :grade %>
-              <%= f.select :grade, User.grades.keys.to_a, {prompt: "学年を選択してください"}, {class: "form-control"} %>
-            </td>
+          <th>学年</th>
+          <td></td>
+          <td>
+            <% f.label :grade %>
+            <%= f.select :grade, User.grades.keys.to_a, {prompt: "学年を選択してください"}, {class: "form-control"} %>
+          </td>
         </tr>
 
         <tr style="height:70px">
-            <th>その他</th>
-            <td></td>
-            <td>
-              <% f.label :other_grade %>
-              <%= f.text_field :other_grade, autofocus: true, autocomplete: "other_grade", class: "form-control" %>
-            </td>
+          <th>その他</th>
+          <td></td>
+          <td>
+            <% f.label :other_grade %>
+            <%= f.text_field :other_grade, autofocus: true, autocomplete: "other_grade", class: "form-control" %>
+          </td>
         </tr>
 
         <tr style="height:70px">
-            <th>メールアドレス</th>
-            <td></td>
-            <td>
-              <% f.label :email %>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-            </td>
+          <th>メールアドレス</th>
+          <td></td>
+          <td>
+            <% f.label :email %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          </td>
         </tr>
 
         <tr style="height:70px">
-            <th>電話番号(ハイフンなし)</th>
-            <td></td>
-            <td>
-              <% f.label :phone_number %>
-              <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control" %>
-            </td>
+          <th>電話番号(ハイフンなし)</th>
+          <td></td>
+          <td>
+            <% f.label :phone_number %>
+            <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control" %>
+          </td>
         </tr> 
-
       </table>
-        <div class="button-box margin-30">
-          <%= f.submit '編集内容を保存する',class: 'btn btn-primary', style:"margin-right:130px" %>
 
-          <%= link_to "退会する", "/users/#{current_user.id}/delete", class: 'btn btn-danger'%>
+      <div class="button-box margin-30">
+        <%= f.submit '編集内容を保存する',class: 'btn btn-primary', style:"margin-right:130px" %>
+        <%= link_to "退会する", "/users/#{current_user.id}/delete", class: 'btn btn-danger'%>
+      </div>
 
-        </div>
         <%= link_to "戻る", :back %>
     <% end %>
+
   </div>
 </div>  

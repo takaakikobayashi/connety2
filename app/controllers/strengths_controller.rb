@@ -31,14 +31,12 @@ class StrengthsController < ApplicationController
   end
 
   def destroy
-  	@strength = Strength.find(params[:id])
-    @strength.update(is_active: false)
+  	current_user.update(learning_status: false)
     redirect_to user_strengths_show_path(current_user.id)
   end
 
   def release
-  	@strength = Strength.find(params[:id])
-    @strength.update(is_active: true)
+  	current_user.update(learning_status: true)
     redirect_to user_strengths_show_path(current_user.id)
   end
 

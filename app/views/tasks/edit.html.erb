@@ -1,35 +1,29 @@
-
-
-<div class="edit-title">
-  <mark style="font-size: 20px;">配送先編集</mark>
-</div>
-
 <div class="row">
-  <div class="col-xs-7">
-    
-    <%= form_for @task, url: edit_user_task_path do |f| %>
+  <div class="col-xs-8 col-xs-offset-4">
 
-    <table border="0">
-      <tr>
-        <th class="form">タスク名</th>
-        <td>
-          <%= f.text_field :name, autocomplete: "name", class: "form-control" %>
-        </td>
-      </tr>
-
-      <tr>
-        <th class="form">期日</th>
-        <td>
-          <%= f.date_select :deadline, autocomplete: "deadline", class: "form-control" %>
-        </td>
-      </tr>
-    </table>
-
-    <div class="button">
-      <%= f.submit("編集する",class: 'btn btn-primary', style: 'margin-top: 10px') %>
+    <div class="edit-title">
+      <mark style="font-size: 20px;">タスク編集</mark>
     </div>
 
-    <% end %>
+    <%= form_for @task, url: edit_user_task_path do |f| %>
+
+        <table border="0", class="edit-tasks">
+          <tr>
+            <th class="form">タスク名</th>
+            <td><%= f.text_field :name, autocomplete: "name", class: "form-control" %></td>
+          </tr>
+
+          <tr>
+            <th class="form">期日</th>
+            <td><%= f.date_select :deadline, autocomplete: "deadline", class: "form-control" %></td>
+          </tr>
+        </table>
+
+        <div class="button">
+          <%= f.submit("編集する",class: 'btn btn-primary', style: 'margin-top: 10px') %>
+        </div>
+
+        <% end %>
 
   </div>
 </div>

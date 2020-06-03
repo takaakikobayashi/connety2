@@ -1,26 +1,24 @@
 class RoomsController < ApplicationController
-  def index
-  end
 
   def show
   	@room = Room.find(params[:id])
   	@user = User.find(@room.user_id)
   	@requester = Requester.find(@room.requester_id)
     @message = Message.new
-    @messages = Message.where(user_id: @room.user_id,requester_id: @room.requester_id)
-    @user_messages = Message.where(user_id: @room.user_id)
-    @requester_messages = Message.where(requester_id: @room.requester_id)
+    @messages = Message.where(room_id: @room.id)
+    @user_messages = Message.where(user_id: @user_id)
+    @requester_messages = Message.where(requester_id: @requester_id)
   end
 
   def create
-  	@user = User.new
-  	@room = Room.new(user_id: params[:user_id],requester_id: current_requester.id)
+  	@requester = Requester.new
+  	@room = Room.new(requester_id: params[:requester_id],user_id: current_user.id)
     @room.save
-    redirect_to room_path(@room.id)
+    redirect_to user_rooms_path(user_id: current_user.id,id: @room.id)
   end
 
   private
-  def user_params
-    params.require(:user).permit(:user_id)
+  def requester_params
+    params.require(:requester).permit(:requester_id)
   end
 end
