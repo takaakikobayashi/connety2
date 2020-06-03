@@ -1,23 +1,25 @@
 <div class="row">
   <div class="col-xs-10 col-xs-offset-1">
 
-    <%=link_to "今日の振り返りをする", new_user_review_path(current_user.id),class: "btn btn-primary", style:"margin-right:30px" %>
+    <div class="actions">
+      <%=link_to "今日の振り返りをする", new_user_review_path(current_user.id),class: "btn btn-primary", style:"margin: 30px" %>
+    </div>
 
     <table class="table table-bordered">
-    	<tr>
-    		<th>日付</th>
-    		<th>できたこと</th>
-            <th>できなかったこと</th>
-            <th>明日のテーマ</th>
-    	</tr>
-        <% @reviews.each do |review| %>
-    	<tr>
-    		<td><%= review.created_at.strftime('%Y/%m/%d') %></td>
-    		<td><%= review.completion %></td>
-            <td><%= review.halfway %></td>
-            <td><%= review.theme %></td>
-    	</tr>
-        <% end %>
+      <tr>
+    	<th>日付</th>
+    	<th>できたこと</th>
+        <th>できなかったこと</th>
+        <th>明日のテーマ</th>
+      </tr>
+      <% @reviews.each do |review| %>
+        <tr>
+    	  <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
+    	  <td><%= review.completion %></td>
+          <td><%= review.halfway %></td>
+          <td><%= review.theme %></td>
+        </tr>
+      <% end %>
     </table>
 
   </div>

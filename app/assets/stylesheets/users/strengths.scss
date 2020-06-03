@@ -1,3 +1,19 @@
 // Place all the styles related to the requesters::about controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* show */
+.status {
+	margin: 10px;
+}
+.public {
+	margin-left: 30px;
+}
+.pr-button {
+	margin-left: 20px;
+}
+
+/* edit */
+.actions {
+	margin: 20px 200px 0 0;
+}

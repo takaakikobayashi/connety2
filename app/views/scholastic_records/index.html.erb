@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="css/sticky-state.css">
+<script src="js/sticky-state.min.js"></script>
+<script src="js/script.js"></script>
+
 <div class="row">
   <div class="col-xs-2 col-xs-offset-1">
   	<%# ボックス　%>
@@ -5,7 +9,7 @@
       <div class="image-box">
         <%= attachment_image_tag @user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'80x80' %>
       </div>
-      <div>
+      <div class="sticky">
         <li class="title">ユーザーネーム</li>
       	<li><%= @user.user_name %></li>
         <% if  %>
@@ -21,8 +25,9 @@
           <li class="title">今月</li>
           <li><%=  %>時間</li>
       </div>
-
+      <div class="sticky">
       <%= link_to "マイページ", user_path(current_user.id), class: 'btn btn-primary'%>
+    </div>
     </div>
 
     <%# カテゴリボックス　%>
@@ -51,13 +56,14 @@
         <%= link_to "自己PRを確認する", user_strengths_show_path(user_id: params[:user_id],id: 1) %>
         <% end %>
       </li>
-      <li><a href="#" class="">募集企業を探す</a></li>
-      <li><a href="#" class="">オファーを確認する</a></li>
+      <li><%= link_to "募集企業を探す", user_offers_path(user_id: params[:user_id]) %></li>
+      <li><%= link_to "オファーをする", user_orders_path(user_id: params[:user_id]) %></li>
     </div>
   </div>
   <div class="col-xs-8">
   	<%# タイムライン %>
-  	    <div class="">
+    <span id="scholastic_records">
+  	    <div class="scholastic_record">
             <% @scholastic_records.each do |scholastic_record| %>
               <%= attachment_image_tag scholastic_record.user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'80x80' %>
               <%= link_to user_path(@user.id) do %>
@@ -90,6 +96,10 @@
                   <%= link_to scholastic_record.comments.count, user_scholastic_record_path(user_id: scholastic_record.user.id,id: scholastic_record.id) %>
             <% end %>
         </div>
+        <div class="paginate-tag">
+          <%= paginate @scholastic_records %>
+        </div>
+      </span>
     <span id="back">
       <%= link_to image_tag("scholastic-record.png", size:'100x100'), new_user_scholastic_record_path(user_id: params[:user_id]) %>
     </span>

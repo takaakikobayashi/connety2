@@ -55,6 +55,8 @@ Rails.application.routes.draw do
     get "users/strengths"  => "companies/strengths#index", as: "company_strengths"
     get "users/:user_id/strengths"  => "companies/strengths#show", as: "company_strength"
   end
+  get "requesters/:requester_id/rooms/:id"  => "requesters/rooms#show", as: "requester_show_rooms"
+  post "requesters/:requester_id/rooms"  => "requesters/rooms#create", as: "requester_create_rooms"
   resources :requesters, only:[:show, :edit, :update] do
   	resources :notifications, only:[:index]
   	resources :orders, only:[:destroy]
@@ -101,9 +103,9 @@ Rails.application.routes.draw do
     get "companies/:company_id/offers/:id"  => "offers#show", as: "show_offers"
     post "companies/:company_id/offers/:id"  => "offers#create", as: "create_offers"
     resources :notifications, only:[:index]
+    resources :rooms, only:[:show, :create]
   end
   
-  resources :rooms, only:[:index, :show, :create]
   resources :messages, only:[:create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

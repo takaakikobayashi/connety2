@@ -5,7 +5,7 @@ class ScholasticRecordsController < ApplicationController
   	@setting_goals = SettingGoal.all
   	@setting_goal = SettingGoal.find_by(user_id: current_user.id)
     @strengths = Strength.all
-    @scholastic_records = ScholasticRecord.all
+    @scholastic_records = ScholasticRecord.all.page(params[:page]).per(30)
     now = Date.today
     @review = Review.find_by(created_at: now.yesterday)
   end

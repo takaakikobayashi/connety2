@@ -1,6 +1,7 @@
 <div class="row">
+
   <div class="col-xs-2 col-xs-offset-1">
-  	<%# プロフィールボックス　%>
+    <%# プロフィール欄　%>
     <div class="prof">
       <div class="image-box">
         <%= attachment_image_tag @user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'80x80' %>
@@ -9,11 +10,11 @@
         <li class="title">ユーザーネーム</li>
       	<li><%= @user.user_name %></li>
       	<li class="title">総学習時間</li>
-      	<li></li>
+      	<li><%=  %>時間</li>
       </div>
-
       <%= link_to "登録情報編集", edit_user_path(params[:id]), class: 'btn btn-primary'%>
     </div>
+
     <%# リンクボックス　%>
     <div class="link">
       <li><%= link_to "問題解決記録", user_problem_solutions_path(user_id: params[:id]) %></li>
@@ -21,58 +22,99 @@
       <li><%= link_to "日々の振り返り", user_reviews_path(user_id: params[:id]) %></li>
       <li>
         <% if current_user.setting_goals.none? %>
-        <%= link_to "目標新規登録", new_user_setting_goal_path(user_id: params[:id]) %>
+          <%= link_to "目標新規登録", new_user_setting_goal_path(user_id: params[:id]) %>
         <% else %>
-        <%= link_to "目標確認", user_setting_goals_show_path(user_id: params[:id]) %>
+          <%= link_to "目標確認", user_setting_goals_show_path(user_id: params[:id]) %>
         <% end %>
       </li>
       <li>
         <% if current_user.strengths.none? %>
-        <%= link_to "自己PRを作成する", new_user_strength_path(user_id: params[:id]) %>
+          <%= link_to "自己PRを作成する", new_user_strength_path(user_id: params[:id]) %>
         <% else %>
-        <%= link_to "自己PRを確認する", user_strengths_show_path(user_id: params[:id]) %>
+          <%= link_to "自己PRを確認する", user_strengths_show_path(user_id: params[:id]) %>
         <% end %>
       </li>
       <li><%= link_to "募集企業を探す", user_offers_path(user_id: current_user.id) %></li>
       <li><%= link_to "オファーを確認する", user_orders_path(user_id: current_user.id) %></li>
     </div>
   </div>
+
   <div class="col-xs-8">
-  	<%# 見出しボックス %>
-  	<table border="0">
+  	<%# 今日のテーマ、目標 %>
+  	<table border="0", class="top">
   	  <tr>
-  	    <th>目標</th>
-        <th>今日のテーマ</th>
+  	    <th class="col-xs-6">目標</th>
+        <th class="col-xs-6">今日のテーマ</th>
       </tr>
       <tr>
-  	    <td></td>
-  	    <td></td>
+        <% if current_user.setting_goals.target.empty? %>
+          <td>登録がありません</td>
+        <% else %>
+  	      <td><%= current_user.setting_goals.target %></td>
+        <% end %>
+  	    <td><%=  %></td>
       </tr>
     </table>
+
     <%# タスクボックス　%>
     <div class="task">
       <p>今日までのタスク</p>
       <% @tasks.each do |task| %>
-      <% if task.progress_status? %> <%# 未完了タスクのみを表示 %>
-      <li><%= task.name %></li>
-      <% end %>
+        <% if task.progress_status? %> <%# 未完了タスクのみを表示 %>
+          <li><%= task.name %></li>
+        <% end %>
       <% end %>
     </div>
+
     <%# グラフボックス%>
-    <div class="col-xs-6">
-    <div class="graph">
-      <%= column_chart @scholastic_record_data %>
-    </div>
+      <div class="graph">
+        <%= column_chart @scholastic_record_data %>
+      </div>
+
+　
+  <h1>学習記録</h1>
+  <canvas id="myBarChart"></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+
+  <script>
+  var ctx = document.getElementById("myBarChart");
+var stackedBar = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['8月1日', '8月2日', '8月3日', '8月4日', '8月5日', '8月6日', '8月7日'],
+      datasets: [
+        {
+          label: 'A店 来客数',
+          data: [62, 65, 93, 85, 51, 66, 47],
+          backgroundColor: "rgba(219,39,91,0.5)"
+        },{
+          label: 'B店 来客数',
+          data: [55, 45, 73, 75, 41, 45, 58],
+          backgroundColor: "rgba(130,201,169,0.5)"
+        },{
+          label: 'C店 来客数',
+          data: [33, 45, 62, 55, 31, 45, 38],
+          backgroundColor: "rgba(255,183,76,0.5)"
+        }
+      ]
+    },
+    options: {
+        scales: {
+            xAxes: [{
+                stacked: true
+            }],
+            yAxes: [{
+                stacked: true
+            }]
+        }
+    }
+});
+  </script>
+
   </div>
-    <div class="col-xs-6">
-      <div class="dot-graph">
-      <% 30.times do %>
-      <div class="square-frame"></div>
-      <% end %>
-    </div>
-  </div>
-</div>
+
   <span id="back">
     <%= link_to image_tag("scholastic-record.png", size:'100x100'), new_user_scholastic_record_path(user_id: params[:id]) %>
-    </span>
+  </span>
+
 </div>

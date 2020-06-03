@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* show */
 .prof {
 	border: 1px solid;
 	margin: 30px 0 30px 20px;
@@ -27,31 +28,42 @@
 	margin: 10px 0 10px 0;
 	}
 }
+.top {
+    width: 100%;
+    tr th {
+    text-decoration: underline;
+    }
+    tr td {
+	text-align: center;
+	}
+}
 .task {
 	border: 1px solid;
+	min-height: 150px; 
+    height: auto !important; 
+    height: 150px;
+    margin: 15px 0 15px 0;
+    padding: 10px;
 }
 .graph {
 	border: 1px solid;
+	height: 300px;
 }
 .col-xs-8 {
 	margin: 30px 0 0 0;
+}
+
+/* edit */
+.image-form{
+  float: right;
+  margin-right: 30px;
+}
+.prof-box {
+	margin: 20px 0 0 0;
 }
 
 #back {
   position: fixed;
   right: 20px;
   bottom: 200px;
-}
-
-.dot-graph {
-border: 1px solid;
-display: flex;
-  flex-wrap: wrap;
-}
-
-.square-frame {
-    border: 1px solid;
-    height: 20px;
-    width: 20px;
-    margin: 10px;
 }
