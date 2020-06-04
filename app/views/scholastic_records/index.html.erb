@@ -1,15 +1,14 @@
-<link rel="stylesheet" href="css/sticky-state.css">
-<script src="js/sticky-state.min.js"></script>
-<script src="js/script.js"></script>
+<div class="container">
 
 <div class="row">
+  <div class="sidebar__item--fixed">
   <div class="col-xs-2 col-xs-offset-1">
   	<%# ボックス　%>
     <div class="prof">
       <div class="image-box">
         <%= attachment_image_tag @user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'80x80' %>
       </div>
-      <div class="sticky">
+      <div class>
         <li class="title">ユーザーネーム</li>
       	<li><%= @user.user_name %></li>
         <% if  %>
@@ -18,16 +17,17 @@
         <% else %>
           <li><%=  %></li>
         <% end %>
-      	  <li class="title">今日</li>
-      	  <li><%=  %>時間</li>
-          <li class="title">今週</li>
-          <li><%=  %>時間</li>
-          <li class="title">今月</li>
-          <li><%=  %>時間</li>
+        <div class="time">
+      	  <li><span class="title">今日</span><br>
+      	      <%=  %>時間<%=  %>分</li>
+          <li><span class="title">今週</span><br>
+              <%=  %>時間<%=  %>分</li>
+          <li><span class="title">今月</span><br>
+              <%=  %>時間<%=  %>分</li>
+        </div>
       </div>
-      <div class="sticky">
+
       <%= link_to "マイページ", user_path(current_user.id), class: 'btn btn-primary'%>
-    </div>
     </div>
 
     <%# カテゴリボックス　%>
@@ -60,48 +60,55 @@
       <li><%= link_to "オファーをする", user_orders_path(user_id: params[:user_id]) %></li>
     </div>
   </div>
+</div>
   <div class="col-xs-8">
   	<%# タイムライン %>
     <span id="scholastic_records">
   	    <div class="scholastic_record">
             <% @scholastic_records.each do |scholastic_record| %>
-              <%= attachment_image_tag scholastic_record.user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'80x80' %>
-              <%= link_to user_path(@user.id) do %>
+            <div class="user">
+              <%= attachment_image_tag scholastic_record.user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'40x40' %><br>
+              <%= link_to user_path(scholastic_record.user.id) do %>
                 <i class="fa fa-map-marker"></i><%= scholastic_record.user.user_name %>
               <% end %>
+            </div>
+            <div class="record">
                 <%= link_to user_scholastic_record_path(user_id: scholastic_record.user.id,id: scholastic_record.id) do %>
-                  <div>
-                    <p>学習内容</p>
-                    <%= scholastic_record.learning_content %>
-                    <p>学習詳細</p>
-                    <%= scholastic_record.learning_detail %>
-                    <p>学習時間</p>
+                  <div class="list">
+                    <p>学習内容<br>
+                    <%= scholastic_record.learning_content %></p>
+                    <p id="detail">学習詳細<br>
+                    <%= scholastic_record.learning_detail %></p>
+                    <p>学習時間<br>
                     <%= scholastic_record.learning_time %>時間
-                    <%= scholastic_record.learning_time_min %>分
+                    <%= scholastic_record.learning_time_min %>分</p>
                   </div>
                 <% end %>
+              </div>
+              <div class="like">
               <% if scholastic_record.liked_by?(current_user) %>
-                <li>
                   <%= link_to user_scholastic_record_likes_path(user_id: current_user.id,scholastic_record_id: scholastic_record.id), method: :delete do %>
                    <span class="glyphicon glyphicon-heart" style="color: red;"></span><%= scholastic_record.likes.count %>
                   <% end %>
-                </li>
               <% else %>
-                <li>
                   <%= link_to user_scholastic_record_likes_path(user_id: current_user.id,scholastic_record_id: scholastic_record.id), method: :post do %>
                    <span class="glyphicon glyphicon-heart-empty"><%= scholastic_record.likes.count %></span>
                   <% end %>
-                </li>
               <% end %>
-                  <%= link_to scholastic_record.comments.count, user_scholastic_record_path(user_id: scholastic_record.user.id,id: scholastic_record.id) %>
+              <span class="comment-count", style="margin-left: 10px">
+                  <%= link_to "#{scholastic_record.comments.count}コメント", user_scholastic_record_path(user_id: scholastic_record.user.id,id: scholastic_record.id) %>
+                </span>
+                  </div>
             <% end %>
         </div>
+        </span>
         <div class="paginate-tag">
           <%= paginate @scholastic_records %>
         </div>
-      </span>
     <span id="back">
       <%= link_to image_tag("scholastic-record.png", size:'100x100'), new_user_scholastic_record_path(user_id: params[:user_id]) %>
     </span>
 </div>
+</div>
+
 </div>

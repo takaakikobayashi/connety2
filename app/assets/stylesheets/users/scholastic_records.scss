@@ -8,42 +8,73 @@
 }
 
 /* index */
+.sidebar__item--fixed {
+  position: sticky;
+  margin-bottom: 0;
+  top: 10px;
+  z-index: 1;
+}
 .prof {
 	border: 1px solid;
 	margin: 30px 0 30px 20px;
 	padding: 0 0 10px 0;
 	list-style: none; 
 	text-align: center;
-	position:sticky;
-	position:-webkit-sticky;
 	li {
 	    margin: 10px 0 10px 0;
 	}
 }
 .image-box {
-	margin: 10px 0 0 0;
-	position:sticky;
-	position:-webkit-sticky;
-}
-.sticky {
-	position:sticky;
-	position:-webkit-sticky;
+	margin: 10px auto;
 }
 .category {
-	position:sticky;
-	position:-webkit-sticky;
+    border: 1px solid;
+	margin: 0 0 30px 20px;
+	list-style: none; 
+	text-align: center;
+	li {
+	margin: 10px 0 10px 0;
+	display:block;
+	}
 }
 .title {
 	text-decoration: underline;
 }
+.time {
+	display: flex;
+}
 .link {
 	border: 1px solid;
 	margin: 0 0 0 20px;
-	list-style: none; 
 	text-align: center;
-	position:sticky;
-	position:-webkit-sticky;
-	li {
-	margin: 10px 0 10px 0;
+}
+.scholastic_record {
+	border-left: 1px solid;
+	border-right: 1px solid;
+	padding: 10px;
+}
+.user {
+    margin-right: 20px;
+	float: left;
+}
+.record {
+	float: left;
+}
+.list {
+	display: flex;
+}
+.list p {
+	text-decoration: underline;
+	margin-right: 80px;
 	}
+#detail {
+	margin-right: 120px;
+}
+.like {
+	clear: left;
+	margin-bottom: 30px;
+	padding-bottom: 30px;
+	padding-top: 10px;
+	margin-left: 10px;
+	border-bottom: 0.1px solid;
 }

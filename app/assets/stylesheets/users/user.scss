@@ -14,7 +14,7 @@
 	}
 }
 .image-box {
-	margin: 10px 0 0 0;
+	margin: 10px auto;
 }
 .title {
 	text-decoration: underline;
@@ -22,11 +22,12 @@
 .link {
 	border: 1px solid;
 	margin: 0 0 0 20px;
-	list-style: none; 
 	text-align: center;
-	li {
+	list-style: none;
+}
+.link li {
 	margin: 10px 0 10px 0;
-	}
+	list-style: none;
 }
 .top {
     width: 100%;

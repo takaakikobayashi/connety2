@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   devise_for :admins, controllers:{
     sessions: "admins/sessions",
     passwords: "admins/passwords",
+    registrations: "users/registrations"
   }
   devise_for :users, controllers:{
     sessions: "users/sessions",
@@ -31,6 +32,7 @@ Rails.application.routes.draw do
     resources :rooms, only:[:index, :show]
     resources :orders, only:[:index, :show]
     resources :users, only:[:index, :show]
+    resources :scholastic_records, only:[:index]
   end
   resources :companies, only:[:show, :edit, :update] do
   	resources :notifications, only:[:index]
