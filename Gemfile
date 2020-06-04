@@ -76,6 +76,7 @@ gem 'bootstrap-sass'
 gem 'pry-rails'
 gem 'chartkick'
 gem 'groupdate'
+gem 'gon'
 group :production do
   gem 'mysql2'
 end
