@@ -12,11 +12,11 @@
       	<li class="title">総学習時間</li>
       	<li><%=  %>時間</li>
       </div>
-      <%= link_to "登録情報編集", edit_user_path(params[:id]), class: 'btn btn-primary'%>
+      <%= link_to "登録情報編集", edit_user_path(params[:id]), class: 'btn btn-success'%>
     </div>
 
     <%# リンクボックス　%>
-    <div class="link">
+    <div class="link-box">
       <li><%= link_to "問題解決記録", user_problem_solutions_path(user_id: params[:id]) %></li>
       <li><%= link_to "タスク管理", user_tasks_path(user_id: params[:id]) %></li>
       <li><%= link_to "日々の振り返り", user_reviews_path(user_id: params[:id]) %></li>
@@ -77,23 +77,31 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 
   <script>
-  var ctx = document.getElementById("myBarChart");
-var stackedBar = new Chart(ctx, {
+    function getDate(day) {
+    var date = new Date();
+    date.setDate(date.getDate() - day);
+    var year  = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day   = date.getDate();
+    return String(year) + "-" + String(month) + "-" + String(day);
+    }
+    var ctx = document.getElementById("myBarChart");
+    var stackedBar = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: gon.lavels,
+      labels: [getDate(6), getDate(5), getDate(4), getDate(3), getDate(2), getDate(1), getDate(0)],
       datasets: [
         {
           label: 'A店 来客数',
           data: [62, 65, 93, 85, 51, 66, 47],
           backgroundColor: "rgba(219,39,91,0.5)"
         },{
-          label: 'B店 来客数',
+          label: gon.lavel,
           data: [55, 45, 73, 75, 41, 45, 58],
           backgroundColor: "rgba(130,201,169,0.5)"
         },{
           label: gon.lavel,
-          data: [33, 45, 62, 55, 31, 45, 38],
+          data: gon.data,
           backgroundColor: "rgba(255,183,76,0.5)"
         }
       ]
@@ -111,41 +119,12 @@ var stackedBar = new Chart(ctx, {
 });
   </script>
 
-  <h2>ラベル別使用回数</h2>
-
-<div style="width: 80%">
-  <canvas id="chart" height="450" width="600"></canvas>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
-
-  <script>
-  var barChartData = {
-    labels : gon.lavels,
-    label : gon.lavel,
-    datasets : [
-      {
-        fillColor : /*"#d685b0"*/"rgba(214,133,176,0.7)",
-        strokeColor : /*"#d685b0"*/"rgba(214,133,176,0.7)",
-        highlightFill: /*"#eebdcb"*/"rgba(238,189,203,0.7)",
-        highlightStroke: /*"#eebdcb"*/"rgba(238,189,203,0.7)",
-        data : gon.data
-      },
-    ]
-
-  }
-  window.onload = function(){
-    var ctx = document.getElementById("chart").getContext("2d");
-    window.myBar = new Chart(ctx).Bar(barChartData, {
-      responsive : true,
-    });
-  }
-</script>
-
   </div>
 
   <span id="back">
-    <%= link_to image_tag("scholastic-record.png", size:'100x100'), new_user_scholastic_record_path(user_id: params[:id]) %>
+    <%= link_to new_user_scholastic_record_path(user_id: params[:id]) do %>
+      <i class="fas fa-edit my-record"></i>
+    <% end %>
   </span>
 
 </div>

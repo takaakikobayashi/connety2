@@ -14,7 +14,7 @@ class RoomsController < ApplicationController
   	@requester = Requester.new
   	@room = Room.new(requester_id: params[:requester_id],user_id: current_user.id)
     @room.save
-    redirect_to user_rooms_path(user_id: current_user.id,id: @room.id)
+    redirect_to user_room_path(user_id: current_user.id,id: @room.id)
   end
 
   private

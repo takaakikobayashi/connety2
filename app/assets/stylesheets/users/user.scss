@@ -53,6 +53,40 @@
 .col-xs-8 {
 	margin: 30px 0 0 0;
 }
+.my-record {
+	color: black;
+    font-size: 4em;
+}
+.link-box, .link-box * {
+		font:bold 11px Verdana,sans-serif;
+		color: white;
+		margin:0; padding:0;
+	}
+.link-box { 
+		margin:1em 0;
+	}
+	.link-box li {
+		display:inline;
+	}
+.link-box li {
+	width:10em; padding:5px 20px;
+		color:#66CC66;
+		text-decoration:none;
+		background-color:#66CC66;
+		border:1px solid #66CC66;
+		font-weight:bold;
+}
+.link-box li:hover {	
+		color:#66CC99;
+		text-decoration:none;
+		background:#66CC99 url(/content/img/css/nav4_on.gif) no-repeat left center;
+	}
+.link-box li,
+	.link-box li:hover{
+		display:block;
+		margin:1px 0;
+	}
+
 
 /* edit */
 .image-form{
@@ -65,6 +99,25 @@
 
 #back {
   position: fixed;
-  right: 20px;
-  bottom: 200px;
+  right: 100px;
+  bottom: 150px;
+}
+
+/* registration */
+.sign_up {
+	margin-bottom: 30px;
+}
+.actions {
+	margin-top: 30px;
+}
+.sign_in_page {
+	margin-top: 40px;
+}
+
+/* sessions */
+.sign_up_page {
+	margin-top: 40px;
+}
+.sign_in {
+	margin-bottom: 30px;
 }

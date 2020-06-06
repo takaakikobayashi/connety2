@@ -8,8 +8,12 @@ class RequestersController < ApplicationController
 
   def show
     @orders = Order.where(progress_status: 1)
-    @order = Order.find(params[:id])
-    @room = Room.find_by(requester_id: current_requester.id,user_id: @order.user.id)
+    if params[:user_id].nil?
+      @order = Order.find(params[:id])
+      @room = Room.find_by(requester_id: current_requester.id,user_id: @order.user.id)
+    else
+      @room = Room.find_by(requester_id: current_requester.id,user_id: params[:user_id])
+    end
     @newroom = Room.new
   end
 

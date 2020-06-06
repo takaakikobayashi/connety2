@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-xs-8 col-xs-offset-4">
     <div class="sign_up">
-      <mark>自己PR</mark>
+      <h3><mark>自己PR</mark></h3>
     </div>
 
       <div class="status">公開状態</div>
-        <% if current_user.learning_status == false %>
+        <% if current_user.learning_status == true %>
           <div class="public">公開</div>
         <% else %>
           <div class="public">非公開</div>
@@ -47,11 +47,11 @@
       </table>
 
       <div class="pr-button">
-        <%=link_to "編集", edit_user_strength_path(user_id: params[:user_id],id: 1),class: "btn btn-primary", style:"margin-right:30px" %>
-        <% if @strengths.is_active == true %>
+        <%=link_to "編集", edit_user_strength_path(user_id: params[:user_id],id: 1),class: "btn btn-success", style:"margin-right:30px" %>
+        <% if current_user.learning_status == true %>
           <%= link_to "非公開にする", user_destroy_strengths_path(user_id: params[:user_id],id: 1), method: :patch, class: 'btn btn-danger' %>
         <% else %>
-          <%= link_to "公開する", user_release_strengths_path(user_id: params[:user_id],id: 1), method: :patch, class: 'btn btn-success' %>
+          <%= link_to "公開する", user_release_strengths_path(user_id: params[:user_id],id: 1), method: :patch, class: 'btn btn-primary' %>
         <% end %>
       </div>
       

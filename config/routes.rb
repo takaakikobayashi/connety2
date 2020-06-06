@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     resources :scholastic_records, only:[:index]
   end
   resources :companies, only:[:show, :edit, :update] do
-  	resources :notifications, only:[:index]
+    get "notifications"  => "companies/notifications#index", as: "index_notifications"
     get "offer/:offer_id/offer_applications"  => "companies/offer_applications#index", as: "offer_applications"
     post "offer/:offer_id/offer_applications/new"  => "companies/offer_applications#create", as: "create_offer_applications"
     get "offer/:offer_id/offer_applications/:id"  => "companies/offer_applications#show", as: "show_offer_applications"
@@ -60,8 +60,8 @@ Rails.application.routes.draw do
   get "requesters/:requester_id/rooms/:id"  => "requesters/rooms#show", as: "requester_show_rooms"
   post "requesters/:requester_id/rooms"  => "requesters/rooms#create", as: "requester_create_rooms"
   resources :requesters, only:[:show, :edit, :update] do
-  	resources :notifications, only:[:index]
   	resources :orders, only:[:destroy]
+    get "notifications"  => "requesters/notifications#index", as: "index_notifications"
     get "orders"  => "requesters/orders#index", as: "index_orders"
     get "users/:user_id/orders/new"  => "requesters/orders#new", as: "new_orders"
     post "users/:user_id/orders/new"  => "requesters/orders#create", as: "create_orders"
@@ -72,8 +72,9 @@ Rails.application.routes.draw do
     get "users/strengths"  => "requesters/strengths#index", as: "requester_strengths"
     get "users/:user_id/strengths"  => "requesters/strengths#show", as: "requester_strength"
   end
+  patch "users/:id/edit" => "users#update"
   get "users/:id/delete"  => "users#delete", as: "delete_user"
-  resources :users, only:[:index, :show, :edit, :update, :destroy] do
+  resources :users, only:[:index, :show, :edit, :destroy] do
     resources :scholastic_records, only:[:index, :new, :show] do
       resources :comments, only:[:create, :destroy]
       resources :likes, only:[:create]

@@ -4,18 +4,20 @@
     <%# 新規タスク作成 %>
     <%= form_for @newtask, url: user_tasks_path do |f| %>
 
-      <div class="field row">
-        <%= f.label :name %>
-        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
-      </div>
+      <table border="0">
+        <tr>
+        <th class="form">タスク名</th>
+        <td><%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %></td>
+      </tr>
 
-      <div class="field row">
-        <%= f.label :deadline %>
-        <%= f.date_select :deadline, autofocus: true, autocomplete: "deadline", class: "form-control" %>
-      </div>
+      <tr>
+        <th class="form">期日</th>
+        <td><%= f.date_select :deadline, autofocus: true, autocomplete: "deadline", class: "form-control" %></td>
+      </tr>
+    </table>
 
-      <div class="newtasks row">
-        <%= f.submit class: "btn btn-primary col-xs-12" %>
+      <div class="newtasks">
+        <%= f.submit "登録する", class:"btn btn-success", style:"width:250px" %>
       </div>
 
     <% end %>

@@ -1,17 +1,33 @@
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
 
-<% if @mynotifications.exists? %>
-<%=  %>さんが
-  <% case @notification.action %>
-  <% when like then %>
-  <%= link_to 'あなたの投稿', @mynotification.scholastic_record, style: "font-weight: bold;" %>にいいねしました
-  <% when comment then %>
-    <% if @mynotification.scholastic_record.user_id == @visited.id %>
-    <%= link_to "あなたの投稿", @mynotification.scholastic_record, style: "font-weight: bold;" %>にコメントしました
+<% if @notifications.exists? %>
+<% @notifications.each do |notification| %>
+  <% case notification.action %>
+  <% when "like" then %>
+  <% case notification.visitor_id %>
+  <% when current_user.id %>
+  <% else %>
+  <%= notification.visitor.full_name %>さんが
+  <%= link_to 'あなたの投稿', "/users/#{current_user.id}/scholastic_records/#{notification.scholastic_record.id}", style: "font-weight: bold;" %>にいいねしました
+  <% end %>
+  <% when "comment" then %>
+    <% if notification.scholastic_record.user_id == notification.visited.id %>
+    <%= notification.visitor.full_name %>さんが
+    <%= link_to "あなたの投稿", "/users/#{current_user.id}/scholastic_records/#{notification.scholastic_record.id}", style: "font-weight: bold;" %>にコメントしました
     <% else %>
-    <%= @mynotification.scholastic_record.user.user_name %>さんの投稿にコメントしました
+    <%= notification.visitor.full_name %>さんが
+    <%= notification.scholastic_record.user.user_name %>さんの投稿にコメントしました
     <% end %>
+  <% when "order" then %>
+    <%= notification.requester_visitor.name %>さんが
+    あなたに<%= link_to "仕事のオファー", "/users/#{current_user.id}/orders/#{notification.order_id}", style: "font-weight: bold;" %>をしました
   <% else %>
   <% end %>
+<% end %>
 <% else %>
 <p>通知はありません</p>
 <% end %>
+
+</div>
+</div>

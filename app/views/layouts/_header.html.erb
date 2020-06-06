@@ -2,16 +2,19 @@
     <div class="container">
       <% if user_signed_in? %>
         <div class="logo-box navber-brand">
-          <%=link_to "#", user_scholastic_records_path(current_user) %>
+          <%=link_to image_tag("connety.png", alt:"Connety", width:"280px", height:"80px"), user_scholastic_records_path(current_user) %>
         </div>
         <ul class="nav navbar-nav navbar-right">
-          <li class="header-name"><%= current_user.last_name %></li>
-          <li class="header-link"><%= link_to "通知", user_notifications_path(current_user), class: "btn btn-default" %></li>
-          <%# if unchecked_notifications.any? %>
-          <%#i class="fa fa-circle notification-circle"></i>
-          <% end %>
+          <li class="header-link"><%= link_to user_notifications_path(current_user) do %>
+            <% if unchecked_notifications.any? %>
+              <i class="far fa-bell my-notification"></i>
+              <i class="fas fa-circle notification-circle" ></i>
+            <% else %>
+              <i class="far fa-bell my-notification"></i>
+            <% end %>
+          <% end %></li>
           <li class="header-link"><%= link_to "マイページ", user_path(current_user), class: "btn btn-default" %></li>
-          <li class="header-link"><%= link_to "About", home_about_path, class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "オファーを確認する", user_path(current_user), class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "募集企業を探す", user_offers_path(current_user), class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-default" %></li>
         </ul>
@@ -21,9 +24,8 @@
         </div>
          <ul class="nav navbar-nav navbar-right">
           <li class="header-name"><%= current_requester.name %></li>
-          <li class="header-link"><%= link_to "通知", requester_notifications_path(current_requester), class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "通知", requester_index_notifications_path(current_requester), class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "マイページ", requester_path(current_requester), class: "btn btn-default" %></li>
-          <li class="header-link"><%= link_to "About", requesters_about_path, class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "ユーザー一覧", requester_requester_strengths_path(current_requester), class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "ログアウト", destroy_requester_session_path, method: :delete, class: "btn btn-default" %></li>
         </ul>
@@ -33,9 +35,8 @@
         </div>
          <ul class="nav navbar-nav navbar-right">
           <li class="header-name"><%= current_company.name %></li>
-          <li class="header-link"><%= link_to "通知", company_notifications_path(current_company), class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "通知", company_index_notifications_path(current_company), class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "マイページ",company_path(current_company), class: "btn btn-default" %></li>
-          <li class="header-link"><%= link_to "About", companies_about_path, class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "ユーザー一覧", company_company_strengths_path(current_company), class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "ログアウト", destroy_company_session_path, method: :delete, class: "btn btn-default" %></li>
         </ul>
@@ -52,11 +53,17 @@
           <li class="header-link"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-default" %></li>
         </ul>
         <% else %>
+        <div class="job-about">
+          <div class="job">
+          <b><a href="/requesters/about", style="color: white">仕事の発注者はこちら</a></b>
+          <b><a href="/companies/about", style="color: white">企業の採用担当者はこちら</a></b>
+          </div>
+        </div>
         <div class="logo-box navber-brand">
-          <%=link_to "#", root_path %>
+          <%=link_to image_tag("connety.png", alt:"Connety", width:"280px", height:"80px"), root_path %>
         </div>
         <ul class="nav navbar-nav navbar-right">
-          <li class="header-link"><%= link_to "About", home_about_path, class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "Connetyとは？", home_about_path, class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "新規登録", new_user_registration_path, class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "ログイン", new_user_session_path, class: "btn btn-default" %></li>
         </ul>

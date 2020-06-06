@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-8 col-xs-offset-4">
     <div class="sign_up">
-      <mark>学習記録投稿</mark>
+      <h3><mark>学習記録投稿</mark></h3>
     </div>      
 
     <%= form_for @scholastic_record, url: new_user_scholastic_record_path do |f| %>
@@ -43,7 +43,7 @@
       </table>
 
       <div class="actions">
-        <%= f.submit "新規登録", class:"btn btn-success center-block", style:"width:150px" %>
+        <%= f.submit "新規登録", class:"btn btn-success center-block btn-lg", style:"width:250px" %>
       </div>
       
     <% end %>

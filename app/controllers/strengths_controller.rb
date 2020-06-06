@@ -24,7 +24,7 @@ class StrengthsController < ApplicationController
   def update
   	@strength = Strength.find(params[:id])
     if @strength.update(strength_params)
-       redirect_to user_strength_path(current_user.id)
+       redirect_to user_strengths_show_path(user_id: current_user.id)
     else
        render action: :edit
     end
