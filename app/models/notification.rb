@@ -7,17 +7,12 @@ class Notification < ApplicationRecord
 	belongs_to :comment, optional: true
 	belongs_to :visitor, class_name: 'User', foreign_key: 'visitor_id', optional: true
   belongs_to :visited, class_name: 'User', foreign_key: 'visited_id', optional: true
+  
+  belongs_to :requester_visitor, class_name: 'Requester', foreign_key: 'requester_visitor_id', optional: true
+  belongs_to :requester_visited, class_name: 'Requester', foreign_key: 'requester_visited_id', optional: true
 
-  def notification_form(notification)
-    @comment=nil
-    visitor=link_to notification.visitor.user_name, notification.visitor, style:"font-weight: bold;"
-    your_record=link_to 'あなたの投稿', notification.scholastic_record, style:"font-weight: bold;", remote: true
-    case notification.action
-      when "like" then
-        "#{visitor}が#{your_record}にいいね！しました"
-      when "comment" then
-        @comment=Comment.find_by(id:notification.comment_id)&.content
-        "#{visitor}が#{your_record}にコメントしました"
-      end
-  end
+  belongs_to :company_visitor, class_name: 'Company', foreign_key: 'company_visitor_id', optional: true
+  belongs_to :company_visited, class_name: 'Company', foreign_key: 'company_visited_id', optional: true
+  
+
 end

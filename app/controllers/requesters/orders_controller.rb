@@ -7,7 +7,9 @@ class Requesters::OrdersController < ApplicationController
   	@order = Order.new(order_params)
   	@order.requester_id = current_requester.id
   	@order.user_id = params[:user_id].to_i
+    @user = User.find(params[:user_id])
   	if @order.save
+      @user.create_notification_order!(current_requester, @order.id)
   		redirect_to requester_path(current_requester.id)
   	else
   		render action: :new

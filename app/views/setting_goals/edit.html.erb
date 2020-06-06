@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-8 col-xs-offset-4">
     <div class="sign_up">
-      <mark>目標編集</mark>
+      <h3><mark>目標編集</mark></h3>
     </div>
 
     <%= form_for @setting_goal, url: edit_user_setting_goal_path do |f| %>
@@ -33,7 +33,7 @@
       </table>
 
       <div class="actions">
-        <%= f.submit "編集", class:"btn btn-success center-block", style:"width:150px" %>
+        <%= f.submit "編集", class:"btn btn-success center-block", style:"width:250px" %>
       </div>
       
     <% end %>

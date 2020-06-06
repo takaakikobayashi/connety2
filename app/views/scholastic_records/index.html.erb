@@ -27,11 +27,12 @@
         </div>
       </div>
 
-      <%= link_to "マイページ", user_path(current_user.id), class: 'btn btn-primary'%>
+      <%= link_to "マイページ", user_path(current_user.id), class: 'btn btn-success'%>
     </div>
 
     <%# カテゴリボックス　%>
     <div class="category">
+      <p><%= link_to "全ジャンル", user_scholastic_records_path(user_id: current_user.id) %></p>
       <% @categories.each do |category| %>
       <li><%= link_to category.name, user_scholastic_records_path(user_id: current_user.id,category_id: category.id) %></li>
       <% end %>
@@ -75,13 +76,13 @@
             <div class="record">
                 <%= link_to user_scholastic_record_path(user_id: scholastic_record.user.id,id: scholastic_record.id) do %>
                   <div class="list">
-                    <p>学習内容<br>
-                    <%= scholastic_record.learning_content %></p>
-                    <p id="detail">学習詳細<br>
-                    <%= scholastic_record.learning_detail %></p>
-                    <p>学習時間<br>
+                    <span><p>学習内容</p>
+                    <%= scholastic_record.learning_content %></span>
+                    <span><p id="detail">学習詳細</p>
+                    <%= scholastic_record.learning_detail %></span>
+                    <span><p>学習時間</p>
                     <%= scholastic_record.learning_time %>時間
-                    <%= scholastic_record.learning_time_min %>分</p>
+                    <%= scholastic_record.learning_time_min %>分</span>
                   </div>
                 <% end %>
               </div>
@@ -106,7 +107,9 @@
           <%= paginate @scholastic_records %>
         </div>
     <span id="back">
-      <%= link_to image_tag("scholastic-record.png", size:'100x100'), new_user_scholastic_record_path(user_id: params[:user_id]) %>
+      <%= link_to new_user_scholastic_record_path(user_id: params[:user_id]) do %>
+        <i class="fas fa-edit my-record"></i>
+      <% end %>
     </span>
 </div>
 </div>

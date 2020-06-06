@@ -9,9 +9,8 @@ class UsersController < ApplicationController
     @scholastic_record = ScholasticRecord.find(@user.id)
     @scholastic_record_data = ScholasticRecord.where(user_id: current_user.id).group_by_day_of_week(:created_at, format: "%a").sum(:total_time)
   
-    gon.lavels = ["06/01", "06/02", "06/03", "06/04", "06/05", "06/06", "06/07"]
-    gon.lavel = 'プログラミング'
-    gon.data = [3, 3, 3, 3, 3, 3, 3]
+    gon.lavel = @scholastic_record.learning_content
+    gon.data = @scholastic_record_data
   end
 
   def edit

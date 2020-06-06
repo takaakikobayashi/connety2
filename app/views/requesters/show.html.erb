@@ -83,7 +83,7 @@
           <% if @room.present? %>
             <%=  link_to "DM", requester_show_rooms_path(requester_id: current_requester.id,id: @room.id), class:"btn btn-primary"%>
           <% else %>
-            <%=  form_for @newroom, url: requester_create_rooms_path do |f| %>
+            <%=  form_for @newroom, url: requester_create_rooms_path(requester_id: current_requester.id) do |f| %>
               <%= fields_for @user do |u| %>
                 <%= u.hidden_field :user_id, :value=> order.user.id %>
               <% end %>

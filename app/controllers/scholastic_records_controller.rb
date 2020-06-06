@@ -1,11 +1,15 @@
 class ScholasticRecordsController < ApplicationController
   def index
   	@categories = Category.all
+    if params["category_id"].nil?
+      @scholastic_records = ScholasticRecord.all.page(params[:page]).per(30)
+    else
+      @scholastic_records = ScholasticRecord.where(category_id: params["category_id"]).page(params[:page]).per(30)
+    end
   	@user = User.find(params[:user_id])
   	@setting_goals = SettingGoal.all
   	@setting_goal = SettingGoal.find_by(user_id: current_user.id)
     @strengths = Strength.all
-    @scholastic_records = ScholasticRecord.all.page(params[:page]).per(30)
     now = Date.today
     @review = Review.find_by(created_at: now.yesterday)
   end

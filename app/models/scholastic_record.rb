@@ -1,4 +1,5 @@
 class ScholasticRecord < ApplicationRecord
+  default_scope -> { order(created_at: :desc) }
 	belongs_to :user
 	belongs_to :category
 	has_many :likes
@@ -18,7 +19,7 @@ class ScholasticRecord < ApplicationRecord
       notification = current_user.active_notifications.new(
         scholastic_record_id: id,
         visited_id: user_id,
-        action: 'like'
+        action: "like"
       )
       # 自分の投稿に対するいいねの場合は、通知済みとする
       if notification.visitor_id == notification.visited_id
@@ -44,7 +45,7 @@ class ScholasticRecord < ApplicationRecord
       scholastic_record_id: id,
       comment_id: comment_id,
       visited_id: user_id,
-      action: 'comment'
+      action: "comment"
     )
     # 自分の投稿に対するコメントの場合は、通知済みとする
     if notification.visitor_id == notification.visited_id

@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
 
     <%= include_gon %>
+    <script src="https://kit.fontawesome.com/c904145315.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -21,7 +22,7 @@
   <script>
     $(function () {
       var height = $("header").height();
-      $("#body").css("margin-top", height + 50);//10pxだけ余裕をもたせる
+      $("#body").css("margin-top", height);
     });
   </script>
   
