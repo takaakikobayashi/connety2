@@ -10,7 +10,7 @@
         <li class="title">ユーザーネーム</li>
       	<li><%= @user.user_name %></li>
       	<li class="title">総学習時間</li>
-      	<li><%=  %>時間</li>
+      	<li><%= @total_h_time %>時間<%= @total_m_time %>分</li>
       </div>
       <%= link_to "登録情報編集", edit_user_path(params[:id]), class: 'btn btn-success'%>
     </div>
@@ -47,32 +47,35 @@
         <th class="col-xs-6">今日のテーマ</th>
       </tr>
       <tr>
-        <% if current_user.setting_goals.target.empty? %>
+        <% if @setting_goal.target.nil? %>
           <td>登録がありません</td>
         <% else %>
-  	      <td><%= current_user.setting_goals.target %></td>
+  	      <td><%= @setting_goal.target %></td>
         <% end %>
-  	    <td><%=  %></td>
+        <% if @reviews.nil? %>
+          <td>登録がありません</td>
+        <% else %>
+  	      <td><%= @reviews.theme %></td>
+        <% end %>
       </tr>
     </table>
 
     <%# タスクボックス　%>
     <div class="task">
       <p>今日までのタスク</p>
+      <% if @task.nil? %>
+      <p style="text-align: center">現在未完了タスクはありません</p>
+      <% else %>
       <% @tasks.each do |task| %>
         <% if task.progress_status? %> <%# 未完了タスクのみを表示 %>
           <li><%= task.name %></li>
         <% end %>
       <% end %>
+      <% end %>
     </div>
 
     <%# グラフボックス%>
-      <div class="graph">
-        <%= column_chart @scholastic_record_data %>
-      </div>
-
-　
-  <h1>学習記録</h1>
+  <h3><mark>学習記録</mark></h3>
   <canvas id="myBarChart"></canvas>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 
@@ -85,6 +88,8 @@
     var day   = date.getDate();
     return String(year) + "-" + String(month) + "-" + String(day);
     }
+
+
     var ctx = document.getElementById("myBarChart");
     var stackedBar = new Chart(ctx, {
     type: 'bar',
@@ -92,17 +97,25 @@
       labels: [getDate(6), getDate(5), getDate(4), getDate(3), getDate(2), getDate(1), getDate(0)],
       datasets: [
         {
-          label: 'A店 来客数',
-          data: [62, 65, 93, 85, 51, 66, 47],
-          backgroundColor: "rgba(219,39,91,0.5)"
+          label: 'プログラミング',
+          data: gon.data_programing,
+          backgroundColor: "#66CCFF"
         },{
-          label: gon.lavel,
-          data: [55, 45, 73, 75, 41, 45, 58],
-          backgroundColor: "rgba(130,201,169,0.5)"
+          label: '動画編集',
+          data: gon.data_movie,
+          backgroundColor: "#FF6666"
         },{
-          label: gon.lavel,
-          data: gon.data,
-          backgroundColor: "rgba(255,183,76,0.5)"
+          label: 'デザイン',
+          data: gon.data_design,
+          backgroundColor: "#FFFF66"
+        },{
+          label: 'マーケティング',
+          data: gon.data_marketing,
+          backgroundColor: "#66FF99"
+        },{
+          label: 'その他',
+          data: gon.data_other,
+          backgroundColor: "#FFCCFF"
         }
       ]
     },

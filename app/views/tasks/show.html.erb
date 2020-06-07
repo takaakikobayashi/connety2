@@ -1,0 +1,14 @@
+<table class="table table-bordered">
+      <tr>
+    	<th>タスク名</th>
+    	<th>タスク期日</th>
+      <th>タスクを元に戻す</th>
+      </tr>
+      <% @tasks.each do |task| %>
+    	<tr>
+    	  <td><%= task.name %></td>
+    	  <td><%= task.deadline %></td>
+        <td><%= link_to "元に戻す", user_return_task_path(user_id: params[:user_id],id: task.id), method: :patch,class: "btn btn-success" %></td>
+    	</tr>
+      <% end %>
+    </table>

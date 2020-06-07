@@ -43,7 +43,8 @@ class ScholasticRecordsController < ApplicationController
       :learning_detail,
       :learning_time,
       :learning_time_min,
-      :total_time
+      :total_time,
+      :created_date
     )
   end
 end

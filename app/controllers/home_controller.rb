@@ -10,4 +10,28 @@ class HomeController < ApplicationController
 
   def companies
   end
+
+  def terms
+  end
+
+  def specified_commercial_transactions
+  end
+
+  def privacy_policy
+  end
+
+  def contact
+  end
+
+  def operations
+  end
+
+  def news
+  end
+
+  def offers
+  end
+
+  def orders
+  end
 end

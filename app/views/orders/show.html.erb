@@ -2,7 +2,7 @@
         <tr style="height:70px">
             <th class="form">依頼額</th>
             <td>
-              <%= @order.cost %>
+              <%= @order.cost %>円
             </td>
         </tr>
 
@@ -22,6 +22,14 @@
 
       </table>
       
+      <% case @order.order_status %>
+                <% when "オファー中" then %>
+                <%=  link_to "受諾", user_asset_orders_path(user_id: current_user.id,id: @order.id), method: :patch, class:"btn btn-success"%>
+          <%=  link_to "お断り", user_refuse_orders_path(user_id: current_user.id,id: @order.id), method: :patch, class:"btn btn-danger"%>
+          <% when "受諾" then %>
+              <%=  link_to "キャンセル", user_cansel_orders_path(user_id: current_user.id,id: @order.id), method: :patch, class:"btn btn-danger"%>
+              <% else %>
+              <% end %>
         <% if @room.present? && @order.order_status = 1 %>
           <%=  link_to "DM", user_room_path(user_id: current_user.id,id: @room.id), class:"btn btn-primary"%>
         <% elsif @room.empty? && @order.order_status = 1 %>

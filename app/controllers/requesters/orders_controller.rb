@@ -17,7 +17,7 @@ class Requesters::OrdersController < ApplicationController
   end
 
   def index
-  	@orders = Order.all
+  	@orders = Order.all.order(created_at: "DESC")
   end
 
   def destroy
