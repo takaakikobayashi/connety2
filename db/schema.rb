@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_06_024226) do
+ActiveRecord::Schema.define(version: 2020_06_07_114328) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -112,15 +112,19 @@ ActiveRecord::Schema.define(version: 2020_06_06_024226) do
     t.integer "requester_visited_id"
     t.integer "company_visitor_id"
     t.integer "company_visited_id"
+    t.integer "message_id"
+    t.integer "room_id"
     t.index ["comment_id"], name: "index_notifications_on_comment_id"
     t.index ["company_id"], name: "index_notifications_on_company_id"
     t.index ["company_visited_id"], name: "index_notifications_on_company_visited_id"
     t.index ["company_visitor_id"], name: "index_notifications_on_company_visitor_id"
+    t.index ["message_id"], name: "index_notifications_on_message_id"
     t.index ["offer_application_id"], name: "index_notifications_on_offer_application_id"
     t.index ["order_id"], name: "index_notifications_on_order_id"
     t.index ["requester_id"], name: "index_notifications_on_requester_id"
     t.index ["requester_visited_id"], name: "index_notifications_on_requester_visited_id"
     t.index ["requester_visitor_id"], name: "index_notifications_on_requester_visitor_id"
+    t.index ["room_id"], name: "index_notifications_on_room_id"
     t.index ["scholastic_record_id"], name: "index_notifications_on_scholastic_record_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
@@ -232,6 +236,7 @@ ActiveRecord::Schema.define(version: 2020_06_06_024226) do
     t.datetime "updated_at", null: false
     t.integer "category_id"
     t.float "total_time"
+    t.date "created_date"
     t.index ["category_id"], name: "index_scholastic_records_on_category_id"
     t.index ["user_id"], name: "index_scholastic_records_on_user_id"
   end

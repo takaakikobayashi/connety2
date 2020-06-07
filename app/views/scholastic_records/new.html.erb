@@ -5,6 +5,7 @@
     </div>      
 
     <%= form_for @scholastic_record, url: new_user_scholastic_record_path do |f| %>
+    <%= f.hidden_field :created_date, :value => Date.today %>
       
       <table border="0">
         <tr style="height:70px">
@@ -19,7 +20,7 @@
           <th>学習内容</th>
           <td>
             <% f.label :learning_content %>
-            <%= f.collection_select :learning_content, Task.all, :name, :name,:prompt => "タスクを選択してください" %>
+            <%= f.collection_select :learning_content, Task.where(progress_status: true), :name, :name,:prompt => "タスクを選択してください" %>
           </td>
         </tr>
 
@@ -33,11 +34,11 @@
 
         <tr style="height:70px">
           <th>学習時間</th>
-          <td>
+          <td class="time">
             <% f.label :learning_time %>
-            <%= f.select :learning_time,[*0..23], {}, { autocomplete: "learning_time", class: 'form-control'} %><p>時間</p>
+            <%= f.select :learning_time,[*0..23], {}, { autocomplete: "learning_time", class: 'form-control', style:"width:50px"} %><p>時間</p>
             <% f.label :learning_time_min %>
-            <%= f.select :learning_time_min,[*0..59], {}, { autocomplete: "learning_time_min", class: 'form-control'} %><p>分</p>
+            <%= f.select :learning_time_min,[*0..59], {}, { autocomplete: "learning_time_min", class: 'form-control', style:"width:50px"} %><p>分</p>
           </td>
         </tr>
       </table>

@@ -1,4 +1,7 @@
-<table class="table table-bordered">
+<div class="row">
+  <div class="col-xs-12">
+
+<table class="table table-bordered", style="margin-top:30px">
     	<tr>
     		<th>受付日</th>
             <th>オファー相手</th>
@@ -13,7 +16,7 @@
     		<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
     		<td><%= order.requester.name %></td>
     		<td><%= order.request_content %></td>
-            <td><%= order.cost %></td>
+            <td><%= order.cost %>円</td>
             <td><%= order.progress_status %></td>
             <td><%=  link_to "詳細", user_order_path(user_id: current_user.id,id: order.id), class:"btn btn-primary"%></td>
                 <td>
@@ -30,3 +33,6 @@
     	</tr>
         <% end %>
     </table>
+
+  </div>
+</div>

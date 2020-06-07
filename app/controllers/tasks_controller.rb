@@ -1,7 +1,11 @@
 class TasksController < ApplicationController
   def index
     @newtask = Task.new
-    @tasks = Task.all
+    @tasks = Task.all.order(created_at: "DESC")
+  end
+
+  def show
+    @tasks = Task.where(progress_status: false)
   end
 
   def create
@@ -18,6 +22,17 @@ class TasksController < ApplicationController
   def complete
     @task = Task.find(params[:id])
     if @task.update(progress_status: false)
+       redirect_to user_tasks_path(current_user.id)
+    else
+       @newtask = Task.new
+       @tasks = Task.all
+       render action: :index
+    end
+  end
+
+  def return
+    @task = Task.find(params[:id])
+    if @task.update(progress_status: true)
        redirect_to user_tasks_path(current_user.id)
     else
        @newtask = Task.new

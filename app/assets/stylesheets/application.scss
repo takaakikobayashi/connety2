@@ -93,9 +93,21 @@ footer{
   p{
     line-height:50px;
   }
+  li {
+  list-style-type: none;
+  margin-left: 800px;
+  }
+}
+.info-left {
+  margin-top:-70px;
+  margin-left: 200px;
+}
+.info-right {
+  margin-top:-70px;
 }
 .footer-logo-box {
-margin-left: 230px;
+  margin-left: 250px;
+  margin-top: 10px;
 }
 #copy-right {
   text-align: center;

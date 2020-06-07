@@ -11,12 +11,12 @@
       <div class>
         <li class="title">ユーザーネーム</li>
       	<li><%= @user.user_name %></li>
-        <% if  %>
           <li class="title">今日のテーマ</li>
-          <li></li>
+          <li><% if @reviews.nil? %>
+          <td>登録がありません</td>
         <% else %>
-          <li><%=  %></li>
-        <% end %>
+          <td><%= @reviews.theme %></td>
+        <% end %></li>
         <div class="time">
       	  <li><span class="title">今日</span><br>
       	      <%=  %>時間<%=  %>分</li>
@@ -30,16 +30,8 @@
       <%= link_to "マイページ", user_path(current_user.id), class: 'btn btn-success'%>
     </div>
 
-    <%# カテゴリボックス　%>
-    <div class="category">
-      <p><%= link_to "全ジャンル", user_scholastic_records_path(user_id: current_user.id) %></p>
-      <% @categories.each do |category| %>
-      <li><%= link_to category.name, user_scholastic_records_path(user_id: current_user.id,category_id: category.id) %></li>
-      <% end %>
-    </div>
-
     <%# リンクボックス　%>
-    <div class="link">
+    <div class="link-box">
       <li><%= link_to "問題解決記録", user_problem_solutions_path(user_id: params[:user_id]) %></li>
       <li><%= link_to "タスク管理", user_tasks_path(user_id: params[:user_id]) %></li>
       <li><%= link_to "日々の振り返り", user_reviews_path(user_id: params[:user_id]) %></li>
@@ -58,11 +50,11 @@
         <% end %>
       </li>
       <li><%= link_to "募集企業を探す", user_offers_path(user_id: params[:user_id]) %></li>
-      <li><%= link_to "オファーをする", user_orders_path(user_id: params[:user_id]) %></li>
+      <li><%= link_to "オファーを確認する", user_orders_path(user_id: params[:user_id]) %></li>
     </div>
   </div>
 </div>
-  <div class="col-xs-8">
+  <div class="col-xs-7">
   	<%# タイムライン %>
     <span id="scholastic_records">
   	    <div class="scholastic_record">
@@ -70,7 +62,7 @@
             <div class="user">
               <%= attachment_image_tag scholastic_record.user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'40x40' %><br>
               <%= link_to user_path(scholastic_record.user.id) do %>
-                <i class="fa fa-map-marker"></i><%= scholastic_record.user.user_name %>
+                <%= scholastic_record.user.user_name %>
               <% end %>
             </div>
             <div class="record">
@@ -106,12 +98,23 @@
         <div class="paginate-tag">
           <%= paginate @scholastic_records %>
         </div>
+        </div>
+        <div class="sidebar__item--fixed">
+        <div class="col-xs-2">
+          <%# カテゴリボックス　%>
+    <div class="category">
+      <p><%= link_to "全ジャンル", user_scholastic_records_path(user_id: current_user.id) %></p>
+      <% @categories.each do |category| %>
+      <li><%= link_to category.name, user_scholastic_records_path(user_id: current_user.id,category_id: category.id) %></li>
+      <% end %>
+    </div>
+  </div>
+</div>
     <span id="back">
       <%= link_to new_user_scholastic_record_path(user_id: params[:user_id]) do %>
         <i class="fas fa-edit my-record"></i>
       <% end %>
     </span>
-</div>
 </div>
 
 </div>

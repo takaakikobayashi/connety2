@@ -1,6 +1,6 @@
 class ProblemSolutionsController < ApplicationController
   def index
-  	@problem_solutions = ProblemSolution.all
+  	@problem_solutions = ProblemSolution.all.order(created_at: "DESC")
   end
 
   def new

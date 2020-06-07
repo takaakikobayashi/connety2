@@ -8,20 +8,20 @@
   <% case notification.visitor_id %>
   <% when current_user.id %>
   <% else %>
-  <%= notification.visitor.full_name %>さんが
-  <%= link_to 'あなたの投稿', "/users/#{current_user.id}/scholastic_records/#{notification.scholastic_record.id}", style: "font-weight: bold;" %>にいいねしました
+  <li><%= notification.visitor.full_name %>さんが
+  <%= link_to 'あなたの投稿', "/users/#{current_user.id}/scholastic_records/#{notification.scholastic_record.id}", style: "font-weight: bold;" %>にいいねしました</li>
   <% end %>
   <% when "comment" then %>
     <% if notification.scholastic_record.user_id == notification.visited.id %>
-    <%= notification.visitor.full_name %>さんが
-    <%= link_to "あなたの投稿", "/users/#{current_user.id}/scholastic_records/#{notification.scholastic_record.id}", style: "font-weight: bold;" %>にコメントしました
+    <li><%= notification.visitor.full_name %>さんが
+    <%= link_to "あなたの投稿", "/users/#{current_user.id}/scholastic_records/#{notification.scholastic_record.id}", style: "font-weight: bold;" %>にコメントしました</li>
     <% else %>
-    <%= notification.visitor.full_name %>さんが
-    <%= notification.scholastic_record.user.user_name %>さんの投稿にコメントしました
+    <li><%= notification.visitor.full_name %>さんが
+    <%= notification.scholastic_record.user.user_name %>さんの投稿にコメントしました</li>
     <% end %>
   <% when "order" then %>
-    <%= notification.requester_visitor.name %>さんが
-    あなたに<%= link_to "仕事のオファー", "/users/#{current_user.id}/orders/#{notification.order_id}", style: "font-weight: bold;" %>をしました
+    <li><%= notification.requester_visitor.name %>さんが
+    あなたに<%= link_to "仕事のオファー", "/users/#{current_user.id}/orders/#{notification.order_id}", style: "font-weight: bold;" %>をしました</li>
   <% else %>
   <% end %>
 <% end %>

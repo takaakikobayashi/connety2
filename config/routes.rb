@@ -6,6 +6,14 @@ Rails.application.routes.draw do
   get  "home/companies"  => "home#companies"
   get "requesters/about"  => "requesters/about#show"
   get "companies/about"  => "companies/about#show"
+  get "home/terms" => "home#terms"
+  get "home/specified_commercial_transactions" => "home#specified_commercial_transactions"
+  get "home/privacy_policy" => "home#privacy_policy"
+  get "home/contact" => "home#contact"
+  get "home/operations" => "home#operations"
+  get "home/news" => "home#news"
+  get "home/offers" => "home#offers"
+  get "home/orders" => "home#orders"
   devise_for :admins, controllers:{
     sessions: "admins/sessions",
     passwords: "admins/passwords",
@@ -82,8 +90,10 @@ Rails.application.routes.draw do
     end
     post "scholastic_records/new" => "scholastic_records#create"
     resources :tasks, only:[:index, :create, :edit, :destroy]
+    get "tasks/show" => "tasks#show"
     patch "tasks/:id/edit" => "tasks#update"
     patch "tasks/:id/complete" => "tasks#complete", as: "complete_task"
+    patch "tasks/:id/return" => "tasks#return", as: "return_task"
     resources :reviews, only:[:index, :new]
     post "reviews/new" => "reviews#create"
     resources :setting_goals, only:[:new, :edit]
@@ -109,6 +119,6 @@ Rails.application.routes.draw do
     resources :rooms, only:[:show, :create]
   end
   
-  resources :messages, only:[:create]
+  resources :messages, only:[:index, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
