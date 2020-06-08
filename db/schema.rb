@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_07_114328) do
+ActiveRecord::Schema.define(version: 2020_06_08_044828) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 2020_06_07_114328) do
     t.integer "visited_id"
     t.string "action", default: "", null: false
     t.integer "order_id"
-    t.integer "offer_application_id"
+    t.integer "offer_id"
     t.integer "requester_visitor_id"
     t.integer "requester_visited_id"
     t.integer "company_visitor_id"
@@ -119,7 +119,7 @@ ActiveRecord::Schema.define(version: 2020_06_07_114328) do
     t.index ["company_visited_id"], name: "index_notifications_on_company_visited_id"
     t.index ["company_visitor_id"], name: "index_notifications_on_company_visitor_id"
     t.index ["message_id"], name: "index_notifications_on_message_id"
-    t.index ["offer_application_id"], name: "index_notifications_on_offer_application_id"
+    t.index ["offer_id"], name: "index_notifications_on_offer_id"
     t.index ["order_id"], name: "index_notifications_on_order_id"
     t.index ["requester_id"], name: "index_notifications_on_requester_id"
     t.index ["requester_visited_id"], name: "index_notifications_on_requester_visited_id"
@@ -220,6 +220,8 @@ ActiveRecord::Schema.define(version: 2020_06_07_114328) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "requester_id"
+    t.integer "company_id"
+    t.index ["company_id"], name: "index_rooms_on_company_id"
     t.index ["entry_id"], name: "index_rooms_on_entry_id"
     t.index ["message_id"], name: "index_rooms_on_message_id"
     t.index ["requester_id"], name: "index_rooms_on_requester_id"

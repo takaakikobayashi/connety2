@@ -1,22 +1,5 @@
 <table class="table table-bordered">
       <tr>
-    	<th>相手</th>
-        <th>内容</th>
-    	<th>確認ステータス</th>
-        <th>詳細</th>
-      </tr>
-      <% @orders.each do |order| %>
-    	<tr>
-    	  <td><%= order.requester.name %></td>
-    	  <td><%= order.request_content %></td>
-    	  <td><%=  %></td>
-          <td><%=  link_to "詳細", user_order_path(user_id: current_user.id,id: order.id), class:"btn btn-primary"%></td>
-    	</tr>
-      <% end %>
-    </table>
-
-    <table class="table table-bordered">
-      <tr>
       <th>相手</th>
         <th>内容</th>
       <th>確認ステータス</th>

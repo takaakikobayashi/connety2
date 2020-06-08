@@ -18,6 +18,7 @@ class OrdersController < ApplicationController
   def asset
   	@order = Order.find(params[:id])
     @order.update(order_status: 1,progress_status: 1)
+    @order.create_requester_notification_order!(current_user, @order.id)
     redirect_to user_orders_path(current_user.id)
   end
 
@@ -25,6 +26,9 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.update(order_status: 3,progress_status: 3)
     redirect_to user_orders_path(current_user.id)
+  end
+
+  def dm
   end
 
   private

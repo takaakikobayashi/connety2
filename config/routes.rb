@@ -42,6 +42,8 @@ Rails.application.routes.draw do
     resources :users, only:[:index, :show]
     resources :scholastic_records, only:[:index]
   end
+  get "companies/:company_id/rooms/:id"  => "companies/rooms#show", as: "company_show_rooms"
+  post "companies/:company_id/rooms/:id"  => "companies/rooms#create", as: "company_create_rooms"
   resources :companies, only:[:show, :edit, :update] do
     get "notifications"  => "companies/notifications#index", as: "index_notifications"
     get "offer/:offer_id/offer_applications"  => "companies/offer_applications#index", as: "offer_applications"
@@ -66,14 +68,15 @@ Rails.application.routes.draw do
     get "users/:user_id/strengths"  => "companies/strengths#show", as: "company_strength"
   end
   get "requesters/:requester_id/rooms/:id"  => "requesters/rooms#show", as: "requester_show_rooms"
-  post "requesters/:requester_id/rooms"  => "requesters/rooms#create", as: "requester_create_rooms"
+  post "requesters/:requester_id/rooms/:id"  => "requesters/rooms#create", as: "requester_create_rooms"
   resources :requesters, only:[:show, :edit, :update] do
   	resources :orders, only:[:destroy]
     get "notifications"  => "requesters/notifications#index", as: "index_notifications"
     get "orders"  => "requesters/orders#index", as: "index_orders"
     get "users/:user_id/orders/new"  => "requesters/orders#new", as: "new_orders"
     post "users/:user_id/orders/new"  => "requesters/orders#create", as: "create_orders"
-    patch "orders/:id/complete"  => "requesters/orders#complete", as: "complete_orders"
+    get "orders/:id/complete"  => "requesters/orders#complete", as: "complete_orders"
+    patch "orders/:id/show"  => "requesters/orders#show", as: "show_orders"
     patch "orders/:id/delete"  => "requesters/orders#delete", as: "delete_orders"
     get "users/:user_id/reviews"  => "requesters/reviews#index", as: "requester_reviews"
     get "users/:user_id/problem_solutions"  => "requesters/problem_solutions#index", as: "requester_problem_solutions"
@@ -115,8 +118,12 @@ Rails.application.routes.draw do
     resources :offers, only:[:index, :destroy]
     get "companies/:company_id/offers/:id"  => "offers#show", as: "show_offers"
     post "companies/:company_id/offers/:id"  => "offers#create", as: "create_offers"
+    get "offer_applications/index"  => "offer_applications#index", as: "index_offer_applications"
+    get "offer_applications/pass"  => "offer_applications#pass", as: "pass_offer_applications"
+    get "companies/:company_id/offer_applications/:id"  => "offer_applications#show", as: "show_offer_applications"
     resources :notifications, only:[:index]
     resources :rooms, only:[:show, :create]
+    resources :company_rooms, only:[:show, :create]
   end
   
   resources :messages, only:[:index, :create]
