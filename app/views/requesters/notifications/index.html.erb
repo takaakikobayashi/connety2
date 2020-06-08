@@ -1,2 +1,25 @@
-<h1>Requesters::Notifications#index</h1>
-<p>Find me in app/views/requesters/notifications/index.html.erb</p>
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+
+<% if @notifications.exists? %>
+  <% @notifications.each do |notification| %>
+    <% case notification.action %>
+    <% when "message" then %>
+        <li>
+          <%= notification.visitor.full_name %>さんが
+          あなたに<%= link_to "メッセージ", "/requesters/#{current_requester.id}/rooms/#{notification.room_id}", style: "font-weight: bold;" %>をしました
+        </li>
+    <% when "order" then %>
+        <li>
+          <%= notification.visitor.full_name %>さんが
+          あなたの<%= link_to "発注依頼", "/requesters/#{current_requester.id}/orders/#{notification.order_id}", style: "font-weight: bold;" %>を承認しました
+        </li>
+    <% else %>
+    <% end %>
+  <% end %>
+<% else %>
+<p>通知はありません</p>
+<% end %>
+
+</div>
+</div>

@@ -36,6 +36,7 @@
       </li>
       <li><%= link_to "募集企業を探す", user_offers_path(user_id: current_user.id) %></li>
       <li><%= link_to "オファーを確認する", user_orders_path(user_id: current_user.id) %></li>
+      <li><%= link_to "選考通過一覧", user_pass_offer_applications_path(user_id: current_user.id) %></li>
     </div>
   </div>
 

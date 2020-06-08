@@ -6,7 +6,7 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
           <li class="header-link"><%= link_to user_notifications_path(current_user) do %>
-            <% if unchecked_notifications.any? %>
+            <% if user_unchecked_notifications.any? %>
               <i class="far fa-bell my-notification"></i>
               <i class="fas fa-circle notification-circle" ></i>
             <% else %>
@@ -14,12 +14,12 @@
             <% end %>
           <% end %></li>
           <li class="header-link"><%= link_to messages_path do %>
-            <%#<% if unchecked_notifications.any? %>
+            <% if user_message_unchecked_notifications.any? %>
               <i class="far fa-envelope my-message"></i>
-              <i class="far fa-envelope notification-circle" ></i>
-            <%#<% else %>
-              <i class="far fa-envelope message"></i>
-            <%#<% end %>
+              <i class="fas fa-circle notification-circle" ></i>
+            <% else %>
+              <i class="far fa-envelope my-message"></i>
+            <% end %>
           <% end %></li>
           <li class="header-link"><%= link_to "マイページ", user_path(current_user), class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "オファーを確認する", user_orders_path(current_user), class: "btn btn-default" %></li>
@@ -32,12 +32,20 @@
         </div>
          <ul class="nav navbar-nav navbar-right">
           <li class="header-link"><%= link_to requester_index_notifications_path(current_requester) do %>
-            <%#<% if unchecked_notifications.any? %>
+            <% if requester_unchecked_notifications.any? %>
               <i class="far fa-bell my-notification"></i>
               <i class="fas fa-circle notification-circle" ></i>
-            <%#<% else %>
+            <% else %>
               <i class="far fa-bell my-notification"></i>
-            <%#<% end %>
+            <% end %>
+          <% end %></li>
+          <li class="header-link"><%= link_to messages_path do %>
+            <% if requester_message_unchecked_notifications.any? %>
+              <i class="far fa-envelope my-message"></i>
+              <i class="fas fa-circle notification-circle" ></i>
+            <% else %>
+              <i class="far fa-envelope my-message"></i>
+            <% end %>
           <% end %></li>
           <li class="header-link"><%= link_to "タイムライン", requester_path(current_requester), class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "マイページ", requester_path(current_requester), class: "btn btn-default" %></li>
@@ -50,12 +58,20 @@
         </div>
          <ul class="nav navbar-nav navbar-right">
           <li class="header-link"><%= link_to company_index_notifications_path(current_company) do %>
-            <%#<% if unchecked_notifications.any? %>
+            <% if company_unchecked_notifications.any? %>
               <i class="far fa-bell my-notification"></i>
               <i class="fas fa-circle notification-circle" ></i>
-            <%#<% else %>
+            <% else %>
               <i class="far fa-bell my-notification"></i>
-            <%#<% end %>
+            <% end %>
+          <% end %></li>
+          <li class="header-link"><%= link_to messages_path do %>
+            <% if company_message_unchecked_notifications.any? %>
+              <i class="far fa-envelope my-message"></i>
+              <i class="fas fa-circle notification-circle" ></i>
+            <% else %>
+              <i class="far fa-envelope my-message"></i>
+            <% end %>
           <% end %></li>
           <li class="header-link"><%= link_to "タイムライン",company_path(current_company), class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "マイページ",company_path(current_company), class: "btn btn-default" %></li>

@@ -17,6 +17,13 @@ class Companies::OfferApplicationsController < ApplicationController
 
   def show
   	@offer = Offer.find(params[:offer_id])
+    @offer_application = OfferApplication.find(params[:id])
+    if params[:user_id].nil?
+      @room = Room.find_by(company_id: current_company.id,user_id: @offer_application.user.id)
+    else
+      @room = Room.find_by(company_id: current_company.id,user_id: params[:user_id])
+    end
+    @newroom = Room.new
   end
 
   def adoption

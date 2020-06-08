@@ -11,6 +11,4 @@ class Requester < ApplicationRecord
   has_many :users
   has_many :requester_active_notifications, class_name: 'Notification', foreign_key: 'requester_visitor_id', dependent: :destroy
   has_many :requester_passive_notifications, class_name: 'Notification', foreign_key: 'requester_visited_id', dependent: :destroy
-
-
 end

@@ -23,22 +23,23 @@
       </table>
       
       <% case @order.order_status %>
-                <% when "オファー中" then %>
-                <%=  link_to "受諾", user_asset_orders_path(user_id: current_user.id,id: @order.id), method: :patch, class:"btn btn-success"%>
-          <%=  link_to "お断り", user_refuse_orders_path(user_id: current_user.id,id: @order.id), method: :patch, class:"btn btn-danger"%>
-          <% when "受諾" then %>
-              <%=  link_to "キャンセル", user_cansel_orders_path(user_id: current_user.id,id: @order.id), method: :patch, class:"btn btn-danger"%>
-              <% else %>
-              <% end %>
-        <% if @room.present? && @order.order_status = 1 %>
-          <%=  link_to "DM", user_room_path(user_id: current_user.id,id: @room.id), class:"btn btn-primary"%>
-        <% elsif @room.empty? && @order.order_status = 1 %>
-            <%=  form_for @newroom, url: user_rooms_path do |f| %>
-              <%= fields_for @requester do |u| %>
-                <%= u.hidden_field :requester_id, :value=> @order.requester.id %>
-              <% end %>
-              <%= f.submit "DM",class: 'btn btn-primary', style:"margin-right:130px" %>
-            <% end %>
-          <% else %>
+      <% when "オファー中" then %>
+        <%=  link_to "受諾", user_asset_orders_path(user_id: current_user.id,id: @order.id), method: :patch, class:"btn btn-success"%>
+        <%=  link_to "お断り", user_refuse_orders_path(user_id: current_user.id,id: @order.id), method: :patch, class:"btn btn-danger"%>
+      <% when "受諾" then %>
+        <%=  link_to "キャンセル", user_cansel_orders_path(user_id: current_user.id,id: @order.id), method: :patch, class:"btn btn-danger"%>
+      <% else %>
+      <% end %>
+      
+      <% if @room.present? and @order.order_status = 1 %>
+        <%=  link_to "DM", user_room_path(user_id: current_user.id,id: @room.id), class:"btn btn-primary"%>
+      <% elsif @room.empty? and @order.order_status = 1 %>
+        <%=  form_for @newroom, url: user_rooms_path do |f| %>
+          <%= fields_for @requester do |u| %>
+            <%= u.hidden_field :requester_id, :value=> @order.requester.id %>
           <% end %>
+        <%= f.submit "DM",class: 'btn btn-primary', style:"margin-right:130px" %>
+        <% end %>
+      <% else %>
+      <% end %>
     
