@@ -28,7 +28,7 @@
         </ul>
         <% elsif requester_signed_in? %>
         <div class="logo-box navber-brand">
-          <%=link_to image_tag("connety.png", alt:"Connety", width:"280px", height:"80px"), "#" %>
+          <%=link_to image_tag("connety.png", alt:"Connety", width:"280px", height:"80px"), requesters_path %>
         </div>
          <ul class="nav navbar-nav navbar-right">
           <li class="header-link"><%= link_to requester_index_notifications_path(current_requester) do %>
@@ -39,7 +39,7 @@
               <i class="far fa-bell my-notification"></i>
             <% end %>
           <% end %></li>
-          <li class="header-link"><%= link_to messages_path do %>
+          <li class="header-link"><%= link_to requester_requester_message_path(current_requester) do %>
             <% if requester_message_unchecked_notifications.any? %>
               <i class="far fa-envelope my-message"></i>
               <i class="fas fa-circle notification-circle" ></i>
@@ -47,14 +47,14 @@
               <i class="far fa-envelope my-message"></i>
             <% end %>
           <% end %></li>
-          <li class="header-link"><%= link_to "タイムライン", requester_path(current_requester), class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "タイムライン", requesters_path, class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "マイページ", requester_path(current_requester), class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "ユーザー一覧", requester_requester_strengths_path(current_requester), class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "ログアウト", destroy_requester_session_path, method: :delete, class: "btn btn-default" %></li>
         </ul>
         <% elsif company_signed_in? %>
         <div class="logo-box navber-brand">
-          <%=link_to image_tag("connety.png", alt:"Connety", width:"280px", height:"80px"), "#" %>
+          <%=link_to image_tag("connety.png", alt:"Connety", width:"280px", height:"80px"), companies_path %>
         </div>
          <ul class="nav navbar-nav navbar-right">
           <li class="header-link"><%= link_to company_index_notifications_path(current_company) do %>
@@ -65,7 +65,7 @@
               <i class="far fa-bell my-notification"></i>
             <% end %>
           <% end %></li>
-          <li class="header-link"><%= link_to messages_path do %>
+          <li class="header-link"><%= link_to company_company_message_path(current_company) do %>
             <% if company_message_unchecked_notifications.any? %>
               <i class="far fa-envelope my-message"></i>
               <i class="fas fa-circle notification-circle" ></i>
@@ -73,7 +73,7 @@
               <i class="far fa-envelope my-message"></i>
             <% end %>
           <% end %></li>
-          <li class="header-link"><%= link_to "タイムライン",company_path(current_company), class: "btn btn-default" %></li>
+          <li class="header-link"><%= link_to "タイムライン",companies_path, class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "マイページ",company_path(current_company), class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "ユーザー一覧", company_company_strengths_path(current_company), class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "ログアウト", destroy_company_session_path, method: :delete, class: "btn btn-default" %></li>

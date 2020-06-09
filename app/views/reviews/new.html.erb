@@ -1,14 +1,14 @@
 <div class="row">
   <div class="col-xs-8 col-xs-offset-4">
     <div class="sign_up">
-      <mark>新規振り返り</mark>
+      <h4><mark>新規振り返り</mark></h4>
     </div>
 
     <%= form_for @review, url: new_user_review_path do |f| %>
       
       <table border="0">
         <tr style="height:70px">
-          <th class="form">今日のテーマ</th>
+          <th style="width:150px">今日のテーマ</th>
           <td>
             <% if @reviews.nil? %>
             　<p>登録がありません</p>

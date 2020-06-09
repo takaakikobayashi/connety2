@@ -95,12 +95,11 @@
 
       <% if @room.present? %>
         <%=  link_to "DM", user_company_room_path(user_id: current_user.id,id: @room.id), class:"btn btn-primary"%>
-      <% elsif @room.empty? %>
+      <% else %>
         <%=  form_for @newroom, url: user_company_rooms_path(current_user) do |f| %>
           <%= fields_for @company do |u| %>
             <%= u.hidden_field :company_id, :value=> @offer.company.id %>
           <% end %>
         <%= f.submit "DM",class: 'btn btn-primary', style:"margin-right:130px" %>
         <% end %>
-      <% else %>
       <% end %>

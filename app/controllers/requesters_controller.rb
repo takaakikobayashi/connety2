@@ -1,5 +1,11 @@
 class RequestersController < ApplicationController
   def index
+    @categories = Category.all
+    if params["category_id"].nil?
+      @scholastic_records = ScholasticRecord.all.page(params[:page]).per(30)
+    else
+      @scholastic_records = ScholasticRecord.where(category_id: params["category_id"]).page(params[:page]).per(30)
+    end
   end
 
   def edit
@@ -8,13 +14,6 @@ class RequestersController < ApplicationController
 
   def show
     @orders = Order.where(progress_status: 1)
-    if params[:user_id].nil?
-      @order = Order.find(params[:id])
-      @room = Room.find_by(requester_id: current_requester.id,user_id: @order.user.id)
-    else
-      @room = Room.find_by(requester_id: current_requester.id,user_id: params[:user_id])
-    end
-    @newroom = Room.new
   end
 
   def update

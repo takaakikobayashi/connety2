@@ -1,9 +1,10 @@
-<div class="edit-title">
-  <mark style="font-size: 20px;">登録情報</mark>
+<div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+
+<div class="o-index">
+  <h4><mark>登録情報</mark></h4>
 </div>
 
-  <div class="row">
-    <div class="col-xs-5">
   	  <%= form_for @requester, url: requester_path(current_requester.id) do |f| %>
   	  <table class="margin-30">
         <tr style="height:70px">

@@ -1,4 +1,13 @@
 class CompaniesController < ApplicationController
+  def index
+    if params["category_id"].nil?
+      @scholastic_records = ScholasticRecord.all.page(params[:page]).per(30)
+    else
+      @scholastic_records = ScholasticRecord.where(category_id: params["category_id"]).page(params[:page]).per(30)
+    end
+    @categories = Category.all
+  end
+  
   def edit
     @company = Company.find(params[:id])
   end

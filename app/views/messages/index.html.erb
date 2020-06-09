@@ -1,3 +1,10 @@
+<div class="m-index">
+<h4><mark>発注者</mark></h4>
+</div>
+
+<% if @orders.empty? %>
+<p>現在やりとりしている発注者はありません</p>
+<% else %>
 <table class="table table-bordered">
       <tr>
     	<th>相手</th>
@@ -14,7 +21,14 @@
     	</tr>
       <% end %>
     </table>
+    <% end %>
+<div class="m-index">
+    <h4><mark>求人企業</mark></h4>
+  </div>
 
+<% if @offer_applications.empty? %>
+<p>現在やりとりしている求人企業はありません</p>
+<% else %>
     <table class="table table-bordered">
       <tr>
       <th>相手</th>
@@ -31,3 +45,4 @@
       </tr>
       <% end %>
     </table>
+    <% end %>

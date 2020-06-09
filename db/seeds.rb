@@ -77,8 +77,8 @@ Requester.create!(
    postal_code: '1111111',
    address: '東京都台東区',
    phone_number: '07011111111',
-   password: 'requester1',
-   password_confirmation:'requester1'
+   password: 'requester11',
+   password_confirmation:'requester11'
 )
 
 Company.create!(
@@ -88,8 +88,8 @@ Company.create!(
    address: '東京都台東区',
    phone_number: '07011111111',
    is_active: true,
-   password: 'company1',
-   password_confirmation:'company1'
+   password: 'company11',
+   password_confirmation:'company11'
 )
 
 Category.create!(

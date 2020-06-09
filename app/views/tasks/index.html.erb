@@ -1,6 +1,10 @@
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
 
+    <div class="task-index">
+      <h4><mark>タスク一覧</mark></h4>
+    </div>
+
     <%# 新規タスク作成 %>
     <%= form_for @newtask, url: user_tasks_path do |f| %>
 
@@ -21,32 +25,35 @@
       </div>
 
     <% end %>
-
-    <%=link_to "完了済みのタスク一覧", user_tasks_show_path(user_id: params[:user_id]),class: "btn btn-primary", style:"margin-right:30px" %>
+    
+    <span class="complete">
+      <%=link_to "完了済みのタスク一覧", user_tasks_show_path(user_id: params[:user_id]),class: "btn btn-primary", style:"margin-right:30px" %>
+    </span>
 
     <%# タスク一覧 %>
+    <% if @tasks.empty? %>
+<p>現在未完了のタスクはありません</p>
+<% else %>
     <table class="table table-bordered">
       <tr>
-    	<th>タスク名</th>
-    	<th>タスク期日</th>
-    	<th>編集、削除</th>
+    	  <th>タスク名</th>
+    	  <th>タスク期日</th>
+    	  <th>編集・削除</th>
         <th>完了</th>
       </tr>
       <% @tasks.each do |task| %>
-        <%# 未完了タスクのみを表示 %>
-        <% if task.progress_status? %>
     	<tr>
     	  <td><%= task.name %></td>
     	  <td><%= task.deadline %></td>
     	  <td>
-            <%=link_to "編集", edit_user_task_path(user_id: params[:user_id],id: task.id),class: "btn btn-primary", style:"margin-right:30px" %>
-            <%= link_to "削除", user_task_path(user_id: params[:user_id],id: task.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
-          </td>
-          <td><%= link_to "完了", user_complete_task_path(user_id: params[:user_id],id: task.id), method: :patch,class: "btn btn-success" %></td>
+          <%=link_to "編集", edit_user_task_path(user_id: params[:user_id],id: task.id),class: "btn btn-primary", style:"margin-right:30px" %>
+          <%= link_to "削除", user_task_path(user_id: params[:user_id],id: task.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
+        </td>
+        <td><%= link_to "完了", user_complete_task_path(user_id: params[:user_id],id: task.id), method: :patch,class: "btn btn-success" %></td>
     	</tr>
-        <% end %>
       <% end %>
     </table>
+    <% end %>
 
   </div>
 </div>

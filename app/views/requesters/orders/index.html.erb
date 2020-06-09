@@ -1,3 +1,11 @@
+<div class="o-index">
+<h4><mark>発注履歴一覧</mark></h4>
+</div>
+
+
+<% if @orders.empty? %>
+<p>現在発注中のお仕事はありません</p>
+<% else %>
     <table class="table table-bordered">
     	<tr>
     		<th>発注日</th>
@@ -12,9 +20,10 @@
     		<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
     		<td><%= order.user.full_name %></td>
     		<td><%= order.request_content %></td>
-            <td><%= order.request_detail %></td>
-            <td><%= order.cost %></td>
+            <td><%=  link_to "詳細", requester_show_orders_path(requester_id: current_requester.id, id: order.id), class:"btn btn-success"%></td>
+            <td><%= order.cost %>円</td>
             <td><%= order.progress_status %></td>
     	</tr>
         <% end %>
     </table>
+    <% end %>

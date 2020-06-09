@@ -1,14 +1,14 @@
 <div class="row">
   <div class="col-xs-8 col-xs-offset-4">
     <div class="sign_up">
-      <h3><mark>目標新規登録</mark></h3>
+      <h4><mark>目標新規登録</mark></h4>
     </div>
 
     <%= form_for @setting_goal, url: new_user_setting_goal_path do |f| %>
       
       <table border="0">
         <tr style="height:70px">
-          <th class="form">目標</th>
+          <th style="width:200px">目標</th>
           <td>
             <% f.label :target %>
             <%= f.text_field :target, autofocus: true, autocomplete: "target", class: "form-control" %>
@@ -19,7 +19,7 @@
           <th>目標達成のための懸念点</th>
           <td>
             <% f.label :concern %>
-            <%= f.text_field :concern, autofocus: true, autocomplete: "concern", class: "form-control" %>
+            <%= f.text_area :concern, autofocus: true, autocomplete: "concern", class: "form-control" %>
           </td>
         </tr>
 
@@ -27,7 +27,7 @@
           <th>コミットメント</th>
           <td>
             <% f.label :commitment %>
-            <%= f.text_field :commitment, autofocus: true, autocomplete: "commitment", class: "form-control" %>
+            <%= f.text_area :commitment, autofocus: true, autocomplete: "commitment", class: "form-control" %>
           </td>
         </tr>
 

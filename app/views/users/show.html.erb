@@ -4,7 +4,7 @@
     <%# プロフィール欄　%>
     <div class="prof">
       <div class="image-box">
-        <%= attachment_image_tag @user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'80x80' %>
+        <%= attachment_image_tag @user, :image, :fill, 100, 100, format: "jpg", fallback: "no-image.jpg", size:'100x100' %>
       </div>
       <div>
         <li class="title">ユーザーネーム</li>
@@ -12,43 +12,49 @@
       	<li class="title">総学習時間</li>
       	<li><%= @total_h_time %>時間<%= @total_m_time %>分</li>
       </div>
-      <%= link_to "登録情報編集", edit_user_path(params[:id]), class: 'btn btn-success'%>
+      <% if @user == current_user %>
+        <%= link_to "登録情報編集", edit_user_path(params[:id]), class: 'btn btn-success'%>
+      <% end %>
     </div>
 
     <%# リンクボックス　%>
     <div class="link-box">
-      <li><%= link_to "問題解決記録", user_problem_solutions_path(user_id: params[:id]) %></li>
-      <li><%= link_to "タスク管理", user_tasks_path(user_id: params[:id]) %></li>
-      <li><%= link_to "日々の振り返り", user_reviews_path(user_id: params[:id]) %></li>
-      <li>
-        <% if current_user.setting_goals.none? %>
-          <%= link_to "目標新規登録", new_user_setting_goal_path(user_id: params[:id]) %>
-        <% else %>
-          <%= link_to "目標確認", user_setting_goals_show_path(user_id: params[:id]) %>
-        <% end %>
-      </li>
-      <li>
-        <% if current_user.strengths.none? %>
-          <%= link_to "自己PRを作成する", new_user_strength_path(user_id: params[:id]) %>
-        <% else %>
-          <%= link_to "自己PRを確認する", user_strengths_show_path(user_id: params[:id]) %>
-        <% end %>
-      </li>
-      <li><%= link_to "募集企業を探す", user_offers_path(user_id: current_user.id) %></li>
-      <li><%= link_to "オファーを確認する", user_orders_path(user_id: current_user.id) %></li>
-      <li><%= link_to "選考通過一覧", user_pass_offer_applications_path(user_id: current_user.id) %></li>
+      <% if @user == current_user %>
+        <li><%= link_to "問題解決記録", user_problem_solutions_path(user_id: params[:id]) %></li>
+        <li><%= link_to "タスク管理", user_tasks_path(user_id: params[:id]) %></li>
+        <li><%= link_to "日々の振り返り", user_reviews_path(user_id: params[:id]) %></li>
+        <li>
+          <% if @user.setting_goals.none? %>
+            <%= link_to "目標新規登録", new_user_setting_goal_path(user_id: params[:id]) %>
+          <% else %>
+            <%= link_to "目標確認", user_setting_goals_show_path(user_id: params[:id]) %>
+          <% end %>
+        </li>
+        <li>
+          <% if @user.strengths.none? %>
+            <%= link_to "自己PRを作成する", new_user_strength_path(user_id: params[:id]) %>
+          <% else %>
+            <%= link_to "自己PRを確認する", user_strengths_show_path(user_id: params[:id]) %>
+          <% end %>
+        </li>
+        <li><%= link_to "募集企業を探す", user_offers_path(user_id: current_user.id) %></li>
+        <li><%= link_to "オファーを確認する", user_orders_path(user_id: current_user.id) %></li>
+        <li><%= link_to "選考通過一覧", user_pass_offer_applications_path(user_id: current_user.id) %></li>
+      <% else %>
+      <% end %>
     </div>
   </div>
 
   <div class="col-xs-8">
   	<%# 今日のテーマ、目標 %>
+    <% if @user == current_user %>
   	<table border="0", class="top">
   	  <tr>
   	    <th class="col-xs-6">目標</th>
         <th class="col-xs-6">今日のテーマ</th>
       </tr>
       <tr>
-        <% if @setting_goal.target.nil? %>
+        <% if @setting_goal.nil? %>
           <td>登録がありません</td>
         <% else %>
   	      <td><%= @setting_goal.target %></td>
@@ -74,28 +80,31 @@
       <% end %>
       <% end %>
     </div>
+    <% else %>
+    <% end %>
 
     <%# グラフボックス%>
-  <h3><mark>学習記録</mark></h3>
+    <div>
+  <h4><mark>学習記録</mark></h4>
   <canvas id="myBarChart"></canvas>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 
   <script>
-    function getDate(day) {
+    <%#function getDate(day) {
     var date = new Date();
     date.setDate(date.getDate() - day);
     var year  = date.getFullYear();
     var month = date.getMonth() + 1;
     var day   = date.getDate();
     return String(year) + "-" + String(month) + "-" + String(day);
-    }
+    }%>
 
 
     var ctx = document.getElementById("myBarChart");
     var stackedBar = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: [getDate(6), getDate(5), getDate(4), getDate(3), getDate(2), getDate(1), getDate(0)],
+      labels: gon.dates<%#[getDate(6), getDate(5), getDate(4), getDate(3), getDate(2), getDate(1), getDate(0)]%>,
       datasets: [
         {
           label: 'プログラミング',
@@ -132,12 +141,16 @@
     }
 });
   </script>
+</div>
 
   </div>
 
   <span id="back">
+    <% if @user == current_user %>
     <%= link_to new_user_scholastic_record_path(user_id: params[:id]) do %>
       <i class="fas fa-edit my-record"></i>
+    <% end %>
+    <% else %>
     <% end %>
   </span>
 
