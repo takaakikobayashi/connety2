@@ -1,6 +1,10 @@
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
 
+<div class="m-index">
+<h4><mark>通知</mark></h4>
+</div>
+<div class="n-index">
 <% if @notifications.exists? %>
   <% @notifications.each do |notification| %>
     <% case notification.action %>
@@ -39,8 +43,9 @@
     <% end %>
   <% end %>
 <% else %>
-<p>通知はありません</p>
+<p style="text-align: center">通知はありません</p>
 <% end %>
+</div>
 
 </div>
 </div>

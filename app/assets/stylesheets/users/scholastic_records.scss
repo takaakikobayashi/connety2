@@ -66,8 +66,13 @@
 .record {
 	float: left;
 }
+.s-record {
+	margin-left: 100px;
+	margin-top: -70px;
+}
 .list {
 	display: flex;
+	color: black;
 }
 .list p {
 	text-decoration: underline;
@@ -83,6 +88,7 @@
 	padding-top: 10px;
 	margin-left: 10px;
 	border-bottom: 0.1px solid;
+	color: black;
 }
 .time {
 	display: flex;
@@ -100,5 +106,26 @@
 	}
 }
 .comment-entry {
-	float: left;
+	margin-left: 200px;
+	margin-top: -80px;
+}
+
+.comment-count {
+	color: black;
+}
+.s-comment {
+	color: black;
+	p {
+	margin-left: 30px;
+	margin-top: -40px;
+	}
+}
+.post-meta-top {
+	margin-top: 30px;
+}
+.comment {
+    margin-bottom: 80px;
+    li {
+	list-style: none;
+	}
 }

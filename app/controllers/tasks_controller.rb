@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   def index
     @newtask = Task.new
-    @tasks = Task.all.order(created_at: "DESC")
+    @tasks = Task.where(progress_status: true).order(created_at: "DESC")
   end
 
   def show

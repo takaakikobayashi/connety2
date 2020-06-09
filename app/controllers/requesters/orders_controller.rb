@@ -16,6 +16,17 @@ class Requesters::OrdersController < ApplicationController
   	end
   end
 
+  def show
+    @order = Order.find(params[:id])
+    if params[:user_id].nil?
+      @order = Order.find(params[:id])
+      @room = Room.find_by(requester_id: current_requester.id,user_id: @order.user.id)
+    else
+      @room = Room.find_by(requester_id: current_requester.id,user_id: params[:user_id])
+    end
+    @newroom = Room.new
+  end
+
   def index
   	@orders = Order.all.order(created_at: "DESC")
   end

@@ -1,14 +1,14 @@
 <div class="row">
   <div class="col-xs-8 col-xs-offset-4">
     <div class="sign_up">
-      <h3><mark>自己PR新規登録</mark></h3>
+      <h4><mark>自己PR新規登録</mark></h4>
     </div>
 
     <%= form_for @strength, url: new_user_strength_path do |f| %>
       
       <table border="0">
         <tr style="height:70px">
-          <th class="form">名前</th>
+          <th style="width:150px">名前</th>
           <td>
             <%= current_user.last_name %>
             <%= current_user.first_name %>

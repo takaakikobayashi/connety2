@@ -1,0 +1,64 @@
+<div class="container">
+
+<div class="row">
+  <div class="sidebar__item--fixed">
+  <div class="col-xs-2 col-xs-offset-1">
+
+    <%# リンクボックス　%>
+    <div class="link-box">
+      <li><%= link_to "問題解決記録", "#" %></li>
+      <li><%= link_to "タスク管理", "#" %></li>
+      <li><%= link_to "日々の振り返り", "#" %></li>
+      <li>
+      </li>
+      <li>
+      </li>
+      <li><%= link_to "募集企業を探す", "#" %></li>
+      <li><%= link_to "オファーを確認する", "#" %></li>
+    </div>
+  </div>
+</div>
+
+  <div class="col-xs-7">
+    <%# タイムライン %>
+    <span id="scholastic_records">
+        <div class="scholastic_record">
+            <% @scholastic_records.each do |scholastic_record| %>
+            <div class="user">
+              <%= attachment_image_tag scholastic_record.user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'40x40' %><br>
+              <%= link_to user_path(scholastic_record.user.id) do %>
+                <%= scholastic_record.user.user_name %>
+              <% end %>
+            </div>
+            <div class="r-record">
+                  <div class="list">
+                    <span><p>学習内容</p>
+                    <%= scholastic_record.learning_content %></span>
+                    <span><p id="detail">学習詳細</p>
+                    <%= scholastic_record.learning_detail %></span>
+                    <span><p>学習時間</p>
+                    <%= scholastic_record.learning_time %>時間
+                    <%= scholastic_record.learning_time_min %>分</span>
+                  </div>
+              </div>
+            <% end %>
+        </div>
+        </span>
+        <div class="paginate-tag">
+          <%= paginate @scholastic_records %>
+        </div>
+        </div>
+        <div class="sidebar__item--fixed">
+        <div class="col-xs-2">
+          <%# カテゴリボックス　%>
+    <div class="category">
+      <p><%= link_to "全ジャンル", requesters_path %></p>
+      <% @categories.each do |category| %>
+      <li><%= link_to category.name, requesters_path(category_id: category.id) %></li>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+</div>
+</div>

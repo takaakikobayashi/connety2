@@ -1,14 +1,11 @@
-<div class="mypage-title">
-  <mark style="font-size: 20px;">マイページ</mark>
-</div>
-
 <div class="row">
-  <div class="col-xs-7">
-    <div>
-      <h1 class="main-title">登録情報</h1>
-      <%=  link_to "編集する", edit_requester_path(current_requester.id), class:"btn btn-primary" %>
-      <%=  link_to "パスワードを変更する", "#", class:"btn btn-primary",style:"margin-left:10px;" %>
+
+  <div class="col-xs-4">
+    <h4 class="edit-title"><mark>登録情報</mark></h4>
+    <div class="e-link">
+      <%=  link_to "編集する", edit_requester_path(current_requester.id), class:"btn btn-success" %>
     </div>
+    
     <table class="table table-bordered">
       <tr>
         <th>名前</th>
@@ -50,18 +47,23 @@
         <td>
           <%= current_requester.phone_number %>
         </td>
-      </tr>
-
-      
+      </tr>      
     </table>
-    <div>
-      <h1 class="main-title" style="margin-right:26px;">発注履歴確認</h1>
-      <%=  link_to "一覧を見る", requester_index_orders_path(current_requester.id), class:"btn btn-primary"%>
+  </div>
+
+  <div class="col-xs-8">
+      <h4 class="main-title" style="margin-right:26px;"><mark>発注履歴確認</mark></h4>
+      <div class="e-link">
+      <%=  link_to "一覧を見る", requester_index_orders_path(current_requester.id), class:"btn btn-success"%>
     </div>
 
     <div>
-      <h1 class="main-title">発注中の仕事</h1>
+      <h4 class="main-title"><mark>発注中の仕事</mark></h4>
     </div>
+
+    <% if @orders.empty? %>
+    <p>現在発注中のお仕事はありません</p>
+    <% else %>
     <table class="table table-bordered">
     	<tr>
     		<th>発注相手</th>
@@ -70,27 +72,14 @@
     		<th>依頼額</th>
     		<th>進捗ステータス</th>
         <th></th>
-        <th></th>
     	</tr>
       <% @orders.each do |order| %>
     	<tr>
     		<td><%= order.user.full_name %></td>
     		<td><%= order.request_content %></td>
-    		<td><%= order.request_detail %></td>
-    		<td><%= order.cost %></td>
+    		<td><%=  link_to "詳細", requester_show_orders_path(requester_id: current_requester.id, id: order.id), class:"btn btn-success"%></td>
+    		<td><%= order.cost %>円</td>
     		<td><%= order.progress_status %></td>
-        <td>
-          <% if @room.present? %>
-            <%=  link_to "DM", requester_show_rooms_path(requester_id: current_requester.id,id: @room.id), class:"btn btn-primary"%>
-          <% else %>
-            <%=  form_for @newroom, url: requester_create_rooms_path(requester_id: current_requester.id) do |f| %>
-              <%= fields_for @user do |u| %>
-                <%= u.hidden_field :user_id, :value=> order.user.id %>
-              <% end %>
-              <%= f.submit "DM",class: 'btn btn-primary', style:"margin-right:130px" %>
-            <% end %>
-          <% end %>
-        </td>
         <td>
           <%=  link_to "完了", requester_complete_orders_path(requester_id: current_requester.id,id: order.id), method: :patch, class:"btn btn-success"%>
           <%=  link_to "破断", requester_delete_orders_path(requester_id: current_requester.id,id: order.id), method: :patch, class:"btn btn-danger"%>
@@ -98,5 +87,7 @@
     	</tr>
       <% end %>
     </table>
+    <% end %> 
   </div>
+
 </div>

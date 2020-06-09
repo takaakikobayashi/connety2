@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-8 col-xs-offset-4">
     <div class="sign_up">
-      <h3><mark>学習記録投稿</mark></h3>
+      <h4><mark>学習記録投稿</mark></h4>
     </div>      
 
     <%= form_for @scholastic_record, url: new_user_scholastic_record_path do |f| %>
@@ -9,7 +9,7 @@
       
       <table border="0">
         <tr style="height:70px">
-          <th class="form">カテゴリ</th>
+          <th style="width:150px">カテゴリ</th>
           <td>
             <% f.label :category_id %>
             <%= f.collection_select :category_id, Category.all, :id, :name, prompt: "カテゴリを選択してください", autofocus: true, autocomplete: "category_id", class: "form-control" %>

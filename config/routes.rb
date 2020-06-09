@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   end
   get "companies/:company_id/rooms/:id"  => "companies/rooms#show", as: "company_show_rooms"
   post "companies/:company_id/rooms/:id"  => "companies/rooms#create", as: "company_create_rooms"
-  resources :companies, only:[:show, :edit, :update] do
+  resources :companies, only:[:index, :show, :edit, :update] do
     get "notifications"  => "companies/notifications#index", as: "index_notifications"
     get "offer/:offer_id/offer_applications"  => "companies/offer_applications#index", as: "offer_applications"
     post "offer/:offer_id/offer_applications/new"  => "companies/offer_applications#create", as: "create_offer_applications"
@@ -66,22 +66,24 @@ Rails.application.routes.draw do
   	get "users/:user_id/problem_solutions"  => "companies/problem_solutions#index", as: "company_problem_solutions"
     get "users/strengths"  => "companies/strengths#index", as: "company_strengths"
     get "users/:user_id/strengths"  => "companies/strengths#show", as: "company_strength"
+    get "messages"  => "companies/messages#index", as: "company_message"
   end
   get "requesters/:requester_id/rooms/:id"  => "requesters/rooms#show", as: "requester_show_rooms"
   post "requesters/:requester_id/rooms/:id"  => "requesters/rooms#create", as: "requester_create_rooms"
-  resources :requesters, only:[:show, :edit, :update] do
+  resources :requesters, only:[:index, :show, :edit, :update] do
   	resources :orders, only:[:destroy]
     get "notifications"  => "requesters/notifications#index", as: "index_notifications"
     get "orders"  => "requesters/orders#index", as: "index_orders"
     get "users/:user_id/orders/new"  => "requesters/orders#new", as: "new_orders"
     post "users/:user_id/orders/new"  => "requesters/orders#create", as: "create_orders"
     get "orders/:id/complete"  => "requesters/orders#complete", as: "complete_orders"
-    patch "orders/:id/show"  => "requesters/orders#show", as: "show_orders"
+    get "orders/:id/show"  => "requesters/orders#show", as: "show_orders"
     patch "orders/:id/delete"  => "requesters/orders#delete", as: "delete_orders"
     get "users/:user_id/reviews"  => "requesters/reviews#index", as: "requester_reviews"
     get "users/:user_id/problem_solutions"  => "requesters/problem_solutions#index", as: "requester_problem_solutions"
     get "users/strengths"  => "requesters/strengths#index", as: "requester_strengths"
     get "users/:user_id/strengths"  => "requesters/strengths#show", as: "requester_strength"
+    get "messages"  => "requesters/messages#index", as: "requester_message"
   end
   patch "users/:id/edit" => "users#update"
   get "users/:id/delete"  => "users#delete", as: "delete_user"
