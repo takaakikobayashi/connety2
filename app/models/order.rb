@@ -8,7 +8,7 @@ class Order < ApplicationRecord
 
 	def create_requester_notification_order!(current_user, order_id)
     notification = current_user.active_notifications.new(
-    order_id: order_id,
+        order_id: order_id,
         requester_visited_id: requester_id,
         action: 'order'
       )

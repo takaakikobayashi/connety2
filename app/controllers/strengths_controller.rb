@@ -4,7 +4,7 @@ class StrengthsController < ApplicationController
   end
 
   def show
-  	@strengths = Strength.find(1)
+  	@strengths = Strength.find_by(user_id: current_user.id)
   end
 
   def edit

@@ -5,9 +5,11 @@
       <h4><mark>振り返り一覧</mark></h4>
     </div>
 
+<% if @user == current_user %>
     <div class="actions">
       <%=link_to "今日の振り返りをする", new_user_review_path(current_user.id),class: "btn btn-success", style:"margin: 30px" %>
     </div>
+    <% end %>
 
 <% if @reviews.empty? %>
 <p>現在振り返りはありません</p>

@@ -6,7 +6,7 @@ class Requesters::StrengthsController < ApplicationController
 
   def show
   	@user = User.find(params[:user_id])
-  	@strength = Strength.find(1)
+  	@strength = Strength.find_by(user_id: @user.id)
   end
 
   private

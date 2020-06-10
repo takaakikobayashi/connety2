@@ -8,7 +8,7 @@ class OfferApplication < ApplicationRecord
 
 	def create_company_notification_offer!(current_user)
     notification = current_user.active_notifications.new(
-    offer_id: offer_id,
+        offer_id: offer_id,
         company_visited_id: company_id,
         action: 'offer_application'
       )

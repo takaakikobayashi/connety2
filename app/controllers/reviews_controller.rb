@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   def index
   	@reviews = Review.all.order(created_at: "DESC")
+    @user = User.find(params[:user_id])
   end
 
   def new

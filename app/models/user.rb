@@ -31,7 +31,7 @@ class User < ApplicationRecord
     "#{self.last_name} #{self.first_name}"
   end
 
-def create_notification_order!(current_requester, order_id)
+  def create_notification_order!(current_requester, order_id)
     temp = Notification.where(["requester_visitor_id = ? and visited_id = ? and order_id = ? and action = ? ",current_requester.id, order_id, id, 'order'])
     if temp.blank?
       notification = current_requester.requester_active_notifications.new(

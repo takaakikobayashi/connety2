@@ -12,6 +12,9 @@ class ScholasticRecordsController < ApplicationController
     @strengths = Strength.all
     now = Date.today
     @review = Review.find_by(created_at: now.yesterday)
+    total_min = ScholasticRecord.where(user_id: @user.id).sum(:learning_time_min).divmod(60)
+    @total_h_time = ScholasticRecord.where(user_id: @user.id).sum(:learning_time) + total_min[0]
+    @total_m_time = total_min[1]
   end
 
   def show

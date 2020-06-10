@@ -10,15 +10,14 @@ class UsersController < ApplicationController
     now = Date.today
     @reviews = Review.find_by(created_at: now.yesterday)
     if user_signed_in? and current_user.id == @user.id
-    @setting_goal = SettingGoal.find_by(user_id: current_user.id)
+       @setting_goal = SettingGoal.find_by(user_id: current_user.id)
     end
     total_min = ScholasticRecord.where(user_id: @user.id).sum(:learning_time_min).divmod(60)
     @total_h_time = ScholasticRecord.where(user_id: @user.id).sum(:learning_time) + total_min[0]
     @total_m_time = total_min[1]
 
-
-dates = ((now - 6.days)..now).map { |a| [a] }
-gon.dates = dates
+    dates = ((now - 6.days)..now).map { |a| [a] }
+    gon.dates = dates
 
     # NOTE: ここから
     #%task_programing_today = ScholasticRecord.where(user_id: @user.id, category_id: 1, created_date: now).sum(:total_time)
