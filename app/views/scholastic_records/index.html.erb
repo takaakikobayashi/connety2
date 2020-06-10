@@ -11,20 +11,8 @@
       <div class>
         <li class="title">ユーザーネーム</li>
       	<li><%= @user.user_name %></li>
-          <li class="title">今日のテーマ</li>
-          <li><% if @reviews.nil? %>
-          <td>登録がありません</td>
-        <% else %>
-          <td><%= @reviews.theme %></td>
-        <% end %></li>
-        <div class="time">
-      	  <li><span class="title">今日</span><br>
-      	      <%=  %>時間<%=  %>分</li>
-          <li><span class="title">今週</span><br>
-              <%=  %>時間<%=  %>分</li>
-          <li><span class="title">今月</span><br>
-              <%=  %>時間<%=  %>分</li>
-        </div>
+          <li class="title">総学習時間</li>
+          <li><%= @total_h_time %>時間<%= @total_m_time %>分</li>
       </div>
 
       <%= link_to "マイページ", user_path(current_user.id), class: 'btn btn-success'%>

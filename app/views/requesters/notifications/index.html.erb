@@ -1,6 +1,10 @@
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
 
+    <div class="review-index">
+      <h4><mark>通知</mark></h4>
+    </div>
+
 <% if @notifications.exists? %>
   <% @notifications.each do |notification| %>
     <% case notification.action %>

@@ -13,7 +13,7 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @offers = Offer.where(is_active: true)
+    @offers = Offer.where(company_id: current_company.id, is_active: true)
   end
 
   def update

@@ -1,6 +1,6 @@
 class Companies::OffersController < ApplicationController
   def index
-    @offers = Offer.all
+    @offers = Offer.where(company_id: current_company.id)
   end
 
   def new
@@ -48,6 +48,6 @@ class Companies::OffersController < ApplicationController
 
   private
   def offer_params
-    params.require(:offer).permit(:industry, :occupation, :work_location, :appeal_point, :job_description, :working_hour, :salary, :vacation, :welfare, :application_condition, :employment_status)
+    params.require(:offer).permit(:industry, :occupation, :work_location, :appeal_point, :job_description, :working_hour, :salary, :vacation, :welfare, :application_condition, :employment_status, :image, :name)
   end
 end

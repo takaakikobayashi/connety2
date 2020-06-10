@@ -4,7 +4,7 @@ class SettingGoalsController < ApplicationController
   end
 
   def show
-  	@setting_goal = SettingGoal.find(1)
+  	@setting_goal = SettingGoal.find_by(user_id: current_user.id)
   end
 
   def create

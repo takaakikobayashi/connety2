@@ -6,13 +6,6 @@
       <h4><mark>募集企業一覧</mark></h4>
     </div>
 
-  <%# カテゴリボックス　%>
-    <div class="category">
-      <%#<% @categories.each do |category| %>
-      <%#<li><%= link_to category.name, user_scholastic_records_path(user_id: current_user.id,category_id: category.id) %>
-      <%#<% end %>
-    </div>
-
     <% if @offers.empty? %>
     <p style="text-align: center">現在募集企業はありません</p>
     <% else %>
@@ -22,9 +15,9 @@
             <div class="product-index-image">
               <%= attachment_image_tag offer, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'80x80' %>
               <p><%= link_to offer.company.name, user_show_offers_path(user_id: current_user.id,company_id: offer.company_id,id: offer.id) %></p>
+              <p><%= offer.name %></p>
               <p>
               	<%= offer.appeal_point %>
-                  <span style="color:red">評価</span>
               </p>
             </div>
       <% end %>

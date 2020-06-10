@@ -1,29 +1,31 @@
+<div class="container">
 <div class="row">
-  <div class="col-xs-2 col-xs-offset-1">
-<%# カテゴリボックス　%>
-    <div class="category">
-      <%#<% @categories.each do |category| %>
-      <%#<li><%= link_to category.name, user_scholastic_records_path(user_id: current_user.id,category_id: category.id) %></li>
-      <%#<% end %>
+  <div class="col-xs-10 col-xs-offset-1">
+
+    <div class="problem">
+      <h4><mark>登録求人一覧</mark></h4>
     </div>
 
     <div class="col-xs-8">
   	  <%=  link_to "求人新規登録", company_new_offers_path(current_company.id), class:"btn btn-primary"%>
 
+<% if @offers.empty? %>
+<p>現在登録中の求人はありません</p>
+<% else %>
+<div class="product-index-box">
       <% @offers.each do |offer| %>
-          <div class="product-index-box">
             <div class="product-index-image">
               <%= attachment_image_tag offer, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'80x80' %>
-            </div>
-            <div class="product-index-info">
               <p><%= link_to current_company.name, company_show_offers_path(company_id: current_company.id,id: offer.id) %></p>
               <p>
               	<%= offer.appeal_point %>
                   <span style="color:red">評価</span>
               </p>
             </div>
-          </div>
       <% end %>
     </div>
+    <% end %>
   </div>
+</div>
+</div>
 </div>

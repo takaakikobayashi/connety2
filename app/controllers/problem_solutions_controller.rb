@@ -1,6 +1,7 @@
 class ProblemSolutionsController < ApplicationController
   def index
   	@problem_solutions = ProblemSolution.all.order(created_at: "DESC")
+    @user = User.find(params[:user_id])
   end
 
   def new

@@ -41,6 +41,8 @@
         <li><%= link_to "オファーを確認する", user_orders_path(user_id: current_user.id) %></li>
         <li><%= link_to "選考通過一覧", user_pass_offer_applications_path(user_id: current_user.id) %></li>
       <% else %>
+      <li><%= link_to "問題解決一覧", user_problem_solutions_path(user_id: params[:id]) %></li>
+        <li><%= link_to "日々の振り返り一覧", user_reviews_path(user_id: params[:id]) %></li>
       <% end %>
     </div>
   </div>

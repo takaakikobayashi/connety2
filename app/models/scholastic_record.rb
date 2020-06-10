@@ -15,7 +15,7 @@ class ScholasticRecord < ApplicationRecord
     # すでに「いいね」されているか検索
     temp = Notification.where(["visitor_id = ? and visited_id = ? and scholastic_record_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
     # いいねされていない場合のみ、通知レコードを作成
-    if temp.blank?
+      if temp.blank?
       notification = current_user.active_notifications.new(
         scholastic_record_id: id,
         visited_id: user_id,
