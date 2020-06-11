@@ -1,10 +1,11 @@
 <div class="row">
   <div class="col-xs-8 col-xs-offset-3">
+
     <div class="sign_up">
       <h4><mark>新規問題解決</mark></h4>
     </div>
 
-      <%= form_for @problem_solution, url: new_user_problem_solution_path do |f| %>
+    <%= form_for @problem_solution, url: new_user_problem_solution_path do |f| %>
       <%= render "layouts/error_message", title: @problem_solution %>
       
       <table border="0">
@@ -47,14 +48,13 @@
             <%= f.text_area :improvement_point, autofocus: true, autocomplete: "improvement_point", class: "form-control" %>
           </td>
         </tr>
-
       </table>
 
       <div class="actions">
         <%= f.submit "登録", class:"btn btn-success center-block", style:"width:150px" %>
       </div>
       
-      <% end %>
+    <% end %>
       
-    </div>
   </div>
+</div>

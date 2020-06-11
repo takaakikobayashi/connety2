@@ -6,4 +6,10 @@ class Admins::UsersController < ApplicationController
 
   def show
   end
+
+  def delete
+  	user = User.find(params[:id])
+    user.update(is_active: false)
+    redirect_to admins_users_path
+  end
 end

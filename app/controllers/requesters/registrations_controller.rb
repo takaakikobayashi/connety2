@@ -10,9 +10,16 @@ class Requesters::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @requester = Requester.find_by(phone_number: params[:requester][:phone_number])
+    if @requester.nil?
+     super
+   elsif @requester.is_active == false
+    redirect_to home_suspension_path
+  else
+    redirect_to new_requester_session_path
+   end
+ end
 
   # GET /resource/edit
   # def edit

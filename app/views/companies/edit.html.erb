@@ -1,66 +1,65 @@
 <div class="row">
   <div class="col-xs-10 col-xs-offset-1">
 
-<div class="edit-title">
-  <h4><mark>登録情報編集</mark></h4>
-</div>
+    <div class="edit-title">
+      <h4><mark>登録情報編集</mark></h4>
+    </div>
 
-  <div class="row">
-    <div class="col-xs-5">
-  	  <%= form_for @company, url: company_path(current_company.id) do |f| %>
-      <%= render "layouts/error_message", title: @company %>
-  	  <table class="margin-30">
-        <tr style="height:70px">
-            <th>名前</th>
-            <td>
-              <% f.label :name %>
-              <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
-            </td>
-        </tr>
+    <div class="row">
+      <div class="col-xs-5">
+  	    <%= form_for @company, url: company_path(current_company.id) do |f| %>
+          <%= render "layouts/error_message", title: @company %>
+  	      <table class="margin-30">
+            <tr style="height:70px">
+              <th>名前</th>
+              <td>
+                <% f.label :name %>
+                <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+              </td>
+            </tr>
 
-        <tr style="height:70px">
-            <th>郵便番号</th>
-            <td>
-              <% f.label :postal_code %>
-              <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class: "form-control" %>
-            </td>
-        </tr>
+            <tr style="height:70px">
+              <th>郵便番号</th>
+              <td>
+                <% f.label :postal_code %>
+                <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class: "form-control" %>
+              </td>
+            </tr>
 
-        <tr style="height:70px">
-            <th>住所</th>
-            <td>
-              <% f.label :address %>
-              <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "form-control" %>
-            </td>
-        </tr>
+            <tr style="height:70px">
+              <th>住所</th>
+              <td>
+                <% f.label :address %>
+                <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "form-control" %>
+              </td>
+            </tr>
 
-        <tr style="height:70px">
-            <th>メールアドレス</th>
-            <td>
-              <% f.label :email %>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-            </td>
-        </tr>
+            <tr style="height:70px">
+              <th>メールアドレス</th>
+              <td>
+                <% f.label :email %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+              </td>
+            </tr>
 
-        <tr style="height:70px">
-            <th>電話番号(ハイフンなし)</th>
-            <td>
-              <% f.label :phone_number %>
-              <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control" %>
-            </td>
-        </tr> 
+            <tr style="height:70px">
+              <th>電話番号(ハイフンなし)</th>
+              <td>
+                <% f.label :phone_number %>
+                <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control" %>
+              </td>
+            </tr> 
+          </table>
 
-      </table>
-        <div class="button-box margin-30">
-          <%= f.submit '編集内容を保存する',class: 'btn btn-success', style:"margin-right:130px" %>
+          <div class="button-box margin-30">
+            <%= f.submit '編集内容を保存する',class: 'btn btn-success', style:"margin-right:130px" %>
+            <%= link_to "退会する", delete_company_path(current_company), class: 'btn btn-danger'%>
+          </div>
 
-          <%= link_to "退会する", delete_company_path(current_company), class: 'btn btn-danger'%>
+          <%= link_to "戻る", :back %>
+        <% end %>
+      </div>
+    </div>  
 
-        </div>
-        <%= link_to "戻る", :back %>
-    <% end %>
   </div>
-</div>  
-
-</div>
 </div>

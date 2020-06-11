@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get "home/news" => "home#news"
   get "home/offers" => "home#offers"
   get "home/orders" => "home#orders"
+  get "home/suspension" => "home#suspension"
   devise_for :admins, controllers:{
     sessions: "admins/sessions",
     passwords: "admins/passwords",
@@ -37,9 +38,13 @@ Rails.application.routes.draw do
   namespace :admins do
   	get '/', to: "admins/home#top"
     resources :companies, only:[:index]
+    resources :requesters, only:[:index]
     resources :rooms, only:[:index, :show]
     resources :orders, only:[:index, :show]
     resources :users, only:[:index, :show]
+    patch "users/:id"  => "users#delete", as: "delete_user"
+    patch "requesters/:id"  => "requesters#delete", as: "delete_requester"
+    patch "companies/:id"  => "companies#delete", as: "delete_company"
     resources :scholastic_records, only:[:index]
   end
   get "companies/:company_id/rooms/:id"  => "companies/rooms#show", as: "company_show_rooms"

@@ -1,5 +1,6 @@
 class Companies::StrengthsController < ApplicationController
   before_action :authenticate_company!
+  before_action :active_company
   def index
   	@categories = Category.all
   	@users = User.where(learning_status: true).page(params[:page]).per(20)

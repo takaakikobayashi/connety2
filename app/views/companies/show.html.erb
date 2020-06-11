@@ -60,33 +60,33 @@
       </div>
 
       <% if @offers.empty? %>
-      <p>現在募集中の求人はありません</p>
+        <p>現在募集中の求人はありません</p>
       <% else %>
-      <table class="table table-bordered">
-    	<tr>
-    		<th>作成日</th>
-    		<th>仕事内容</th>
-    		<th>募集要件</th>
-    		<th>募集ステータス</th>
-    		<th>応募者一覧</th>
-        <th>募集締め切り</th>
-    	</tr>
-      <% @offers.each do |offer| %>
-    	<tr>
-    		<td><%= offer.created_at.strftime('%Y/%m/%d') %></td>
-    		<td><%= offer.job_description %></td>
-    		<td><%= offer.application_condition %></td>
-    		<td>募集中</td>
-    		<td>
-          <%=  link_to "確認する", company_offer_applications_path(company_id: current_company.id,offer_id: offer.id), class:"btn btn-success"%>
-        </td>
-        <td>
-          <%=  link_to "募集終了", company_delete_offers_path(company_id: current_company.id,id: offer.id), method: :patch, class:"btn btn-danger"%>
-        </td>
-    	</tr>
+        <table class="table table-bordered">
+    	    <tr>
+    		    <th>作成日</th>
+    		    <th>仕事内容</th>
+    		    <th>募集要件</th>
+    		    <th>募集ステータス</th>
+    		    <th>応募者一覧</th>
+            <th>募集締め切り</th>
+    	    </tr>
+          <% @offers.each do |offer| %>
+    	      <tr>
+    		      <td><%= offer.created_at.strftime('%Y/%m/%d') %></td>
+    		      <td><%= offer.job_description %></td>
+    		      <td><%= offer.application_condition %></td>
+    		      <td>募集中</td>
+    		      <td>
+                <%= link_to "確認する", company_offer_applications_path(company_id: current_company.id,offer_id: offer.id), class:"btn btn-success"%>
+              </td>
+              <td>
+                <%= link_to "募集終了", company_delete_offers_path(company_id: current_company.id,id: offer.id), method: :patch, class:"btn btn-danger"%>
+              </td>
+    	      </tr>
+          <% end %>
+        </table>
       <% end %>
-    </table>
-    <% end %>
 
+    </div>
   </div>
-</div>

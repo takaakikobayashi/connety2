@@ -10,9 +10,16 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @company = Company.find_by(phone_number: params[:company][:phone_number])
+    if @company.nil?
+     super
+   elsif @company.is_active == false
+    redirect_to home_suspension_path
+  else
+    redirect_to new_company_session_path
+   end
+ end
 
   # GET /resource/edit
   # def edit

@@ -5,27 +5,25 @@
       <h4><mark>ユーザー一覧</mark></h4>
     </div>
 
-  <div class="col-xs-8">
-    <% if @users.empty? %>
-      <p>現在求職者はいません</p>
+    <div class="col-xs-8">
+      <% if @users.empty? %>
+        <p>現在求職者はいません</p>
       <% else %>
-      <div class="product-index-box">
-    <% @users.each do |user| %>
+        <div class="product-index-box">
+          <% @users.each do |user| %>
             <div class="product-index-image">
               <%= attachment_image_tag user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'80x80' %>
               <p><%= link_to user.user_name, requester_requester_strength_path(requester_id: current_requester.id,user_id: user.id) %></p>
               <p>
               	<% user.strengths.each do |strength| %>
-                <%= strength.appeal_point %>
+                  <%= strength.appeal_point %>
                 <% end %>
-                  <span style="color:red">評価</span>
               </p>
             </div>
-    <% end %>
-  </div>
-</div>
-<% end %>
-</div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
 
-</div>
+  </div>
 </div>

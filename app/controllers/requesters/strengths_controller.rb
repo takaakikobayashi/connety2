@@ -1,5 +1,6 @@
 class Requesters::StrengthsController < ApplicationController
   before_action :authenticate_requester!
+  before_action :active_requester
   def index
   	@categories = Category.all
   	@users = User.where(learning_status: true).page(params[:page]).per(20)

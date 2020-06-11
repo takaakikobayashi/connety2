@@ -34,4 +34,7 @@ class HomeController < ApplicationController
 
   def orders
   end
+
+  def suspension
+  end
 end

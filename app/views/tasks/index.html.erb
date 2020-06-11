@@ -10,15 +10,15 @@
 
       <table border="0">
         <tr>
-        <th class="form">タスク名</th>
-        <td><%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %></td>
-      </tr>
+          <th class="form">タスク名</th>
+          <td><%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %></td>
+        </tr>
 
-      <tr>
-        <th class="form">期日</th>
-        <td><%= f.date_select :deadline, autofocus: true, autocomplete: "deadline", class: "form-control" %></td>
-      </tr>
-    </table>
+        <tr>
+          <th class="form">期日</th>
+          <td><%= f.date_select :deadline, autofocus: true, autocomplete: "deadline", class: "form-control" %></td>
+        </tr>
+      </table>
 
       <div class="newtasks">
         <%= f.submit "登録する", class:"btn btn-success", style:"width:250px" %>
@@ -32,27 +32,27 @@
 
     <%# タスク一覧 %>
     <% if @tasks.empty? %>
-<p>現在未完了のタスクはありません</p>
-<% else %>
-    <table class="table table-bordered">
-      <tr>
-    	  <th>タスク名</th>
-    	  <th>タスク期日</th>
-    	  <th>編集・削除</th>
-        <th>完了</th>
-      </tr>
-      <% @tasks.each do |task| %>
-    	<tr>
-    	  <td><%= task.name %></td>
-    	  <td><%= task.deadline %></td>
-    	  <td>
-          <%=link_to "編集", edit_user_task_path(user_id: params[:user_id],id: task.id),class: "btn btn-primary", style:"margin-right:30px" %>
-          <%= link_to "削除", user_task_path(user_id: params[:user_id],id: task.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
-        </td>
-        <td><%= link_to "完了", user_complete_task_path(user_id: params[:user_id],id: task.id), method: :patch,class: "btn btn-success" %></td>
-    	</tr>
-      <% end %>
-    </table>
+      <p>現在未完了のタスクはありません</p>
+    <% else %>
+      <table class="table table-bordered">
+        <tr>
+    	    <th>タスク名</th>
+    	    <th>タスク期日</th>
+    	    <th>編集・削除</th>
+          <th>完了</th>
+        </tr>
+        <% @tasks.each do |task| %>
+    	  <tr>
+    	    <td><%= task.name %></td>
+    	    <td><%= task.deadline %></td>
+    	    <td>
+            <%=link_to "編集", edit_user_task_path(user_id: params[:user_id],id: task.id),class: "btn btn-primary", style:"margin-right:30px" %>
+            <%= link_to "削除", user_task_path(user_id: params[:user_id],id: task.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
+          </td>
+          <td><%= link_to "完了", user_complete_task_path(user_id: params[:user_id],id: task.id), method: :patch,class: "btn btn-success" %></td>
+    	  </tr>
+        <% end %>
+      </table>
     <% end %>
 
   </div>

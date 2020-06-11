@@ -41,7 +41,7 @@
         <li><%= link_to "オファーを確認する", user_orders_path(user_id: current_user.id) %></li>
         <li><%= link_to "選考通過一覧", user_pass_offer_applications_path(user_id: current_user.id) %></li>
       <% else %>
-      <li><%= link_to "問題解決一覧", user_problem_solutions_path(user_id: params[:id]) %></li>
+        <li><%= link_to "問題解決一覧", user_problem_solutions_path(user_id: params[:id]) %></li>
         <li><%= link_to "日々の振り返り一覧", user_reviews_path(user_id: params[:id]) %></li>
       <% end %>
     </div>
@@ -50,108 +50,98 @@
   <div class="col-xs-8">
   	<%# 今日のテーマ、目標 %>
     <% if @user == current_user %>
-  	<table border="0", class="top">
-  	  <tr>
-  	    <th class="col-xs-6">目標</th>
-        <th class="col-xs-6">今日のテーマ</th>
-      </tr>
-      <tr>
-        <% if @setting_goal.nil? %>
-          <td>登録がありません</td>
-        <% else %>
-  	      <td><%= @setting_goal.target %></td>
-        <% end %>
-        <% if @reviews.nil? %>
-          <td>登録がありません</td>
-        <% else %>
-  	      <td><%= @reviews.theme %></td>
-        <% end %>
-      </tr>
-    </table>
+  	  <table border="0", class="top">
+  	    <tr>
+  	      <th class="col-xs-6">目標</th>
+          <th class="col-xs-6">今日のテーマ</th>
+        </tr>
+        <tr>
+          <% if @setting_goal.nil? %>
+            <td>登録がありません</td>
+          <% else %>
+  	        <td><%= @setting_goal.target %></td>
+          <% end %>
+          <% if @reviews.nil? %>
+            <td>登録がありません</td>
+          <% else %>
+  	        <td><%= @reviews.theme %></td>
+          <% end %>
+        </tr>
+      </table>
 
-    <%# タスクボックス　%>
-    <div class="task">
-      <p>今日までのタスク</p>
-      <% if @tasks.nil? %>
-      <p style="text-align: center">現在未完了タスクはありません</p>
-      <% else %>
-      <% @tasks.each do |task| %>
-        <% if task.progress_status? %> <%# 未完了タスクのみを表示 %>
-          <li><%= task.name %></li>
+      <%# タスクボックス　%>
+      <div class="task">
+        <p>今日までのタスク</p>
+        <% if @tasks.empty? %>
+          <p style="text-align: center">現在未完了タスクはありません</p>
+        <% else %>
+          <% @tasks.each do |task| %>
+            <% if task.progress_status? %> <%# 未完了タスクのみを表示 %>
+              <li><%= task.name %></li>
+            <% end %>
+          <% end %>
         <% end %>
-      <% end %>
-      <% end %>
-    </div>
+      </div>
     <% else %>
     <% end %>
 
     <%# グラフボックス%>
     <div>
-  <h4><mark>学習記録</mark></h4>
-  <canvas id="myBarChart"></canvas>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+      <h4><mark>学習記録</mark></h4>
+        <canvas id="myBarChart"></canvas>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 
-  <script>
-    <%#function getDate(day) {
-    var date = new Date();
-    date.setDate(date.getDate() - day);
-    var year  = date.getFullYear();
-    var month = date.getMonth() + 1;
-    var day   = date.getDate();
-    return String(year) + "-" + String(month) + "-" + String(day);
-    }%>
-
-
-    var ctx = document.getElementById("myBarChart");
-    var stackedBar = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: gon.dates<%#[getDate(6), getDate(5), getDate(4), getDate(3), getDate(2), getDate(1), getDate(0)]%>,
-      datasets: [
-        {
-          label: 'プログラミング',
-          data: gon.data_programing,
-          backgroundColor: "#66CCFF"
-        },{
-          label: '動画編集',
-          data: gon.data_movie,
-          backgroundColor: "#FF6666"
-        },{
-          label: 'デザイン',
-          data: gon.data_design,
-          backgroundColor: "#FFFF66"
-        },{
-          label: 'マーケティング',
-          data: gon.data_marketing,
-          backgroundColor: "#66FF99"
-        },{
-          label: 'その他',
-          data: gon.data_other,
-          backgroundColor: "#FFCCFF"
-        }
-      ]
-    },
-    options: {
-        scales: {
+      <script>
+        var ctx = document.getElementById("myBarChart");
+        var stackedBar = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: gon.dates,
+          datasets: [
+           {
+            label: 'プログラミング',
+            data: gon.data_programing,
+            backgroundColor: "#66CCFF"
+           },{
+            label: '動画編集',
+            data: gon.data_movie,
+            backgroundColor: "#FF6666"
+           },{
+            label: 'デザイン',
+            data: gon.data_design,
+            backgroundColor: "#FFFF66"
+           },{
+            label: 'マーケティング',
+            data: gon.data_marketing,
+            backgroundColor: "#66FF99"
+           },{
+            label: 'その他',
+            data: gon.data_other,
+            backgroundColor: "#FFCCFF"
+           }
+          ]
+        },
+        options: {
+          scales: {
             xAxes: [{
-                stacked: true
+              stacked: true
             }],
             yAxes: [{
-                stacked: true
+              stacked: true
             }]
+          }
         }
-    }
-});
-  </script>
-</div>
+        });
+      </script>
+    </div>
 
   </div>
 
   <span id="back">
     <% if @user == current_user %>
-    <%= link_to new_user_scholastic_record_path(user_id: params[:id]) do %>
-      <i class="fas fa-edit my-record"></i>
-    <% end %>
+      <%= link_to new_user_scholastic_record_path(user_id: params[:id]) do %>
+        <i class="fas fa-edit my-record"></i>
+      <% end %>
     <% else %>
     <% end %>
   </span>

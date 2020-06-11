@@ -1,7 +1,10 @@
 <div class="row">
 
   <div class="col-xs-4">
-    <h4 class="edit-title"><mark>登録情報</mark></h4>
+    <h4 class="edit-title">
+      <mark>登録情報</mark>
+    </h4>
+
     <div class="e-link">
       <%=  link_to "編集する", edit_requester_path(current_requester.id), class:"btn btn-success" %>
     </div>
@@ -52,41 +55,46 @@
   </div>
 
   <div class="col-xs-8">
-      <h4 class="main-title" style="margin-right:26px;"><mark>発注履歴確認</mark></h4>
-      <div class="e-link">
+    <h4 class="main-title" style="margin-right:26px;">
+      <mark>発注履歴確認</mark>
+    </h4>
+
+    <div class="e-link">
       <%=  link_to "一覧を見る", requester_index_orders_path(current_requester.id), class:"btn btn-success"%>
     </div>
 
     <div>
-      <h4 class="main-title"><mark>発注中の仕事</mark></h4>
+      <h4 class="main-title">
+        <mark>発注中の仕事</mark>
+      </h4>
     </div>
 
     <% if @orders.empty? %>
-    <p>現在発注中のお仕事はありません</p>
+      <p>現在発注中のお仕事はありません</p>
     <% else %>
-    <table class="table table-bordered">
-    	<tr>
-    		<th>発注相手</th>
-    		<th>依頼内容</th>
-    		<th>依頼詳細</th>
-    		<th>依頼額</th>
-    		<th>進捗ステータス</th>
-        <th></th>
-    	</tr>
-      <% @orders.each do |order| %>
-    	<tr>
-    		<td><%= order.user.full_name %></td>
-    		<td><%= order.request_content %></td>
-    		<td><%=  link_to "詳細", requester_show_orders_path(requester_id: current_requester.id, id: order.id), class:"btn btn-success"%></td>
-    		<td><%= order.cost %>円</td>
-    		<td><%= order.progress_status %></td>
-        <td>
-          <%=  link_to "完了", requester_complete_orders_path(requester_id: current_requester.id,id: order.id), method: :patch, class:"btn btn-success"%>
-          <%=  link_to "破断", requester_delete_orders_path(requester_id: current_requester.id,id: order.id), method: :patch, class:"btn btn-danger"%>
-        </td>
-    	</tr>
-      <% end %>
-    </table>
+      <table class="table table-bordered">
+    	  <tr>
+    		  <th>発注相手</th>
+    		  <th>依頼内容</th>
+    		  <th>依頼詳細</th>
+    		  <th>依頼額</th>
+    		  <th>進捗ステータス</th>
+          <th></th>
+    	  </tr>
+        <% @orders.each do |order| %>
+    	    <tr>
+    		    <td><%= order.user.full_name %></td>
+    		    <td><%= order.request_content %></td>
+    		    <td><%=  link_to "詳細", requester_show_orders_path(requester_id: current_requester.id, id: order.id), class:"btn btn-success"%></td>
+    		    <td><%= order.cost %>円</td>
+    		    <td><%= order.progress_status %></td>
+            <td>
+              <%=  link_to "完了", requester_complete_orders_path(requester_id: current_requester.id,id: order.id), method: :patch, class:"btn btn-success"%>
+              <%=  link_to "破断", requester_delete_orders_path(requester_id: current_requester.id,id: order.id), method: :patch, class:"btn btn-danger"%>
+            </td>
+    	    </tr>
+        <% end %>
+      </table>
     <% end %> 
   </div>
 

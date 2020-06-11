@@ -1,6 +1,7 @@
 class StrengthsController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user, only: [:new, :edit, :create, :update, :release, :destroy]
+  before_action :active_user
   def new
   	@strength = Strength.new
   end

@@ -5,23 +5,23 @@
       <h4><mark>求人者</mark></h4>
     </div>
 
-<% if @offer_applications.empty? %>
-<p>現在やりとりしている求人者はいません</p>
-<% else %>
-    <table class="table table-bordered">
-      <tr>
-      <th>相手</th>
-        <th>内容</th>
-        <th>詳細</th>
-      </tr>
-      <% @offer_applications.each do |offer_application| %>
-      <tr>
-        <td><%= offer_application.user.full_name %></td>
-        <td><%= offer_application.offer.name %></td>
-          <td><%= link_to "詳細", company_show_offer_applications_path(company_id: current_company.id,offer_id: offer_application.offer.id,id: offer_application.id), class:"btn btn-success"%></td>
-      </tr>
-      <% end %>
-    </table>
+    <% if @offer_applications.empty? %>
+      <p>現在やりとりしている求人者はいません</p>
+    <% else %>
+      <table class="table table-bordered">
+        <tr>
+          <th>相手</th>
+          <th>内容</th>
+          <th>詳細</th>
+        </tr>
+        <% @offer_applications.each do |offer_application| %>
+          <tr>
+            <td><%= offer_application.user.full_name %></td>
+            <td><%= offer_application.offer.name %></td>
+            <td><%= link_to "詳細", company_show_offer_applications_path(company_id: current_company.id,offer_id: offer_application.offer.id,id: offer_application.id), class:"btn btn-success"%></td>
+          </tr>
+        <% end %>
+      </table>
     <% end %>
 
   </div>

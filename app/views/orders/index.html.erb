@@ -6,40 +6,40 @@
     </div>
     
     <% if @orders.empty? %>
-    <p style="text-align: center">現在オファーはありません</p>
+      <p style="text-align: center">現在オファーはありません</p>
     <% else %>
-    <table class="table table-bordered", style="margin-top:30px">
-    	<tr>
-    		<th>受付日</th>
-        <th>オファー相手</th>
-    		<th>オファー内容</th>
-    		<th>オファー額</th>
-        <th>進捗ステータス</th>
-        <th>オファー詳細</th>
-        <th></th>
-    	</tr>
+      <table class="table table-bordered", style="margin-top:30px">
+    	  <tr>
+    		  <th>受付日</th>
+          <th>オファー相手</th>
+    		  <th>オファー内容</th>
+    		  <th>オファー額</th>
+          <th>進捗ステータス</th>
+          <th>オファー詳細</th>
+          <th></th>
+    	  </tr>
         <% @orders.each do |order| %>
-    	<tr>
-    		<td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-    		<td><%= order.requester.name %></td>
-    		<td><%= order.request_content %></td>
+    	    <tr>
+    		    <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+    		    <td><%= order.requester.name %></td>
+    		    <td><%= order.request_content %></td>
             <td><%= order.cost %>円</td>
             <td><%= order.progress_status %></td>
-            <td><%=  link_to "詳細", user_order_path(user_id: current_user.id,id: order.id), class:"btn btn-success"%></td>
-                <td>
-                <% case order.order_status %>
-                <% when "オファー中" then %>
+            <td><%= link_to "詳細", user_order_path(user_id: current_user.id,id: order.id), class:"btn btn-success"%></td>
+            <td>
+              <% case order.order_status %>
+              <% when "オファー中" then %>
                 <%=  link_to "受諾", user_asset_orders_path(user_id: current_user.id,id: order.id), method: :patch, class:"btn btn-success"%>
-          <%=  link_to "お断り", user_refuse_orders_path(user_id: current_user.id,id: order.id), method: :patch, class:"btn btn-danger"%>
-          <% when "受諾" then %>
-              <%=  link_to "キャンセル", user_cansel_orders_path(user_id: current_user.id,id: order.id), method: :patch, class:"btn btn-danger"%>
+                <%=  link_to "お断り", user_refuse_orders_path(user_id: current_user.id,id: order.id), method: :patch, class:"btn btn-danger"%>
+              <% when "受諾" then %>
+                <%=  link_to "キャンセル", user_cansel_orders_path(user_id: current_user.id,id: order.id), method: :patch, class:"btn btn-danger"%>
               <% else %>
-              <p>取引は中止になりました</p>
+                <p>取引は中止になりました</p>
               <% end %>
-              </td>
-    	</tr>
+            </td>
+    	    </tr>
         <% end %>
-    </table>
+      </table>
     <% end %>
 
   </div>

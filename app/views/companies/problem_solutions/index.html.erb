@@ -1,7 +1,6 @@
-
 <div class="requruit">
-      <h4><mark>問題解決一覧</mark></h4>
-    </div>
+  <h4><mark>問題解決一覧</mark></h4>
+</div>
 
         <table class="table table-bordered">
     	  <tr>
@@ -11,13 +10,13 @@
             <th>どのようにすれば</th>
             <th>解決策</th>
     	  </tr>
-        <% @problem_solutions.each do |problem_solution| %>
-    	  <tr>
-    		<td><%= problem_solution.created_at.strftime('%Y/%m/%d') %></td>
-    		<td><%= problem_solution.worked %></td>
-    		<td><%= problem_solution.not_worked %></td>
-            <td><%= problem_solution.solution %></td>
-            <td><%= problem_solution.improvement_point %></td>
-    	  </tr>
-        <% end %>
+          <% @problem_solutions.each do |problem_solution| %>
+    	    <tr>
+    		  <td><%= problem_solution.created_at.strftime('%Y/%m/%d') %></td>
+    		  <td><%= problem_solution.worked %></td>
+    		  <td><%= problem_solution.not_worked %></td>
+              <td><%= problem_solution.solution %></td>
+              <td><%= problem_solution.improvement_point %></td>
+    	    </tr>
+          <% end %>
         </table>

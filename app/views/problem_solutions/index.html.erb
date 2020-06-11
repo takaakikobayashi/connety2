@@ -6,32 +6,32 @@
     </div>
 
     <% if @user == current_user %>
-    <%=link_to "問題解決をする", new_user_problem_solution_path(current_user.id),class: "btn btn-success", style:"margin: 30px" %>
+      <%=link_to "問題解決をする", new_user_problem_solution_path(current_user.id),class: "btn btn-success", style:"margin: 30px" %>
     <% end %>
 
-<% if @problem_solutions.empty? %>
-<p>現在行った問題解決はありません</p>
-<% else %>
-    <table class="table table-bordered">
-      <tr>
-    	  <th>日付</th>
-        <th>達成できたことは何ですか？</th>
-        <th>達成できなかった事は何ですか？</th>
-    	  <th>できなかった原因をあげてみてください</th>
-        <th>どのようにすれば解決できましたか？</th>
-        <th>同じ失敗をしないようにどうしますか？</th>
-      </tr>
-      <% @problem_solutions.each do |problem_solution| %>
-    	<tr>
-    	  <td><%= problem_solution.created_at.strftime('%Y/%m/%d') %></td>
-    	  <td><%= problem_solution.worked %></td>
-    	  <td><%= problem_solution.not_worked %></td>
-        <td><%= problem_solution.cause %></td>
-        <td><%= problem_solution.solution %></td>
-        <td><%= problem_solution.improvement_point %></td>
-    	</tr>
-      <% end %>
-    </table>
+    <% if @problem_solutions.empty? %>
+      <p>現在行った問題解決はありません</p>
+    <% else %>
+      <table class="table table-bordered">
+        <tr>
+    	    <th>日付</th>
+          <th>達成できたことは何ですか？</th>
+          <th>達成できなかった事は何ですか？</th>
+    	    <th>できなかった原因をあげてみてください</th>
+          <th>どのようにすれば解決できましたか？</th>
+          <th>同じ失敗をしないようにどうしますか？</th>
+        </tr>
+        <% @problem_solutions.each do |problem_solution| %>
+    	    <tr>
+    	      <td><%= problem_solution.created_at.strftime('%Y/%m/%d') %></td>
+    	      <td><%= problem_solution.worked %></td>
+    	      <td><%= problem_solution.not_worked %></td>
+            <td><%= problem_solution.cause %></td>
+            <td><%= problem_solution.solution %></td>
+            <td><%= problem_solution.improvement_point %></td>
+    	    </tr>
+        <% end %>
+      </table>
     <% end %>
 
   </div>

@@ -1,28 +1,29 @@
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
 
-<div class="m-index">
-<h4><mark>通知</mark></h4>
-</div>
-<% if @notifications.exists? %>
-  <% @notifications.each do |notification| %>
-    <% case notification.action %>
-    <% when "message" then %>
-        <li>
-          <%= notification.visitor.full_name %>さんが
-          あなたに<%= link_to "メッセージ", "/companies/#{current_company.id}/rooms/#{notification.room_id}", style: "font-weight: bold;" %>をしました
-        </li>
-    <% when "offer_application" then %>
-        <li>
-          <%= notification.visitor.full_name %>さんが
-          あなたの<%= link_to "募集求人", "/companies/#{current_company.id}/offers/#{notification.offer_id}", style: "font-weight: bold;" %>に申し込みました
-        </li>
-    <% else %>
-    <% end %>
-  <% end %>
-<% else %>
-<p>通知はありません</p>
-<% end %>
+    <div class="m-index">
+      <h4><mark>通知</mark></h4>
+    </div>
 
-</div>
+    <% if @notifications.exists? %>
+      <% @notifications.each do |notification| %>
+        <% case notification.action %>
+        <% when "message" then %>
+          <li>
+            <%= notification.visitor.full_name %>さんが
+            あなたに<%= link_to "メッセージ", "/companies/#{current_company.id}/rooms/#{notification.room_id}", style: "font-weight: bold;" %>をしました
+          </li>
+        <% when "offer_application" then %>
+          <li>
+            <%= notification.visitor.full_name %>さんが
+            あなたの<%= link_to "募集求人", "/companies/#{current_company.id}/offers/#{notification.offer_id}", style: "font-weight: bold;" %>に申し込みました
+          </li>
+        <% else %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p>通知はありません</p>
+    <% end %>
+
+  </div>
 </div>

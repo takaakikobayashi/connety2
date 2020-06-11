@@ -1,11 +1,12 @@
 <div class="row">
   <div class="col-xs-8 col-xs-offset-4">
+
     <div class="sign_up">
       <h4><mark>新規振り返り</mark></h4>
     </div>
 
     <%= form_for @review, url: new_user_review_path do |f| %>
-    <%= render "layouts/error_message", title: @review %>
+      <%= render "layouts/error_message", title: @review %>
       
       <table border="0">
         <tr style="height:70px">

@@ -1,42 +1,40 @@
 <div class="row">
   <div class="col-xs-10 col-xs-offset-1">
 
-<h1>DM</h1>
+    <h1>DM</h1>
+    <h4>参加者</h4>
+    <%= @user.full_name %>
+    <%= @requester.name %>
 
-<h4>参加者</h4>
-<%= @user.full_name %>
-<%= @requester.name %>
-
-
-<hr>
-<% if @messages.present? %>
-    <% @messages.each do |m| %>
-    <div class="message">
-      <li><strong><%= m.mail %></strong>
-      <% if m.user_id.nil? %>
-        <small>by <strong><%= @requester.name %>さん</a></strong></small>
+    <hr>
+      <% if @messages.present? %>
+        <% @messages.each do |m| %>
+          <div class="message">
+            <li>
+              <strong><%= m.mail %></strong>
+              <% if m.user_id.nil? %>
+                <small>by <strong><%= @requester.name %>さん</a></strong></small>
+              <% else %>
+                <small>by <strong><%= @user.full_name %>さん</a></strong></small>
+              <% end %>
+            </li>
+          </div>
+        <% end %>  
       <% else %>
-        <small>by <strong><%= @user.full_name %>さん</a></strong></small>
-      <% end %></li>
-    </div>
-    <% end %>  
-  
-<% else %>
-  <h3 class="text-center">メッセージはまだありません</h3>
-<% end %>
+        <h3 class="text-center">メッセージはまだありません</h3>
+      <% end %>
 
-<%= form_for @message, url: messages_path do |f| %>
-  <%= f.text_field :mail, :placeholder => "メッセージを入力して下さい" , :size => 70 %>
-  <%= f.hidden_field :room_id, :value => @room.id %>
-  <% if current_user.nil? %>
-    <%= f.hidden_field :requester_id, :value => @requester.id %>
-  <% else %>
-    <%= f.hidden_field :user_id, :value => @user.id %>
-  <% end %>
-  <br>
-  <%= f.submit "投稿する" %>
-<% end %>
+      <%= form_for @message, url: messages_path do |f| %>
+        <%= f.text_field :mail, :placeholder => "メッセージを入力して下さい" , :size => 70 %>
+        <%= f.hidden_field :room_id, :value => @room.id %>
+        <% if current_user.nil? %>
+          <%= f.hidden_field :requester_id, :value => @requester.id %>
+        <% else %>
+          <%= f.hidden_field :user_id, :value => @user.id %>
+        <% end %><br>
+        <%= f.submit "投稿する" %>
+      <% end %>
 
-</div>
+  </div>
 </div>
 
