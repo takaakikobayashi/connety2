@@ -25,7 +25,7 @@
     		<td><%= order.request_content %></td>
             <td><%= order.cost %>円</td>
             <td><%= order.progress_status %></td>
-            <td><%=  link_to "詳細", user_order_path(user_id: current_user.id,id: order.id), class:"btn btn-primary"%></td>
+            <td><%=  link_to "詳細", user_order_path(user_id: current_user.id,id: order.id), class:"btn btn-success"%></td>
                 <td>
                 <% case order.order_status %>
                 <% when "オファー中" then %>

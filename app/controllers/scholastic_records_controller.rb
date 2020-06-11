@@ -1,4 +1,6 @@
 class ScholasticRecordsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :correct_user, only: [:new, :create]
   def index
   	@categories = Category.all
     if params["category_id"].nil?

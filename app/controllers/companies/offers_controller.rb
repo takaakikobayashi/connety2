@@ -1,6 +1,8 @@
 class Companies::OffersController < ApplicationController
+  before_action :authenticate_company!
+  before_action :correct_company
   def index
-    @offers = Offer.where(company_id: current_company.id)
+    @offers = Offer.where(company_id: current_company.id).page(params[:page]).per(20)
   end
 
   def new

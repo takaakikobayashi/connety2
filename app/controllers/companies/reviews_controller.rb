@@ -1,6 +1,7 @@
 class Companies::ReviewsController < ApplicationController
+	before_action :authenticate_company!
   def index
-  	@reviews = Review.where(user_id: params[:user_id])
+  	@reviews = Review.where(user_id: params[:user_id]).page(params[:page]).per(20)
   end
 
   private

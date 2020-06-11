@@ -48,13 +48,31 @@ h1,h2,h3,h4,h5,h6 {
   margin-top: -220px;
 }
 .o-content {
-  
+  font-size: 1.8rem;
+  margin-top: 50px;
+  margin-left: 50px;
 }
 .order {
 	text-align: center;
+  font-family: serif;
+  margin-top: 40px;
 }
 .offer {
 	text-align: center;
+  font-family: serif;
+  margin-top: 40px;
+}
+.f-content {
+  font-size: 1.8rem;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+.new-r {
+  text-align: center;
+  margin-top: 50px;
+}
+.b-new {
+  margin-top: 20px;
 }
 .about {
 	margin-top: 50px;
@@ -85,6 +103,15 @@ h1,h2,h3,h4,h5,h6 {
 	font-size: 2.8rem;
 	border-bottom: solid 3px #CCFFCC;
   position: relative;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+.a-list {
+  font-size: 1.8rem;
+}
+.a-list li {
+  margin-left: 60px;
+  list-style: none;
 }
 .connety-about:after {
   position: absolute;
@@ -95,8 +122,9 @@ h1,h2,h3,h4,h5,h6 {
   width: 20%;
 }
 .about-text {
-	font-size: 1.5rem;
+	font-size: 1.8rem;
 	text-align: center;
+  margin-bottom: 30px;
 }
 .requester-worries {
   position: relative;
@@ -106,6 +134,7 @@ h1,h2,h3,h4,h5,h6 {
   border-radius: 20px;
   width: 550px;
   text-align: center;
+  margin-top: 20px;
 }
 
 .requester-worries:before {
@@ -135,6 +164,7 @@ h1,h2,h3,h4,h5,h6 {
   border-radius: 20px;
   width: 700px;
   text-align: center;
+  margin-top: 20px;
 }
 
 .requester-worries2:before {
@@ -156,12 +186,20 @@ h1,h2,h3,h4,h5,h6 {
   bottom: 0;
   color: #DDDDDD;
 }
+.c-solution {
+  text-align: center;
+  margin-top: 30px;
+}
+.c-connety li {
+  font-size: 1.8rem;
+}
 .good-news {
   position: relative;
   color: #333;
   text-shadow: 0 0 2px white;
   text-align: center;
   border-bottom: solid 3px #99FF99;
+  margin-bottom: 20px;
 }
 .good-news:before {
   content: "";
@@ -173,6 +211,29 @@ h1,h2,h3,h4,h5,h6 {
   top: 20%;
   /* border: dashed 1px white; */
   left: 160px;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: -1;
+}
+
+.c-good-news {
+  position: relative;
+  color: #333;
+  text-shadow: 0 0 2px white;
+  text-align: center;
+  border-bottom: solid 3px #99FF99;
+  margin-botom: 20px;
+}
+.c-good-news:before {
+  content: "";
+  position: absolute;
+  background: #99FF99;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  top: 20%;
+  /* border: dashed 1px white; */
+  left: 70px;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   z-index: -1;

@@ -1,4 +1,6 @@
 class Companies::RoomsController < ApplicationController
+  before_action :authenticate_company!
+  before_action :correct_company
 
   def show
   	@room = Room.find(params[:id])
@@ -14,7 +16,7 @@ class Companies::RoomsController < ApplicationController
   	@user = User.new
   	@room = Room.new(user_id: params[:user_id],company_id: current_company.id)
     @room.save
-    redirect_to company_create_rooms_path(company_id: current_company.id,id: @room.id)
+    redirect_to company_show_rooms_path(company_id: current_company.id,id: @room.id)
   end
 
   private

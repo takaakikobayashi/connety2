@@ -1,6 +1,7 @@
 class Requesters::ReviewsController < ApplicationController
+	before_action :authenticate_requester!
   def index
-  	@reviews = Review.where(user_id: params[:user_id])
+  	@reviews = Review.where(user_id: params[:user_id]).page(params[:page]).per(20)
   end
 
   def show

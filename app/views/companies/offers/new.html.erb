@@ -1,4 +1,5 @@
     <%= form_for @offer, url: company_create_offers_path(company_id: current_company.id) do |f| %>
+    <%= render "layouts/error_message", title: @offer %>
       
       <table border="0">
         <tr style="height:70px">

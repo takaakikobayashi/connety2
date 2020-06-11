@@ -37,7 +37,7 @@ class Room < ApplicationRecord
 
     def create_company_notification_message!(current_user, message_id)
       notification = current_user.active_notifications.new(
-		    oom_id: id,
+		    room_id: id,
         company_visited_id: company_id,
         message_id: message_id,
         action: 'message'

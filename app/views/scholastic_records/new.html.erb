@@ -5,6 +5,7 @@
     </div>      
 
     <%= form_for @scholastic_record, url: new_user_scholastic_record_path do |f| %>
+    <%= render "layouts/error_message", title: @scholastic_record %>
     <%= f.hidden_field :created_date, :value => Date.today %>
       
       <table border="0">

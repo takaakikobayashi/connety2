@@ -16,7 +16,7 @@
     <% when "order" then %>
         <li>
           <%= notification.visitor.full_name %>さんが
-          あなたの<%= link_to "発注依頼", "/requesters/#{current_requester.id}/orders/#{notification.order_id}", style: "font-weight: bold;" %>を承認しました
+          あなたの<%= link_to "発注依頼", "/requesters/#{current_requester.id}/orders/#{notification.order_id}/show", style: "font-weight: bold;" %>を承認しました
         </li>
     <% else %>
     <% end %>

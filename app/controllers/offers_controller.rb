@@ -1,10 +1,13 @@
 class OffersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :correct_user, only: [:show, :create, :destroy]
   def index
-  	@offers = Offer.where(is_active: true)
+  	@offers = Offer.where(is_active: true).page(params[:page]).per(20)
   end
 
   def show
   	@offer = Offer.find(params[:id])
+    @myoffer = OfferApplication.find_by(offer_id: @offer, user_id: current_user.id)
     @room = Room.find_by(user_id: current_user.id,company_id: @offer.company.id)
     @newroom = Room.new
   end

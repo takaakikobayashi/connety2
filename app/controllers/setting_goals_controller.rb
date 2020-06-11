@@ -1,4 +1,6 @@
 class SettingGoalsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :correct_user, only: [:new, :create, :edit,:update]
   def new
   	@setting_goal = SettingGoal.new
   end

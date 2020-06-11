@@ -1,5 +1,7 @@
 class Requesters::MessagesController < ApplicationController
+	before_action :authenticate_requester!
+	before_action :correct_requester
   def index
-	@orders = Order.where(order_status: 1)
+	@orders = Order.where(order_status: 1).page(params[:page]).per(20)
   end
 end

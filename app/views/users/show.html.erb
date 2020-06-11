@@ -72,7 +72,7 @@
     <%# タスクボックス　%>
     <div class="task">
       <p>今日までのタスク</p>
-      <% if @task.nil? %>
+      <% if @tasks.nil? %>
       <p style="text-align: center">現在未完了タスクはありません</p>
       <% else %>
       <% @tasks.each do |task| %>

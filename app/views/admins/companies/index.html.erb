@@ -18,7 +18,13 @@
     		<td><%= company.email %></td>
     		<td><%= company.phone_number %></td>
             <td><%= "#{company.postal_code} #{company.address}" %></td>
-            <td><%= company.is_active %></td>
+            <td>
+                <% if company.is_active == true %>
+                    <p>募集中</p>
+                    <% else %>
+                    <p>募集停止中</p>
+                    <% end %>
+                </td>
     	</tr>
         <% end %>
     </table>

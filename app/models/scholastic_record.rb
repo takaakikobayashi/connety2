@@ -5,6 +5,12 @@ class ScholasticRecord < ApplicationRecord
 	has_many :likes
 	has_many :comments
 	has_many :notifications, dependent: :destroy
+
+  validates :learning_time, presence: true
+  validates :learning_time_min, presence: true
+  validates :learning_content, presence: true
+  validates :learning_detail, length: { maximum: 100 }
+  validates :category_id, presence: true
   
 
 	def liked_by?(user)

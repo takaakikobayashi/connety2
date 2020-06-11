@@ -1,4 +1,6 @@
 class Companies::OfferApplicationsController < ApplicationController
+  before_action :authenticate_company!
+  before_action :correct_company
   def asset
   	@offer_application = OfferApplication.find(params[:id])
     @offer_application.update(offer_application_status: 1)
@@ -12,7 +14,7 @@ class Companies::OfferApplicationsController < ApplicationController
   end
 
   def index
-  	@offer_applications = OfferApplication.where(offer_id: params[:offer_id])
+  	@offer_applications = OfferApplication.where(offer_id: params[:offer_id]).page(params[:page]).per(20)
   end
 
   def show

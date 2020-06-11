@@ -5,6 +5,7 @@
     </div>
 
     <%= form_for @setting_goal, url: new_user_setting_goal_path do |f| %>
+    <%= render "layouts/error_message", title: @setting_goal %>
       
       <table border="0">
         <tr style="height:70px">

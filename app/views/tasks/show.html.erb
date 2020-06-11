@@ -5,20 +5,26 @@
       <h4><mark>完了タスク一覧</mark></h4>
     </div>
 
+<% if @task.nil? %>
+<p>現在完了済タスクはありません</p>
+<% else %>
     <table class="table table-bordered">
       <tr>
     	<th>タスク名</th>
     	<th>タスク期日</th>
       <th>タスクを元に戻す</th>
+      <th>削除</th>
       </tr>
       <% @tasks.each do |task| %>
     	<tr>
     	  <td><%= task.name %></td>
     	  <td><%= task.deadline %></td>
         <td><%= link_to "元に戻す", user_return_task_path(user_id: params[:user_id],id: task.id), method: :patch,class: "btn btn-success" %></td>
+        <%= link_to "削除", user_task_path(user_id: params[:user_id],id: task.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
     	</tr>
       <% end %>
     </table>
+    <% end %>
 
   </div>
 </div>

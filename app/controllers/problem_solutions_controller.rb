@@ -1,6 +1,8 @@
 class ProblemSolutionsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :correct_user, only: [:new, :create]
   def index
-  	@problem_solutions = ProblemSolution.all.order(created_at: "DESC")
+  	@problem_solutions = ProblemSolution.all.page(params[:page]).per(20).order(created_at: "DESC")
     @user = User.find(params[:user_id])
   end
 

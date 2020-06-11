@@ -44,7 +44,8 @@ Rails.application.routes.draw do
   end
   get "companies/:company_id/rooms/:id"  => "companies/rooms#show", as: "company_show_rooms"
   post "companies/:company_id/rooms/:id"  => "companies/rooms#create", as: "company_create_rooms"
-  resources :companies, only:[:index, :show, :edit, :update] do
+  get "companies/:id/delete"  => "companies#delete", as: "delete_company"
+  resources :companies, only:[:index, :show, :edit, :update, :destroy] do
     get "notifications"  => "companies/notifications#index", as: "index_notifications"
     get "offer/:offer_id/offer_applications"  => "companies/offer_applications#index", as: "offer_applications"
     post "offer/:offer_id/offer_applications/new"  => "companies/offer_applications#create", as: "create_offer_applications"
@@ -70,7 +71,8 @@ Rails.application.routes.draw do
   end
   get "requesters/:requester_id/rooms/:id"  => "requesters/rooms#show", as: "requester_show_rooms"
   post "requesters/:requester_id/rooms/:id"  => "requesters/rooms#create", as: "requester_create_rooms"
-  resources :requesters, only:[:index, :show, :edit, :update] do
+  get "requesters/:id/delete"  => "requesters#delete", as: "delete_requester"
+  resources :requesters, only:[:index, :show, :edit, :update, :destroy] do
   	resources :orders, only:[:destroy]
     get "notifications"  => "requesters/notifications#index", as: "index_notifications"
     get "orders"  => "requesters/orders#index", as: "index_orders"

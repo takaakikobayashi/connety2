@@ -1,4 +1,6 @@
 class Requesters::RoomsController < ApplicationController
+  before_action :authenticate_requester!
+  before_action :correct_requester
 
   def show
   	@room = Room.find(params[:id])

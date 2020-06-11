@@ -6,6 +6,7 @@
 </div>
 
   	  <%= form_for @requester, url: requester_path(current_requester.id) do |f| %>
+      <%= render "layouts/error_message", title: @requester %>
   	  <table class="margin-30">
         <tr style="height:70px">
             <th>名前</th>
@@ -59,7 +60,7 @@
         <div class="button-box margin-30">
           <%= f.submit '編集内容を保存する',class: 'btn btn-primary', style:"margin-right:130px" %>
 
-          <%= link_to "退会する", "#", class: 'btn btn-danger'%>
+          <%= link_to "退会する", delete_requester_path(current_requester.id), class: 'btn btn-danger'%>
 
         </div>
         <%= link_to "戻る", :back %>
