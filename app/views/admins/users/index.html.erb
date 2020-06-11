@@ -18,7 +18,13 @@
     		<td><%= user.grade %></td>
     		<td><%= user.phone_number %></td>
             <td><%= user.email %></td>
-            <td><%= user.learning_status %></td>
+            <td>
+                <% if user.learning_status == true %>
+                <p>仕事募集中</p>
+                    <% else %>
+                    <p>学習中</p>
+                    <% end %>
+                </td>
     	</tr>
         <% end %>
     </table>

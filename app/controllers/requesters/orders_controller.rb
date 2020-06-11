@@ -1,4 +1,6 @@
 class Requesters::OrdersController < ApplicationController
+  before_action :authenticate_requester!
+  before_action :correct_requester
   def new
   	@order = Order.new
   end

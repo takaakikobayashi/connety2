@@ -6,6 +6,7 @@
     </div>
 
     <%= form_for @task, url: edit_user_task_path do |f| %>
+    <%= render "layouts/error_message", title: @task %>
 
         <table border="0", class="edit-tasks">
           <tr>

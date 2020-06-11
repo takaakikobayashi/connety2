@@ -1,3 +1,8 @@
+
+<div class="o-index">
+  <h4><mark>依頼詳細</mark></h4>
+</div>
+
 <table border="0">
         <tr style="height:70px">
             <th class="form">依頼額</th>
@@ -30,7 +35,7 @@
           <% else %>
             <%=  form_for @newroom, url: requester_create_rooms_path(requester_id: current_requester.id) do |f| %>
               <%= fields_for @user do |u| %>
-                <%= u.hidden_field :user_id, :value=> order.user.id %>
+                <%= u.hidden_field :user_id, :value=> @order.user.id %>
               <% end %>
               <%= f.submit "DM",class: 'btn btn-primary', style:"margin-right:130px" %>
             <% end %>

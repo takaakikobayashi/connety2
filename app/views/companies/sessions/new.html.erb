@@ -24,7 +24,7 @@
       </table>
       <div style="float:right;">
         <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-          <%= link_to "=>パスワードを忘れた方はこちら", "#" %><br />
+          <%#= link_to "=>パスワードを忘れた方はこちら", "#" %><br />
         <% end %>
       </div>
       <div class="actions">
@@ -34,7 +34,7 @@
 
     <div class="sign_up_page">
       <h4><mark>登録がお済みでない方</mark></h4>
-      <p><%= render "users/shared/links" %>から新規登録を行ってください。</p>
+      <p><%= link_to "こちら", new_user_registration_path %><%#= render "users/shared/links" %>から新規登録を行ってください。</p>
     </div>
 
 

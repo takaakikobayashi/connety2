@@ -1,6 +1,7 @@
 class Requesters::ProblemSolutionsController < ApplicationController
+	before_action :authenticate_requester!
   def index
-  	@problem_solutions = ProblemSolution.where(user_id: params[:user_id])
+  	@problem_solutions = ProblemSolution.where(user_id: params[:user_id]).page(params[:page]).per(20)
   end
 
   private

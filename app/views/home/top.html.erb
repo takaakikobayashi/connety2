@@ -42,15 +42,42 @@
 <div class="s-image">
 <%= image_tag "grafh.png", alt:"写真", width:"450px", height:"250px" %>
 </div>
-<div class="order"><h3>仕事の発注、獲得</h3></div>
+<div class="order"><h3><b>仕事の発注、獲得</b></h3></div>
 <div class="o-content">
   <b><p>
-    日々の学習をタスクとして登録し、<br>
+  ユーザーが日々の学習をタスクとして登録し、<br>
   登録したタスクを学習記録として勉強時間、コメントを記録、<br>
-  マイページにて総学習時間を見ることができます。<br><br>
-  スキルを身につける上で学習時間は必要最低限のもの。<br>
-  日々の学習時間を可視化することで、<br>
-  自分にも自信を持って学習に取り組みましょう。
+  お仕事発注者はその履歴を見ることができます。<br><br>
+  そのユーザーの学習に対する姿勢を見ることで<br>
+  どういう働きをしてくれるのか、<br>
+  求めている人物に依頼することができるようになります。
   </p></b>
-<div class="offer">採用求人</div>
+</div>
+<div class="s-image">
+<%= image_tag "orders-connety.png", alt:"写真", width:"450px", height:"250px" %>
+</div>
+<div class="offer"><h3><b>採用求人</b></h3></div>
+<div class="f-content">
+  <b><p>
+  ユーザーが日々の学習をタスクとして登録し、<br>
+  登録したタスクを学習記録として勉強時間、コメントを記録、<br>
+  求人企業はその履歴を見ることができます。<br><br>
+  そのユーザーの学習に対する姿勢を見ることで<br>
+  面接前の段階でより明確に学習姿勢を見ることができ、<br>
+  無駄をより少なく良い人材を採用に繋げることができます。
+  </p></b>
+</div>
+<div class="s-image">
+<%= image_tag "connety-offers.png", alt:"写真", width:"450px", height:"250px" %>
+</div>
+<div class="new-r">
+  <h3 style="margin-bottom: 20px"><b>まずは学習管理から</b></h3>
+  <b><p style="font-size: 1.8rem">
+    初めは学習管理から、ある程度学習が進んだ段階で仕事を募集してみましょう！<br>
+    案件獲得のための営業に時間を割かず、いただける受注で経験を積んでいき、<br>
+    どんどんレベルアップを目指しましょう！
+  </p></b>
+</div>
+<div class="b-new">
+<%= link_to "まずは新規登録をする", new_user_registration_path, class:"btn btn-success center-block btn-lg", style: "width: 250px" %>
 </div>

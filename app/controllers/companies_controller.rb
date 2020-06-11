@@ -1,4 +1,6 @@
 class CompaniesController < ApplicationController
+  before_action :authenticate_company!
+  before_action :correct_company, only: [:edit, :show, :update, :destroy, :delete]
   def index
     if params["category_id"].nil?
       @scholastic_records = ScholasticRecord.all.page(params[:page]).per(30)

@@ -1,6 +1,10 @@
 <div class="row">
   <div class="col-xs-12">
 
+    <div class="m-index">
+<h4><mark>依頼詳細</mark></h4>
+</div>
+
       <table border="0">
         <tr style="height:70px">
             <th class="form">依頼額</th>
@@ -35,13 +39,13 @@
       <% end %>
       
       <% if @room.present? and @order.order_status = 1 %>
-        <%=  link_to "DM", user_room_path(user_id: current_user.id,id: @room.id), class:"btn btn-primary"%>
+        <%=  link_to "DM", user_room_path(user_id: current_user.id,id: @room.id), class:"btn btn-success"%>
       <% elsif @room.empty? and @order.order_status = 1 %>
         <%=  form_for @newroom, url: user_rooms_path do |f| %>
           <%= fields_for @requester do |u| %>
             <%= u.hidden_field :requester_id, :value=> @order.requester.id %>
           <% end %>
-        <%= f.submit "DM",class: 'btn btn-primary', style:"margin-right:130px" %>
+        <%= f.submit "DM",class: 'btn btn-success', style:"margin-right:130px" %>
         <% end %>
       <% else %>
       <% end %>

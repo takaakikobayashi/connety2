@@ -5,6 +5,7 @@
     </div>
 
     <%= form_for @review, url: new_user_review_path do |f| %>
+    <%= render "layouts/error_message", title: @review %>
       
       <table border="0">
         <tr style="height:70px">

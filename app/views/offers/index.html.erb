@@ -9,7 +9,6 @@
     <% if @offers.empty? %>
     <p style="text-align: center">現在募集企業はありません</p>
     <% else %>
-    <div class="col-xs-8">
       <div class="product-index-box">
       <% @offers.each do |offer| %>
             <div class="product-index-image">
@@ -22,7 +21,6 @@
             </div>
       <% end %>
       </div>
-    </div>
     <% end %>
 
   </div>

@@ -27,6 +27,14 @@ class User < ApplicationRecord
 
   enum grade: [ "大学1年生", "大学2年生", "大学3年生", "大学4年生", "大学院1年生", "大学院2年生", "その他" ]
 
+  validates :last_name, presence: true, length: { maximum: 20 }
+  validates :first_name, presence: true, length: { maximum: 20 }
+  validates :user_name, presence: true, length: { maximum: 20 }
+  validates :grade, presence: true
+  validates :other_grade, length: { maximum: 20 }
+  validates :phone_number, presence: true, numericality: { only_integer: true }
+  validates :email, presence: true
+
   def full_name
     "#{self.last_name} #{self.first_name}"
   end
@@ -42,4 +50,5 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+
 end

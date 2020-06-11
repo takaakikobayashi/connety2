@@ -1,8 +1,10 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :correct_user
 
   def index
-    @orders = Order.where(order_status: 1)
-    @offer_applications = OfferApplication.where(offer_application_status: 1)
+    @orders = Order.where(order_status: 1).page(params[:page]).per(20)
+    @offer_applications = OfferApplication.where(offer_application_status: 1).page(params[:page]).per(20)
   end
   
   def create

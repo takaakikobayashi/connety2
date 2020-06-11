@@ -1,4 +1,6 @@
 class CompanyRoomsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :correct_user
 
   def show
   	@room = Room.find(params[:id])
@@ -11,14 +13,14 @@ class CompanyRoomsController < ApplicationController
   end
 
   def create
-  	@requester = Requester.new
-  	@room = Room.new(requester_id: params[:requester_id],user_id: current_user.id)
+  	@company = Company.new
+  	@room = Room.new(company_id: params[:company_id],user_id: current_user.id)
     @room.save
-    redirect_to user_room_path(user_id: current_user.id,id: @room.id)
+    redirect_to user_company_room_path(user_id: current_user.id,id: @room.id)
   end
 
   private
   def requester_params
-    params.require(:requester).permit(:requester_id)
+    params.require(:company).permit(:company_id)
   end
 end
