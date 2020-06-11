@@ -1,51 +1,52 @@
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
 
-<div class="m-index">
-<h4><mark>通知</mark></h4>
-</div>
-<div class="n-index">
-<% if @notifications.exists? %>
-  <% @notifications.each do |notification| %>
-    <% case notification.action %>
-    <% when "like" then %>
-      <% case notification.visitor_id %>
-      <% when current_user.id %>
-      <% else %>
-        <li>
-          <%= notification.visitor.full_name %>さんが
-          <%= link_to 'あなたの投稿', "/users/#{current_user.id}/scholastic_records/#{notification.scholastic_record.id}", style: "font-weight: bold;" %>にいいねしまし
-        </li>
-      <% end %>
-    <% when "comment" then %>
-      <% if notification.scholastic_record.user_id == notification.visited.id %>
-        <li>
-          <%= notification.visitor.full_name %>さんが
-          <%= link_to "あなたの投稿", "/users/#{current_user.id}/scholastic_records/#{notification.scholastic_record.id}", style: "font-weight: bold;" %>にコメントしました
-        </li>
-      <% else %>
-        <li>
-          <%= notification.visitor.full_name %>さんが
-          <%= notification.scholastic_record.user.user_name %>さんの投稿にコメントしました
-        </li>
-      <% end %>
-    <% when "order" then %>
-        <li>
-          <%= notification.requester_visitor.name %>さんが
-          あなたに<%= link_to "仕事のオファー", "/users/#{current_user.id}/orders/#{notification.order_id}", style: "font-weight: bold;" %>をしました
-        </li>
-    <% when "message" then %>
-        <li>
-          <%= notification.requester_visitor.name %>さんが
-          あなたに<%= link_to "メッセージ", "/users/#{current_user.id}/rooms/#{notification.room_id}", style: "font-weight: bold;" %>をしました
-        </li>
-    <% else %>
-    <% end %>
-  <% end %>
-<% else %>
-<p style="text-align: center">通知はありません</p>
-<% end %>
-</div>
+    <div class="m-index">
+      <h4><mark>通知</mark></h4>
+    </div>
 
-</div>
+    <div class="n-index">
+      <% if @notifications.exists? %>
+        <% @notifications.each do |notification| %>
+          <% case notification.action %>
+          <% when "like" then %>
+            <% case notification.visitor_id %>
+            <% when current_user.id %>
+            <% else %>
+              <li>
+                <%= notification.visitor.full_name %>さんが
+                <%= link_to 'あなたの投稿', "/users/#{current_user.id}/scholastic_records/#{notification.scholastic_record.id}", style: "font-weight: bold;" %>にいいねしまし
+              </li>
+            <% end %>
+          <% when "comment" then %>
+            <% if notification.scholastic_record.user_id == notification.visited.id %>
+              <li>
+                <%= notification.visitor.full_name %>さんが
+                <%= link_to "あなたの投稿", "/users/#{current_user.id}/scholastic_records/#{notification.scholastic_record.id}", style: "font-weight: bold;" %>にコメントしました
+              </li>
+            <% else %>
+              <li>
+                <%= notification.visitor.full_name %>さんが
+                <%= notification.scholastic_record.user.user_name %>さんの投稿にコメントしました
+              </li>
+            <% end %>
+          <% when "order" then %>
+            <li>
+              <%= notification.requester_visitor.name %>さんが
+              あなたに<%= link_to "仕事のオファー", "/users/#{current_user.id}/orders/#{notification.order_id}", style: "font-weight: bold;" %>をしました
+            </li>
+          <% when "message" then %>
+            <li>
+              <%= notification.requester_visitor.name %>さんが
+              あなたに<%= link_to "メッセージ", "/users/#{current_user.id}/rooms/#{notification.room_id}", style: "font-weight: bold;" %>をしました
+            </li>
+          <% else %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <p style="text-align: center">通知はありません</p>
+      <% end %>
+    </div>
+
+  </div>
 </div>

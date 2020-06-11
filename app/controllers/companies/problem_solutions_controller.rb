@@ -1,5 +1,6 @@
 class Companies::ProblemSolutionsController < ApplicationController
 	before_action :authenticate_company!
+	before_action :active_company
   def index
   	@problem_solutions = ProblemSolution.where(user_id: params[:user_id]).page(params[:page]).per(20)
   end

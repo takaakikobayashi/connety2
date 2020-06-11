@@ -2,24 +2,34 @@
   <div class="col-xs-10 col-xs-offset-1">
 
     <div class="post-meta-top">
+
       <div class="post-image">
         <%= attachment_image_tag @scholastic_record.user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'50x50' %><br><br><br>
         <%= link_to user_path(@scholastic_record.user.id) do %>
           </i><%= @scholastic_record.user.user_name %>
         <% end %>
     　</div>
+
       <div class="s-record">
         <div class="list">
-          <span><p>学習内容</p>
-          <%= @scholastic_record.learning_content %></span>
-          <span><p id="detail">学習詳細</p>
-          <%= @scholastic_record.learning_detail %></span>
-          <span><p>学習時間</p>
-          <%= @scholastic_record.learning_time %>時間
-          <%= @scholastic_record.learning_time_min %>分</span>
+          <span>
+            <p>学習内容</p>
+            <%= @scholastic_record.learning_content %>
+          </span>
+          <span>
+            <p id="detail">学習詳細</p>
+            <%= @scholastic_record.learning_detail %>
+          </span>
+          <span>
+            <p>学習時間</p>
+            <%= @scholastic_record.learning_time %>時間
+            <%= @scholastic_record.learning_time_min %>分
+          </span>
         </div>
       </div>
+
   　</div>
+
     <div class="post-content">
       <i class="fa fa-calendar"></i><%= @scholastic_record.created_at.strftime('%Y/%m/%d') %>
       <% if @scholastic_record.liked_by?(current_user) %>
@@ -37,50 +47,50 @@
         </li>
       <% end %>
       <span class="s-comment", style="margin-left: 10px">
-      <p><i class="fa fa-comment"></i><%= @scholastic_record.comments.count %>件コメント</p>
-        </span>
-        </div>
-      </div>
-      <div class="col-xs-9 col-xs-offset-1">
-        <div style="margin-left: 20px">
+        <p><i class="fa fa-comment"></i><%= @scholastic_record.comments.count %>件コメント</p>
+      </span>
+    </div>
+
+    <div class="col-xs-9 col-xs-offset-1">
+      <div style="margin-left: 20px">
         <% @scholastic_record.comments.each do |comment| %>
           <div class="comment">
             <li>
-            <div class="comment-body bb">
-              <div class="comment-avatar">
-                <div class="avatar">
-                  <%= attachment_image_tag comment.user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'50x50' %><br><br><br>
+              <div class="comment-body bb">
+                <div class="comment-avatar">
+                  <div class="avatar">
+                    <%= attachment_image_tag comment.user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'50x50' %><br><br><br>
+                  </div>
                 </div>
-              </div>
                 <div class="comment-author clearfix">
                   <%= link_to user_path(comment.user.id) do %>
                     </i><%= comment.user.user_name %>
                   <% end %>
                 </div>
-                  <span class="comment-meta">
-                    <span class="comment-date"><%= comment.created_at.strftime('%Y/%m/%d') %></span>
-                  </span>
-                  <div class="comment-entry"><%= comment.content %></div>
+                <span class="comment-meta">
+                  <span class="comment-date"><%= comment.created_at.strftime('%Y/%m/%d') %></span>
+                </span>
+                <div class="comment-entry"><%= comment.content %></div>
                 <div>
                   <% if comment.user == current_user%>
                     <%= link_to "削除", user_scholastic_record_comment_path(user_id: current_user.id,scholastic_record_id: params[:id],id: comment.id), method: :delete, class: "btn btn-danger pull-right" %>
                   <% end %>
                 </div>
-            </div>
-          </li>
+              </div>
+            </li>
           </div>
         <% end %>
       </div>
     </div>
-      <%= form_for [@scholastic_record, @comment], url: user_scholastic_record_comments_path(scholastic_record_id: params[:id]) do |f| %>
-        <div class="row">
-          <div class="col-xs-10 col-xs-offset-1">
-            <%= f.text_area :content, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
-          </div>
-        </div>
-        <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-      <% end %>
+
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+        <%= form_for [@scholastic_record, @comment], url: user_scholastic_record_comments_path(scholastic_record_id: params[:id]) do |f| %>
+          <%= f.text_area :content, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+          <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+        <% end %>
+      </div>
+    </div>
 
   </div>
-</div>
 </div>

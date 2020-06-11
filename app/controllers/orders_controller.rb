@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user
+  before_action :active_user
   def index
   	@orders = Order.where(user_id: current_user.id).page(params[:page]).per(20).order(created_at: "DESC")
   end

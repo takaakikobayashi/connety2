@@ -1,86 +1,84 @@
 <table border="0">
-
 	<tr style="height:70px">
-            <th></th>
-            <td>
-        	<%= attachment_image_tag @offer, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'350x250' %>
-        	</td>
-        </tr>
+    <th></th>
+    <td>
+      <%= attachment_image_tag @offer, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'350x250' %>
+    </td>
+  </tr>
 
-        <tr style="height:70px">
-            <th style="margin-right:30px">会社名</th>
-            <td><%= @offer.company.name %></td>
-        </tr>
+  <tr style="height:70px">
+    <th style="margin-right:30px">会社名</th>
+    <td><%= @offer.company.name %></td>
+  </tr>
 
-        <tr style="height:70px">
-            <th style="margin-right:30px">業種</th>
-              <td><%= @offer.industry %></td>
-        </tr>
+  <tr style="height:70px">
+    <th style="margin-right:30px">業種</th>
+    <td><%= @offer.industry %></td>
+  </tr>
 
-        <tr style="height:70px">
-            <th style="margin-right:30px">職種</th>
-              <td><%= @offer.occupation %></td>
-        </tr>
+  <tr style="height:70px">
+    <th style="margin-right:30px">職種</th>
+    <td><%= @offer.occupation %></td>
+  </tr>
 
-        <tr style="height:70px">
-            <th style="margin-right:30px">勤務地</th>
-              <td><%= @offer.work_location %></td>
-        </tr>
+  <tr style="height:70px">
+    <th style="margin-right:30px">勤務地</th>
+    <td><%= @offer.work_location %></td>
+  </tr>
 
-        <tr style="height:70px">
-            <th style="margin-right:30px">アピールポイント</th>
-              <td><%= @offer.appeal_point %></td>
-        </tr>
+  <tr style="height:70px">
+    <th style="margin-right:30px">アピールポイント</th>
+    <td><%= @offer.appeal_point %></td>
+  </tr>
 
-        <tr style="height:70px">
-            <th style="margin-right:30px">仕事内容</th>
-              <td><%= @offer.job_description %></td>
-        </tr>
+  <tr style="height:70px">
+    <th style="margin-right:30px">仕事内容</th>
+    <td><%= @offer.job_description %></td>
+  </tr>
 
-        <tr style="height:70px">
-            <th style="margin-right:30px">雇用形態</th>
-              <td><%= @offer.employment_status %></td>
-        </tr>
+  <tr style="height:70px">
+    <th style="margin-right:30px">雇用形態</th>
+    <td><%= @offer.employment_status %></td>
+  </tr>
 
-        <tr style="height:70px">
-            <th style="margin-right:30px">勤務時間</th>
-              <td><%= @offer.working_hour %></td>
-        </tr>
+  <tr style="height:70px">
+    <th style="margin-right:30px">勤務時間</th>
+    <td><%= @offer.working_hour %></td>
+  </tr>
 
-        <tr style="height:70px">
-            <th style="margin-right:30px">給与</th>
-              <td><%= @offer.salary %></td>
-        </tr>
+  <tr style="height:70px">
+    <th style="margin-right:30px">給与</th>
+    <td><%= @offer.salary %></td>
+  </tr>
 
-        <tr style="height:70px">
-            <th style="margin-right:30px">募集要件</th>
-              <td><%= @offer.application_condition %></td>
-        </tr>
+  <tr style="height:70px">
+    <th style="margin-right:30px">募集要件</th>
+    <td><%= @offer.application_condition %></td>
+  </tr>
 
-        <tr style="height:70px">
-            <th style="margin-right:30px">休日休暇</th>
-              <td><%= @offer.vacation %></td>
-        </tr>
+  <tr style="height:70px">
+    <th style="margin-right:30px">休日休暇</th>
+    <td><%= @offer.vacation %></td>
+  </tr>
 
-        <tr style="height:70px">
-            <th style="margin-right:30px">福利厚生</th>
-              <td><%= @offer.welfare %></td>
-        </tr>
+  <tr style="height:70px">
+    <th style="margin-right:30px">福利厚生</th>
+    <td><%= @offer.welfare %></td>
+  </tr>
+</table>
 
-      </table>
+<% if @myoffer.nil? %>
+  <%=  link_to "申し込む", user_create_offers_path(user_id: current_user.id,company_id: @offer.company_id,id: @offer.id), method: :post, class:"btn btn-success"%>
+<% else %>
+<% end %>
 
-      <% if @myoffer.nil? %>
-      <%=  link_to "申し込む", user_create_offers_path(user_id: current_user.id,company_id: @offer.company_id,id: @offer.id), method: :post, class:"btn btn-success"%>
-      <% else %>
-      <% end %>
-
-      <% if @room.present? %>
-        <%=  link_to "DM", user_company_room_path(user_id: current_user.id,id: @room.id), class:"btn btn-primary"%>
-      <% else %>
-        <%=  form_for @newroom, url: user_company_rooms_path(current_user) do |f| %>
-          <%= fields_for @company do |u| %>
-            <%= u.hidden_field :company_id, :value=> @offer.company.id %>
-          <% end %>
-        <%= f.submit "DM",class: 'btn btn-primary', style:"margin-right:130px" %>
-        <% end %>
-      <% end %>
+<% if @room.present? %>
+  <%=  link_to "DM", user_company_room_path(user_id: current_user.id,id: @room.id), class:"btn btn-primary"%>
+<% else %>
+  <%=  form_for @newroom, url: user_company_rooms_path(current_user) do |f| %>
+    <%= fields_for @company do |u| %>
+      <%= u.hidden_field :company_id, :value=> @offer.company.id %>
+    <% end %>
+    <%= f.submit "DM",class: 'btn btn-primary', style:"margin-right:130px" %>
+  <% end %>
+<% end %>

@@ -3,14 +3,10 @@
 
     <div style="padding:200px 0; text-align:center;">
       <div style="font-size: 20px;"><b>本当に退会しますか？</b></div><br>
-    
 
-    
       <p>退会すると、登録情報や<br>
       これまでの履歴が閲覧できなくなります。<br>
       退会する場合は、「退会する」をクリックしてください。</p><br>
-    
-
     
       <%= link_to "退会しない", "/companies/#{current_company.id}", class: 'btn btn-primary btn-lg', style: "margin-right:50px" %>
       <%= link_to "退会する", delete_company_path(current_company.id), class: 'btn btn-danger btn-lg' %>

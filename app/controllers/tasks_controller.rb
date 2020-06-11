@@ -1,13 +1,14 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user
+  before_action :active_user
   def index
     @newtask = Task.new
-    @tasks = Task.where(progress_status: true).page(params[:page]).per(20).order(created_at: "DESC")
+    @tasks = Task.where(progress_status: true, user_id: current_user.id).page(params[:page]).per(20).order(created_at: "DESC")
   end
 
   def show
-    @tasks = Task.where(progress_status: false)
+    @tasks = Task.where(progress_status: false, user_id: current_user.id)
   end
 
   def create

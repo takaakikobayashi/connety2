@@ -1,6 +1,7 @@
 class RequestersController < ApplicationController
   before_action :authenticate_requester!
   before_action :correct_requester, only: [:edit,:show, :update, :destroy]
+  before_action :active_requester
   def index
     @categories = Category.all
     if params["category_id"].nil?

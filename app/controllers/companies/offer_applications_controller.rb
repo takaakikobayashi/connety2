@@ -1,6 +1,7 @@
 class Companies::OfferApplicationsController < ApplicationController
   before_action :authenticate_company!
   before_action :correct_company
+  before_action :active_company
   def asset
   	@offer_application = OfferApplication.find(params[:id])
     @offer_application.update(offer_application_status: 1)

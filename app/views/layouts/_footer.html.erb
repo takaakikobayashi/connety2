@@ -1,38 +1,39 @@
 <footer>
 	<% if user_signed_in? %>
-	<div class="footer-logo-box navber-brand">
-          <%=link_to image_tag("connety.png", alt:"Connety", width:"280px", height:"80px"), user_scholastic_records_path(current_user) %></div>
-          <div class="info">
-        <div class="info-right">
-          <li><a href="/home/about">Connetyとは</a></li>
-          <li><a href="/home/offers">募集求人に関して</a></li>
-          <li><a href="/home/orders">お仕事に関して</a></li>
-        </div>  
-        <div class="info-left">
+	  <div class="footer-logo-box navber-brand">
+      <%=link_to image_tag("connety.png", alt:"Connety", width:"280px", height:"80px"), user_scholastic_records_path(current_user) %>
+    </div>
+    <div class="info">
+      <div class="info-right">
+        <li><a href="/home/about">Connetyとは</a></li>
+        <li><a href="/home/offers">募集求人に関して</a></li>
+        <li><a href="/home/orders">お仕事に関して</a></li>
+      </div>  
+      <div class="info-left">
         <li><a href="/home/privacy_policy">プライバシーポリシー</a></li>
         <li><a href="/home/terms">利用規約</a></li>
         <li><a href="/home/contact">お問い合わせ</a></li>
         <li><a href="/home/news">お知らせ</a></li>
       </div>
     </div>
-        <% else %>
-        <div class="footer-logo-box navber-brand">
-          <%=link_to image_tag("connety.png", alt:"Connety", width:"280px", height:"80px"), root_path %>
-        </div>
-        <div class="info">
-        <div class="info-right">
-          <li><a href="/home/about">Connetyとは</a></li>
-          <li><a href="/home/offers">募集求人に関して</a></li>
-          <li><a href="/home/orders">お仕事に関して</a></li>
-        </div>  
-        <div class="info-left">
+  <% else %>
+    <div class="footer-logo-box navber-brand">
+      <%=link_to image_tag("connety.png", alt:"Connety", width:"280px", height:"80px"), root_path %>
+    </div>
+    <div class="info">
+      <div class="info-right">
+        <li><a href="/home/about">Connetyとは</a></li>
+        <li><a href="/home/offers">募集求人に関して</a></li>
+        <li><a href="/home/orders">お仕事に関して</a></li>
+      </div>  
+      <div class="info-left">
         <li><a href="/home/privacy_policy">プライバシーポリシー</a></li>
         <li><a href="/home/terms">利用規約</a></li>
         <li><a href="/home/contact">お問い合わせ</a></li>
         <li><a href="/home/news">お知らせ</a></li>
       </div>
     </div>
-        <% end %>
-        <div></div>
+  <% end %>
+  <div></div>
   <p id="copy-right">Copyright © Connety, Inc. 2020</p>
 </footer>

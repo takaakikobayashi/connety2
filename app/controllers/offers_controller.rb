@@ -1,6 +1,7 @@
 class OffersController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user, only: [:show, :create, :destroy]
+  before_action :active_user
   def index
   	@offers = Offer.where(is_active: true).page(params[:page]).per(20)
   end

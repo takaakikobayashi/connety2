@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user
+  before_action :active_user
 
   def show
   	@room = Room.find(params[:id])

@@ -5,25 +5,23 @@
       <h4><mark>選考通過一覧</mark></h4>
     </div>
 
-<% if @offer_applications.empty? %>
-<p>現在選考中の企業はありません</p>
-<% else %>
-    <table class="table table-bordered">
-      <tr>
-        <th>相手</th>
-        <th>選考状況</th>
-        <th>確認ステータス</th>
-        <th>詳細</th>
-      </tr>
-      <% @offer_applications.each do |offer_application| %>
-      <tr>
-        <td><%= offer_application.company.name %></td>
-        <td><%=  %></td>
-        <td><%=  %></td>
-          <td><%=  link_to "詳細", user_show_offers_path(user_id: current_user.id,company_id: offer_application.company.id, id: offer_application.offer.id), class:"btn btn-primary"%></td>
-      </tr>
-      <% end %>
-    </table>
+    <% if @offer_applications.empty? %>
+      <p>現在選考中の企業はありません</p>
+    <% else %>
+      <table class="table table-bordered">
+        <tr>
+          <th>求人企業</th>
+          <th>選考状況</th>
+          <th>詳細</th>
+        </tr>
+        <% @offer_applications.each do |offer_application| %>
+          <tr>
+            <td><%= offer_application.company.name %></td>
+            <td><%= offer_application.offer_application_status %></td>
+            <td><%= link_to "詳細", user_show_offers_path(user_id: current_user.id,company_id: offer_application.company.id, id: offer_application.offer.id), class:"btn btn-primary"%></td>
+          </tr>
+        <% end %>
+      </table>
     <% end %>
 
   </div>

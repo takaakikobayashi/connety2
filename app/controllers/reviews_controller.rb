@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user, only: [:new, :create]
+  before_action :active_user
   def index
   	@reviews = Review.all.page(params[:page]).per(20).order(created_at: "DESC")
     @user = User.find(params[:user_id])

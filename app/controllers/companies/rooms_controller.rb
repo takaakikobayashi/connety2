@@ -1,6 +1,7 @@
 class Companies::RoomsController < ApplicationController
   before_action :authenticate_company!
   before_action :correct_company
+  before_action :active_company
 
   def show
   	@room = Room.find(params[:id])

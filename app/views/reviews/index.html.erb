@@ -5,31 +5,31 @@
       <h4><mark>振り返り一覧</mark></h4>
     </div>
 
-<% if @user == current_user %>
-    <div class="actions">
-      <%=link_to "今日の振り返りをする", new_user_review_path(current_user.id),class: "btn btn-success", style:"margin: 30px" %>
-    </div>
+    <% if @user == current_user %>
+      <div class="actions">
+        <%=link_to "今日の振り返りをする", new_user_review_path(current_user.id),class: "btn btn-success", style:"margin: 30px" %>
+      </div>
     <% end %>
 
-<% if @reviews.empty? %>
-<p>現在振り返りはありません</p>
-<% else %>
-    <table class="table table-bordered">
-      <tr>
-    	<th>日付</th>
-    	<th>できたこと</th>
-        <th>できなかったこと</th>
-        <th>明日のテーマ</th>
-      </tr>
-      <% @reviews.each do |review| %>
+    <% if @reviews.empty? %>
+      <p>現在振り返りはありません</p>
+    <% else %>
+      <table class="table table-bordered">
         <tr>
-    	  <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
-    	  <td><%= review.completion %></td>
-          <td><%= review.halfway %></td>
-          <td><%= review.theme %></td>
+    	    <th>日付</th>
+    	    <th>できたこと</th>
+          <th>できなかったこと</th>
+          <th>明日のテーマ</th>
         </tr>
-      <% end %>
-    </table>
+        <% @reviews.each do |review| %>
+          <tr>
+    	      <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
+    	      <td><%= review.completion %></td>
+            <td><%= review.halfway %></td>
+            <td><%= review.theme %></td>
+          </tr>
+        <% end %>
+      </table>
     <% end %>
 
   </div>

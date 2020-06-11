@@ -1,42 +1,40 @@
-
 <div class="o-index">
   <h4><mark>依頼詳細</mark></h4>
 </div>
 
 <table border="0">
-        <tr style="height:70px">
-            <th class="form">依頼額</th>
-            <td>
-              <%= @order.cost %>円
-            </td>
-        </tr>
+  <tr style="height:70px">
+    <th class="form">依頼額</th>
+    <td>
+      <%= @order.cost %>円
+    </td>
+  </tr>
 
-        <tr style="height:70px">
-            <th>依頼内容</th>
-            <td>
-              <%= @order.request_content %>
-            </td>
-        </tr>
+  <tr style="height:70px">
+    <th>依頼内容</th>
+    <td>
+      <%= @order.request_content %>
+    </td>
+  </tr>
 
-        <tr style="height:70px">
-            <th>依頼詳細</th>
-            <td>
-              <%= @order.request_detail %>
-            </td>
-        </tr>
+  <tr style="height:70px">
+    <th>依頼詳細</th>
+    <td>
+      <%= @order.request_detail %>
+    </td>
+  </tr>
 
-      </table>
+</table>
 
-      <%=  link_to "キャンセル", "#", method: :patch, class:"btn btn-danger"%>
+<%= link_to "キャンセル", requester_delete_orders_path(requester_id: current_requester.id, id: @order.id), method: :patch, class:"btn btn-danger"%>
 
-
-      <% if @room.present? %>
-            <%=  link_to "DM", requester_show_rooms_path(requester_id: current_requester.id,id: @room.id), class:"btn btn-primary"%>
-          <% else %>
-            <%=  form_for @newroom, url: requester_create_rooms_path(requester_id: current_requester.id) do |f| %>
-              <%= fields_for @user do |u| %>
-                <%= u.hidden_field :user_id, :value=> @order.user.id %>
-              <% end %>
-              <%= f.submit "DM",class: 'btn btn-primary', style:"margin-right:130px" %>
-            <% end %>
-          <% end %>
+<% if @room.present? %>
+  <%= link_to "DM", requester_show_rooms_path(requester_id: current_requester.id,id: @room.id), class:"btn btn-primary"%>
+<% else %>
+  <%= form_for @newroom, url: requester_create_rooms_path(requester_id: current_requester.id) do |f| %>
+    <%= fields_for @user do |u| %>
+      <%= u.hidden_field :user_id, :value=> @order.user.id %>
+    <% end %>
+    <%= f.submit "DM",class: 'btn btn-primary', style:"margin-right:130px" %>
+  <% end %>
+<% end %>

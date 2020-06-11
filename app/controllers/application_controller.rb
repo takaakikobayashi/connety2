@@ -30,6 +30,27 @@ def correct_company
   redirect_to(root_url) unless current_company
 end
 
+def active_user
+  if current_user.is_active == false
+    sign_out(current_user)
+  redirect_to home_suspension_path
+end
+end
+
+def active_requester
+  if current_requester.is_active == false
+    sign_out(current_requester)
+  redirect_to home_suspension_path
+end
+end
+
+def active_company
+  if current_company.is_active == false
+    sign_out(current_company)
+  redirect_to home_suspension_path
+end
+end
+
   protected
 
   def configure_permitted_parameters
