@@ -58,19 +58,6 @@ ActiveRecord::Schema.define(version: 2020_06_11_151516) do
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
   end
 
-  create_table "entries", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "requester_id"
-    t.integer "company_id"
-    t.integer "room_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_entries_on_company_id"
-    t.index ["requester_id"], name: "index_entries_on_requester_id"
-    t.index ["room_id"], name: "index_entries_on_room_id"
-    t.index ["user_id"], name: "index_entries_on_user_id"
-  end
-
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "scholastic_record_id"
@@ -217,16 +204,12 @@ ActiveRecord::Schema.define(version: 2020_06_11_151516) do
   end
 
   create_table "rooms", force: :cascade do |t|
-    t.integer "entry_id"
-    t.integer "message_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "requester_id"
     t.integer "company_id"
     t.index ["company_id"], name: "index_rooms_on_company_id"
-    t.index ["entry_id"], name: "index_rooms_on_entry_id"
-    t.index ["message_id"], name: "index_rooms_on_message_id"
     t.index ["requester_id"], name: "index_rooms_on_requester_id"
     t.index ["user_id"], name: "index_rooms_on_user_id"
   end
