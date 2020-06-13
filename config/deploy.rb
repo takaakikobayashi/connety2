@@ -6,6 +6,7 @@ set :repo_url, "git@github.com:takaakikobayashi/connety2.git"
 
 set :deploy_to, "/home/ec2-user/connety2"
 set :rbenv_ruby, '2.5.7'
+set :log_level, :debug
 set :linked_files, %w{config/master.key .env}
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
