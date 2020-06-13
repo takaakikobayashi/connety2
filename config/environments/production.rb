@@ -92,5 +92,4 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  server '54.92.89.96', user: 'ec2-user', roles: %w{app web db}
 end
