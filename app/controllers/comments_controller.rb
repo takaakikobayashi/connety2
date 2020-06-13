@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
        @scholastic_record.create_notification_comment!(current_user, @scholastic_record.id)
        redirect_to user_scholastic_record_path(user_id: params[:user_id],id: params[:scholastic_record_id])
     else
-	     render 'scholastic_record/show'
+       redirect_to user_scholastic_record_path(user_id: params[:user_id],id: @scholastic_record.id)
     end
   end
 

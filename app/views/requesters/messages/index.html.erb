@@ -13,7 +13,7 @@
     </tr>
     <% @orders.each do |order| %>
     	<tr>
-    	  <td><%= order.requester.name %></td>
+    	  <td><%= order.user.full_name %></td>
     	  <td><%= order.request_content %></td>
         <td><%=  link_to "詳細", requester_show_orders_path(requester_id: current_requester.id,id: order.id), class:"btn btn-success" %></td>
     	</tr>

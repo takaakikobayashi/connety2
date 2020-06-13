@@ -1,5 +1,5 @@
 class Requesters::MessagesController < ApplicationController
-	before_action :authenticate_requester!
+	before_action :authenticate
 	before_action :correct_requester
 	before_action :active_requester
   def index

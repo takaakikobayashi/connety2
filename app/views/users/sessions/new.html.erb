@@ -32,9 +32,15 @@
       </div>
     <% end %>
 
+    <div class="sign_in">
+      <h3 span="margin-top: 50px"><mark>お仕事の発注者の方はこちらから</mark></h3>
+      <p><%= link_to "こちら", new_requester_session_path %>からログインください。</p>
+    </div>
+
     <div class="sign_up_page">
       <h4><mark>登録がお済みでない方</mark></h4>
-      <p><%= link_to "こちら", new_user_registration_path %>から新規登録を行ってください。</p>
+      <p><%= link_to "ユーザー新規登録", new_user_registration_path %>,
+        　<%= link_to "発注者新規登録", new_requester_registration_path %>から新規登録を行ってください。</p>
     </div>
 
 

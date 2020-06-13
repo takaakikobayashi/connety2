@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :correct_user, only: [:edit,:update, :delete, :destroy]
+  before_action :authenticate
+  before_action :correct_user, only: [:edit, :update, :delete, :destroy]
   before_action :active_user
   def index
     @users = User.all.page(params[:page]).per(20)
@@ -11,7 +11,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @tasks = Task.where(deadline: Date.today, user_id: current_user.id)
+    if user_signed_in?
+      @tasks = Task.where(deadline: Date.today, user_id: current_user.id)
+    end
     @scholastic_records = ScholasticRecord.where(user_id: @user.id)
     now = Date.today
     @reviews = Review.find_by(created_at: now.yesterday)

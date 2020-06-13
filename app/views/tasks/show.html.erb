@@ -5,7 +5,7 @@
       <h4><mark>完了タスク一覧</mark></h4>
     </div>
 
-    <% if @task.nil? %>
+    <% if @tasks.empty? %>
       <p>現在完了済タスクはありません</p>
     <% else %>
       <table class="table table-bordered">
@@ -20,7 +20,7 @@
     	    <td><%= task.name %></td>
     	    <td><%= task.deadline %></td>
           <td><%= link_to "元に戻す", user_return_task_path(user_id: params[:user_id],id: task.id), method: :patch,class: "btn btn-success" %></td>
-          <%= link_to "削除", user_task_path(user_id: params[:user_id],id: task.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
+          <td><%= link_to "削除", user_task_path(user_id: params[:user_id],id: task.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %></td>
     	  </tr>
         <% end %>
       </table>

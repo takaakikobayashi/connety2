@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
   def correct_user
   redirect_to(root_url) unless current_user
-end
+  end
 
 def correct_requester
   redirect_to(root_url) unless current_requester
@@ -31,24 +31,36 @@ def correct_company
 end
 
 def active_user
-  if current_user.is_active == false
+  if user_signed_in? and current_user.is_active == false
     sign_out(current_user)
-  redirect_to home_suspension_path
-end
+    redirect_to home_suspension_path
+  elsif requester_signed_in?
+  elsif company_signed_in?
+  else
+  end
 end
 
 def active_requester
   if current_requester.is_active == false
     sign_out(current_requester)
-  redirect_to home_suspension_path
-end
+    redirect_to home_suspension_path
+  end
 end
 
 def active_company
   if current_company.is_active == false
     sign_out(current_company)
-  redirect_to home_suspension_path
+    redirect_to home_suspension_path
+  end
 end
+
+def authenticate
+  if user_signed_in?
+  elsif requester_signed_in?
+  elsif company_signed_in?
+  else
+    redirect_to root_path
+  end
 end
 
   protected
