@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate
   before_action :correct_user, only: [:new, :create]
   before_action :active_user
   def index

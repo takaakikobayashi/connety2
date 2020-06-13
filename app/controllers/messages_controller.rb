@@ -1,7 +1,4 @@
 class MessagesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :correct_user
-  before_action :active_user
 
   def index
     @orders = Order.where(order_status: 1).page(params[:page]).per(20)

@@ -5,6 +5,7 @@
       <h4><mark>通知</mark></h4>
     </div>
 
+    <div class="r-notification">
     <% if @notifications.exists? %>
       <% @notifications.each do |notification| %>
         <% case notification.action %>
@@ -24,6 +25,7 @@
     <% else %>
       <p>通知はありません</p>
     <% end %>
+    </div>
 
   </div>
 </div>

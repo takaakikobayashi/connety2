@@ -1,5 +1,5 @@
 class Companies::MessagesController < ApplicationController
-	before_action :authenticate_company!
+	before_action :authenticate
 	before_action :correct_company
 	before_action :active_company
   def index

@@ -1,5 +1,5 @@
 class ProblemSolutionsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate
   before_action :correct_user, only: [:new, :create]
   before_action :active_user
   def index
@@ -27,7 +27,8 @@ class ProblemSolutionsController < ApplicationController
       :worked,
       :not_worked,
       :solution,
-      :improvement_point
+      :improvement_point,
+      :cause
     )
   end
 end

@@ -1,4 +1,6 @@
+<div class="container">
 <div class="row">
+
   <div class="col-xs-10 col-xs-offset-1">
 
     <div class="r-index">
@@ -7,23 +9,28 @@
 
     <div class="col-xs-8">
       <% if @users.empty? %>
-        <p>現在求職者はいません</p>
+        <p style="text-align: center">現在求職者はいません</p>
       <% else %>
-        <div class="product-index-box">
+      <div class="col-xs-8">
+        <div class="c-product-index-box">
           <% @users.each do |user| %>
-            <div class="product-index-image">
+          <div class="col-xs-3">
+            <div class="c-product-index-image">
               <%= attachment_image_tag user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'80x80' %>
               <p><%= link_to user.user_name, requester_requester_strength_path(requester_id: current_requester.id,user_id: user.id) %></p>
               <p>
               	<% user.strengths.each do |strength| %>
-                  <%= strength.appeal_point %>
+                  <p><%= strength.appeal_point %></p>
                 <% end %>
               </p>
             </div>
+          </div>
           <% end %>
         </div>
+      </div>
       <% end %>
-    </div>
 
   </div>
+
+</div>
 </div>

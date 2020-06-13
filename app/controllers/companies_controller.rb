@@ -35,9 +35,7 @@ class CompaniesController < ApplicationController
   end
 
   def delete
-    @offer = Offer.find(params[:id])
-    @offer.update(is_active: false)
-    redirect_to company_path(current_company.id)
+    @company = Company.find(current_company.id)
   end
 
   private
