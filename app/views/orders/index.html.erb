@@ -30,15 +30,19 @@
               <% case order.order_status %>
               <% when "オファー中" then %>
                 <% if order.progress_status == "破断" %>
-                  <p>オファーはキャンセルされました</p>
+                  <p>オファーはキャンセルされました。</p>
                 <% else %>
                   <%=  link_to "受諾", user_asset_orders_path(user_id: current_user.id,id: order.id), method: :patch, class:"btn btn-success"%>
                   <%=  link_to "お断り", user_refuse_orders_path(user_id: current_user.id,id: order.id), method: :patch, class:"btn btn-danger"%>
                 <% end %>
               <% when "受諾" then %>
-                <%=  link_to "キャンセル", user_cansel_orders_path(user_id: current_user.id,id: order.id), method: :patch, class:"btn btn-danger"%>
+                <% if order.progress_status == "完了" %>
+                  <p>取引は完了しました。</p>
+                <% else %>
+                  <%=  link_to "キャンセル", user_cansel_orders_path(user_id: current_user.id,id: order.id), method: :patch, class:"btn btn-danger"%>
+                <% end %>
               <% else %>
-                <p>取引は中止になりました</p>
+                <p>取引は中止になりました。</p>
               <% end %>
             </td>
     	    </tr>

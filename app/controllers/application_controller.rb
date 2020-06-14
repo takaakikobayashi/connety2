@@ -19,7 +19,11 @@ class ApplicationController < ActionController::Base
   end
 
   def correct_user
-  redirect_to(root_url) unless current_user
+    if current_user
+    elsif admin_signed_in?
+    else
+      redirect_to(root_url)
+    end
   end
 
 def correct_requester
@@ -36,6 +40,7 @@ def active_user
     redirect_to home_suspension_path
   elsif requester_signed_in?
   elsif company_signed_in?
+  elsif admin_signed_in?
   else
   end
 end
@@ -58,6 +63,7 @@ def authenticate
   if user_signed_in?
   elsif requester_signed_in?
   elsif company_signed_in?
+  elsif admin_signed_in?
   else
     redirect_to root_path
   end

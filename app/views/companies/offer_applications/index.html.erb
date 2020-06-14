@@ -21,7 +21,7 @@
     	    <tr>
     		    <td><%= offer_application.created_at.strftime('%Y/%m/%d') %></td>
     		    <td><%= offer_application.offer.appeal_point %></td>
-    		    <td><%= offer_application.user.full_name %></td>
+    		    <td><%= link_to offer_application.user.full_name , user_path(offer_application.user.id) %></td>
             <td><%= offer_application.user.grade %></td>
             <td><%= offer_application.offer_application_status %></td>
             <td>

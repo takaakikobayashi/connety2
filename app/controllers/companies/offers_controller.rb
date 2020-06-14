@@ -49,6 +49,12 @@ class Companies::OffersController < ApplicationController
     redirect_to company_path(current_company.id)
   end
 
+  def destroy
+    @offer = Offer.find(params[:id])
+    @offer.destroy
+    redirect_to company_offers_path(current_company.id)
+  end
+
   private
   def offer_params
     params.require(:offer).permit(:industry, :occupation, :work_location, :appeal_point, :job_description, :working_hour, :salary, :vacation, :welfare, :application_condition, :employment_status, :image, :name)
