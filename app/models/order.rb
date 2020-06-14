@@ -6,6 +6,7 @@ class Order < ApplicationRecord
 	enum progress_status: ["オファー待ち", "進行中", "完了", "破断"]
 	enum order_status: ["オファー中", "受諾", "お断り", "キャンセル"]
 
+  validates :cost, presence: true
   validates :request_content, presence: true, length: {maximum:30}
   validates :request_detail, presence: true, length: {maximum:500}
 

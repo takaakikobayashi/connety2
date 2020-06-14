@@ -59,7 +59,7 @@
 
   <tr style="height:70px">
     <th>給与</th>
-    <td><%= @offer.salary %></td>
+    <td><%= @offer.salary %>円</td>
   </tr>
 
   <tr style="height:70px">
@@ -82,4 +82,5 @@
         <%= link_to "非公開にする", company_delete_offers_path(company_id: current_company.id,id: @offer.id), method: :patch, class:"btn btn-danger"%>
       <% else %>
         <%= link_to "公開する", company_release_offers_path(company_id: current_company.id,id: @offer.id), method: :patch, class: 'btn btn-success' %>
+        <%= link_to "削除する", company_destroy_offers_path(company_id: current_company.id,id: @offer.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: 'btn btn-danger' %>
       <% end %>
