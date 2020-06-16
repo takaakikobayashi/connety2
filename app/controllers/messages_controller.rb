@@ -21,11 +21,11 @@ class MessagesController < ApplicationController
       room.create_requester_notification_message!(current_user, @message.id)
     elsif message_params[:requester_id].nil? and message_params[:company_id].nil? and room.requester_id.nil?
       room.create_company_notification_message!(current_user, @message.id)
-      elsif message_params[:user_id].nil? and message_params[:company_id].nil?
-    room.create_user_notification_message!(current_requester, @message.id)
-  elsif message_params[:user_id].nil? and message_params[:requester_id].nil?
-    room.create_c_user_notification_message!(current_company, @message_id)
-  end
+    elsif message_params[:user_id].nil? and message_params[:company_id].nil?
+      room.create_user_notification_message!(current_requester, @message.id)
+    elsif message_params[:user_id].nil? and message_params[:requester_id].nil?
+      room.create_c_user_notification_message!(current_company, @message_id)
+    end
     if message_params[:requester_id].nil? and message_params[:company_id].nil? and room.company_id.nil?
       redirect_to "/users/#{@message.user_id}/rooms/#{@message.room_id}"
     elsif message_params[:requester_id].nil? and message_params[:company_id].nil? and room.requester_id.nil?
