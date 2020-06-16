@@ -8,9 +8,9 @@
 
 Admin.create!(
    name: '管理者',
-   email: 'admin1@email.com',
-   password: 'admin1',
-   password_confirmation:'admin1'
+   email: ENV['SECRET_ID'],
+   password: ENV['SECRET_KEY'],
+   password_confirmation: ENV['SECRET_KEY']
 )
 
 User.create!(
