@@ -40,6 +40,7 @@
           </li>
           <li><%= link_to "募集企業を探す", user_offers_path(user_id: params[:user_id]) %></li>
           <li><%= link_to "オファーを確認する", user_orders_path(user_id: params[:user_id]) %></li>
+          <li><%= link_to "選考通過一覧", user_pass_offer_applications_path(user_id: current_user.id) %></li>
         </div>
       </div>
     </div>
@@ -51,6 +52,8 @@
   	    <div class="scholastic_record">
 
           <% @scholastic_records.each do |scholastic_record| %>
+          <% if scholastic_record.user.is_active == false %>
+          <% else %>
             <div class="user">
               <%= attachment_image_tag scholastic_record.user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'40x40' %><br>
               <%= link_to user_path(scholastic_record.user.id) do %>
@@ -93,6 +96,7 @@
                 <%= link_to "#{scholastic_record.comments.count}コメント", user_scholastic_record_path(user_id: scholastic_record.user.id,id: scholastic_record.id) %>
               </span>
             </div>
+            <% end %>
           <% end %>
 
         </div>

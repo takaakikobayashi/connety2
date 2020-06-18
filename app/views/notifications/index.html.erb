@@ -36,10 +36,17 @@
               あなたに<%= link_to "仕事のオファー", "/users/#{current_user.id}/orders/#{notification.order_id}", style: "font-weight: bold;" %>をしました
             </li>
           <% when "message" then %>
-            <li>
-              <%= notification.requester_visitor.name %>さんが
-              あなたに<%= link_to "メッセージ", "/users/#{current_user.id}/rooms/#{notification.room_id}", style: "font-weight: bold;" %>をしました
-            </li>
+            <% if notification.requester_visitor_id.present? %>
+              <li>
+                <%= notification.requester_visitor.name %>さんが
+                あなたに<%= link_to "メッセージ", "/users/#{current_user.id}/rooms/#{notification.room_id}", style: "font-weight: bold;" %>をしました
+              </li>
+            <% elsif notification.company_visitor_id.present? %>
+              <li>
+                <%= notification.company_visitor.name %>さんが
+                あなたに<%= link_to "メッセージ", "/users/#{current_user.id}/rooms/#{notification.room_id}", style: "font-weight: bold;" %>をしました
+              </li>
+            <% end %>
           <% else %>
           <% end %>
         <% end %>

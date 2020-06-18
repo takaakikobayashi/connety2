@@ -60,6 +60,7 @@
       </div>
 
       <% if @offers.empty? %>
+      <% elsif @active_offers.empty? %>
         <p>現在募集中の求人はありません</p>
       <% else %>
         <table class="table table-bordered">
@@ -71,7 +72,7 @@
     		    <th>応募者一覧</th>
             <th>募集締め切り</th>
     	    </tr>
-          <% @offers.each do |offer| %>
+          <% @active_offers.each do |offer| %>
     	      <tr>
     		      <td><%= offer.created_at.strftime('%Y/%m/%d') %></td>
     		      <td><%= offer.job_description %></td>

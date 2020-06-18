@@ -73,7 +73,7 @@
 <% end %>
 
 <% if @room.present? %>
-  <%=  link_to "DM", user_company_room_path(user_id: current_user.id,id: @room.id), class:"btn btn-primary"%>
+  <%=  link_to "DM", user_company_room_path(user_id: current_user.id,id: @room.id), class:"btn btn-success"%>
 <% else %>
   <%=  form_for @newroom, url: user_company_rooms_path(current_user) do |f| %>
     <%= fields_for @company do |u| %>

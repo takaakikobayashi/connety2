@@ -51,7 +51,7 @@
           <th>アピールポイント</th>
           <td>
             <% f.label :appeal_point %>
-            <%= f.text_field :appeal_point, autofocus: true, autocomplete: "appeal_point", class: "form-control" %>
+            <%= f.text_area :appeal_point, autofocus: true, autocomplete: "appeal_point", class: "form-control" %>
           </td>
         </tr>
 
@@ -59,7 +59,7 @@
           <th>仕事内容</th>
           <td>
             <% f.label :job_description %>
-            <%= f.text_field :job_description, autofocus: true, autocomplete: "job_description", class: "form-control" %>
+            <%= f.text_area :job_description, autofocus: true, autocomplete: "job_description", class: "form-control" %>
           </td>
         </tr>
 
@@ -83,7 +83,7 @@
           <th>給与</th>
           <td>
             <% f.label :salary %>
-            <%= f.text_field :salary, autofocus: true, autocomplete: "salary", class: "form-control" %>円
+            <%= f.text_field :salary, autofocus: true, autocomplete: "salary", class: "form-control" %><span style="margin-left:250px">円</span>
           </td>
         </tr>
 
@@ -91,7 +91,7 @@
           <th>募集要件</th>
           <td>
             <% f.label :application_condition %>
-            <%= f.text_field :application_condition, autofocus: true, autocomplete: "application_condition", class: "form-control" %>
+            <%= f.text_area :application_condition, autofocus: true, autocomplete: "application_condition", class: "form-control" %>
           </td>
         </tr>
 
@@ -99,7 +99,7 @@
           <th>休日休暇</th>
           <td>
             <% f.label :vacation %>
-            <%= f.text_field :vacation, autofocus: true, autocomplete: "vacation", class: "form-control" %>
+            <%= f.text_area :vacation, autofocus: true, autocomplete: "vacation", class: "form-control" %>
           </td>
         </tr>
 
@@ -107,7 +107,7 @@
           <th>福利厚生</th>
           <td>
             <% f.label :welfare %>
-            <%= f.text_field :welfare, autofocus: true, autocomplete: "welfare", class: "form-control" %>
+            <%= f.text_area :welfare, autofocus: true, autocomplete: "welfare", class: "form-control" %>
           </td>
         </tr>
       </table>

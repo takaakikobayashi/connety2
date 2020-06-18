@@ -11,6 +11,10 @@ class Requesters::RoomsController < ApplicationController
     @messages = Message.where(room_id: @room.id)
     @user_messages = Message.where(user_id: @user.id)
     @requester_messages = Message.where(requester_id: @requester.id)
+    @notifications = current_requester.requester_passive_notifications
+    @notifications.where(checked: false, action: 'message').each do |notification|
+      notification.update_attributes(checked: true)
+    end
   end
 
   def create

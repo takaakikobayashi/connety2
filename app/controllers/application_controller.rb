@@ -26,48 +26,48 @@ class ApplicationController < ActionController::Base
     end
   end
 
-def correct_requester
-  redirect_to(root_url) unless current_requester
-end
-
-def correct_company
-  redirect_to(root_url) unless current_company
-end
-
-def active_user
-  if user_signed_in? and current_user.is_active == false
-    sign_out(current_user)
-    redirect_to home_suspension_path
-  elsif requester_signed_in?
-  elsif company_signed_in?
-  elsif admin_signed_in?
-  else
+  def correct_requester
+    redirect_to(root_url) unless current_requester
   end
-end
 
-def active_requester
-  if current_requester.is_active == false
-    sign_out(current_requester)
-    redirect_to home_suspension_path
+  def correct_company
+    redirect_to(root_url) unless current_company
   end
-end
 
-def active_company
-  if current_company.is_active == false
-    sign_out(current_company)
-    redirect_to home_suspension_path
+  def active_user
+    if user_signed_in? and current_user.is_active == false
+      sign_out(current_user)
+      redirect_to home_suspension_path
+    elsif requester_signed_in?
+    elsif company_signed_in?
+    elsif admin_signed_in?
+    else
+    end
   end
-end
 
-def authenticate
-  if user_signed_in?
-  elsif requester_signed_in?
-  elsif company_signed_in?
-  elsif admin_signed_in?
-  else
-    redirect_to root_path
+  def active_requester
+    if current_requester.is_active == false
+      sign_out(current_requester)
+      redirect_to home_suspension_path
+    end
   end
-end
+
+  def active_company
+    if current_company.is_active == false
+      sign_out(current_company)
+      redirect_to home_suspension_path
+    end
+  end
+
+  def authenticate
+    if user_signed_in?
+    elsif requester_signed_in?
+    elsif company_signed_in?
+    elsif admin_signed_in?
+    else
+      redirect_to root_path
+    end
+  end
 
   protected
 

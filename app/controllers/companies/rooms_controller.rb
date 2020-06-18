@@ -11,6 +11,10 @@ class Companies::RoomsController < ApplicationController
     @messages = Message.where(room_id: @room.id)
     @user_messages = Message.where(user_id: @user.id)
     @company_messages = Message.where(company_id: @company.id)
+    @notifications = current_company.company_passive_notifications
+    @notifications.where(checked: false, action: 'message').each do |notification|
+      notification.update_attributes(checked: true)
+    end
   end
 
   def create

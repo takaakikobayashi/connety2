@@ -22,7 +22,8 @@
           <th>学習内容</th>
           <td>
             <% f.label :learning_content %>
-            <%= f.collection_select :learning_content, Task.where(progress_status: true), :name, :name,:prompt => "タスクを選択してください" %>
+            <%= f.collection_select :learning_content, Task.where(progress_status: true), :name, :name,:prompt => "タスクを選択してください" %><br>
+            <%= link_to "タスクを新規登録する", user_tasks_path(current_user.id) %>
           </td>
         </tr>
 
