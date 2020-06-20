@@ -18,7 +18,7 @@
           <tr>
             <td><%= offer_application.company.name %></td>
             <td><%= offer_application.offer_application_status %></td>
-            <td><%= link_to "詳細", user_show_offers_path(user_id: current_user.id,company_id: offer_application.company.id, id: offer_application.offer.id), class:"btn btn-primary"%></td>
+            <td><%= link_to "詳細", user_show_offers_path(user_id: current_user.id,company_id: offer_application.company.id, id: offer_application.offer.id), class:"btn btn-success"%></td>
           </tr>
         <% end %>
       </table>

@@ -5,23 +5,30 @@
     <h4>参加者</h4>
     <%= @user.full_name %>
     <% if @requester.present? %>
-      <%= @requester.name %>
+      <%= @requester.name %>さん
     <% elsif @company.present? %>
-      <%= @company.name %>
+      <%= @company.name %>さん
     <% end %>
 
     <hr>
+  </div>
+
+    <div class="col-xs-6 col-xs-offset-3">
       <% if @messages.present? %>
         <% @messages.each do |m| %>
           <div class="message">
             <li>
-              <strong><%= m.mail %></strong>
               <% if m.user_id.nil? and m.company.nil? %>
+                <p class="says"><strong><%= m.mail %></strong></p>
                 <small>by <strong><%= @requester.name %>さん</a></strong></small>
               <% elsif m.user_id.nil? and m.requester.nil? %>
+                <p class="says"><strong><%= m.mail %></strong></p>
                 <small>by <strong><%= @company.name %>さん</a></strong></small>
               <% else %>
-                <small>by <strong><%= @user.full_name %>さん</a></strong></small>
+                <p class="says-r"><strong><%= m.mail %></strong></p>
+                <div style="text-align:right">
+                  <small>by <strong><%= @user.full_name %></a></strong></small>
+                </div>
               <% end %>
             </li>
           </div>
@@ -30,8 +37,9 @@
         <h3 class="text-center">メッセージはまだありません</h3>
       <% end %>
 
+    <div class="message-form">
       <%= form_for @message, url: messages_path do |f| %>
-        <%= f.text_field :mail, :placeholder => "メッセージを入力して下さい" , :size => 70 %>
+        <%= f.text_area :mail, placeholder: "メッセージを入力して下さい", size: "65×10" %>
         <%= f.hidden_field :room_id, :value => @room.id %>
         <% if current_user.nil? and @requester.present? %>
           <%= f.hidden_field :requester_id, :value => @requester.id %>
@@ -40,8 +48,9 @@
         <% else %>
           <%= f.hidden_field :user_id, :value => @user.id %>
         <% end %><br>
-        <%= f.submit "投稿する" %>
+        <input class="btn-square" type="submit" name="submit" value="送信する">
       <% end %>
+    </div>
 
   </div>
 </div>

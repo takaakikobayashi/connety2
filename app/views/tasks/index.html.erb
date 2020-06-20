@@ -55,5 +55,11 @@
       </table>
     <% end %>
 
+    <span id="back">
+      <%= link_to new_user_scholastic_record_path(user_id: params[:user_id]) do %>
+        <i class="fas fa-edit my-record"></i>
+      <% end %>
+    </span>
+
   </div>
 </div>

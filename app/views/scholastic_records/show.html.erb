@@ -3,6 +3,7 @@
 
     <div class="post-meta-top">
 
+　　　<%# 投稿ボックス %>
       <div class="post-image">
         <%= attachment_image_tag @scholastic_record.user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'50x50' %><br><br><br>
         <%= link_to user_path(@scholastic_record.user.id) do %>
@@ -30,6 +31,7 @@
 
   　</div>
 
+    <%# いいね %>
     <div class="post-content">
       <i class="fa fa-calendar"></i><%= @scholastic_record.created_at.strftime('%Y/%m/%d') %>
       <% if @scholastic_record.liked_by?(current_user) %>
@@ -51,6 +53,7 @@
       </span>
     </div>
 
+　　<%# コメント %>
     <div class="col-xs-9 col-xs-offset-1">
       <div style="margin-left: 20px">
         <% @scholastic_record.comments.each do |comment| %>

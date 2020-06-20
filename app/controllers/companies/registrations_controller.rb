@@ -16,7 +16,7 @@ class Companies::RegistrationsController < Devise::RegistrationsController
      super
    elsif @company.is_active == false
     redirect_to home_suspension_path
-  else
+   else
     redirect_to new_company_session_path
    end
  end

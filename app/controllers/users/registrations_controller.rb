@@ -13,13 +13,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.find_by(phone_number: params[:user][:phone_number])
     if @user.nil?
-     super
-   elsif @user.is_active == false
-    redirect_to home_suspension_path
-   else
-    redirect_to new_user_session_path
-   end
- end
+      super
+    elsif @user.is_active == false
+      redirect_to home_suspension_path
+    else
+      redirect_to new_user_session_path
+    end
+  end
 
   # GET /resource/edit
   # def edit

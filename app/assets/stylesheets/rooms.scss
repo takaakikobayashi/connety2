@@ -1,3 +1,78 @@
 .message li {
 	list-style: none;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.message-form {
+	text-align: center;
+}
+.btn-square {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #66CC99;
+  color: #FFF;
+  border-bottom: solid 4px #CCFFCC;
+  border-radius: 3px;
+  margin-left: 400px
+}
+.btn-square:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  border-bottom: none;
+}
+.says {
+  max-width:300px; /*最大幅は任意*/
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  padding: 17px 13px 15px 18px;
+  border-radius: 12px;
+  background: #99dddd;/*色は任意*/
+  box-sizing:border-box;
+  margin:0 !important;
+  line-height:1.5;
+/*   align-items: center; */
+}
+.says p{
+  margin:8px 0 0 !important; 
+}
+.says p:first-child{
+  margin-top:0 !important;
+}
+.says:after {
+  content: "";
+  position: absolute;
+  border: 10px solid transparent;
+/*   margin-top:-3px;  */
+}
+.says-r {
+  max-width:300px; /*最大幅は任意*/
+  padding: 17px 13px 15px 18px;
+  border-radius: 12px;
+  background: #99dddd;/*色は任意*/
+  box-sizing:border-box;
+  line-height:1.5;
+  margin-left: 300px;
+/*   align-items: center; */
+}
+.says-r p{
+  margin:8px 0 0 !important;
+}
+.says-r p:first-child{
+  margin-top:0 !important;
+}
+.says-r:after {
+  content: "";
+  position: absolute;
+  border: 10px solid transparent;
+/*   margin-top:-3px;  */
+}
+.message .says:after {
+  left: -26px;
+  border-right: 22px solid #99dddd;
+}
+.message .says-r:after {
+  right: -13px;
+  border-left: 22px solid #99dddd;
 }
