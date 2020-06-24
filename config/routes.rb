@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'contacts/new'
+  get 'contacts/create'
   root 'home#top'
   get  "home/about"  => "home#about"
   get  "home/requesters"  => "home#requesters"
@@ -36,7 +38,16 @@ Rails.application.routes.draw do
     registrations: "companies/registrations"
   }
   namespace :admins do
-  	get '/', to: "admins/home#top"
+  	get '/', to: "home#top"
+    get 'news/new' => 'news#new'
+    get 'news/create' => 'news#create'
+    get 'categories/new' => 'categories#new'
+    post 'categories/create' => 'categories#create'
+    get 'categories/index' => 'categories#index'
+    get 'categories/:id/edit' => 'categories#edit'
+    patch 'categories/:id/update' => 'categories#update'
+    delete 'categories/:id/delete' => 'categories#destroy'
+    get 'mypage' => 'admins#index'
     resources :companies, only:[:index]
     resources :requesters, only:[:index]
     resources :rooms, only:[:index, :show]

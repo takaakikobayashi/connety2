@@ -263,3 +263,52 @@ h1,h2,h3,h4,h5,h6 {
   text-align: center;
   margin-top: 200px;
 }
+.notice {
+  position: relative;
+  background: #CCFFCC;
+  padding: 0.25em 0.5em;
+  border-left: solid 2em #66CC66;
+  margin-top: 30px;
+}
+.notice:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f303";
+  position: absolute;
+  padding: 0em;
+  color: white;
+  font-weight: 900;
+  left: -1.35em;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.check {
+  position: relative;
+  color: black;
+  background: #CCFFCC;
+  line-height: 1.4;
+  padding: 0.25em 0.5em;
+  margin: 2em 0 0.5em;
+  border-radius: 0 5px 5px 5px;
+}
+
+.check:after {
+  position: absolute;
+  font-family: "Font Awesome 5 Free",'Quicksand','Avenir','Arial',sans-serif;
+  font-weight: 900;
+  content: '\f00c Check';
+  background: #66CC66;
+  color: #fff;
+  left: 0px;
+  bottom: 100%;
+  border-radius: 5px 5px 0 0;
+  padding: 3px 7px 1px;
+  font-size: 0.7em;
+  line-height: 1;
+  letter-spacing: 0.05em
+}
+.newsrelease ul li {
+  display: flex;
+  list-style: none;
+  border-bottom: solid #DDDDDD 1.2px;
+}

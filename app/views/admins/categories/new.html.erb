@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-4">
+
+    <div class="sign_up">
+      <h4><mark>カテゴリ新規追加</mark></h4>
+    </div>      
+
+    <%= form_for @category, url: admins_categories_new_path do |f| %>
+      <%= render "layouts/error_message", title: @category %>
+      
+      <table border="0">
+      	<tr style="height:70px">
+          <th>カテゴリ名</th>
+          <td>
+            <% f.label :name %>
+            <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+          </td>
+        </tr>
+      </table>
+
+      <div class="actions">
+        <%= f.submit "新規登録", class:"btn btn-success center-block btn-lg", style:"width:250px" %>
+      </div>
+      
+    <% end %>
+      
+  </div>
+</div>

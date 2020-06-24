@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_11_151516) do
+ActiveRecord::Schema.define(version: 2020_06_24_043751) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -58,6 +58,13 @@ ActiveRecord::Schema.define(version: 2020_06_11_151516) do
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string "email"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "scholastic_record_id"
@@ -79,6 +86,13 @@ ActiveRecord::Schema.define(version: 2020_06_11_151516) do
     t.index ["requester_id"], name: "index_messages_on_requester_id"
     t.index ["room_id"], name: "index_messages_on_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "news", force: :cascade do |t|
+    t.string "category"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "notifications", force: :cascade do |t|

@@ -31,7 +31,7 @@
           <th>学習コメント</th>
           <td>
             <% f.label :learning_detail %>
-            <%= f.text_field :learning_detail, autofocus: true, autocomplete: "learning_detail", class: "form-control" %>
+            <%= f.text_area :learning_detail, autofocus: true, autocomplete: "learning_detail", class: "form-control" %>
           </td>
         </tr>
 
@@ -39,9 +39,9 @@
           <th>学習時間</th>
           <td class="time">
             <% f.label :learning_time %>
-            <%= f.select :learning_time,[*0..23], {}, { autocomplete: "learning_time", class: 'form-control', style:"width:50px"} %><p>時間</p>
+            <%= f.select :learning_time,[*0..23], {}, { autocomplete: "learning_time", class: 'form-control', style:"width:60px"} %><p>時間</p>
             <% f.label :learning_time_min %>
-            <%= f.select :learning_time_min,[*0..59], {}, { autocomplete: "learning_time_min", class: 'form-control', style:"width:50px"} %><p>分</p>
+            <%= f.select :learning_time_min,[*0..59], {}, { autocomplete: "learning_time_min", class: 'form-control', style:"width:60px"} %><p>分</p>
           </td>
         </tr>
       </table>

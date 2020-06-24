@@ -83,6 +83,7 @@
           <%=link_to image_tag("connety.png", alt:"Connety", width:"280px", height:"80px"), admins_scholastic_records_path %>
         </div>
          <ul class="nav navbar-nav navbar-right">
+          <li class="header-link"><%= link_to "マイページ", admins_mypage_path, class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "案件一覧", admins_orders_path, class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "登録企業一覧", admins_companies_path, class: "btn btn-default" %></li>
           <li class="header-link"><%= link_to "発注者一覧", admins_requesters_path, class: "btn btn-default" %></li>
