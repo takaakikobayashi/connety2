@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   get "home/privacy_policy" => "home#privacy_policy"
   get "home/contact" => "home#contact"
   get "home/operations" => "home#operations"
-  get "home/news" => "home#news"
   get "home/offers" => "home#offers"
   get "home/orders" => "home#orders"
   get "home/suspension" => "home#suspension"
@@ -44,7 +43,7 @@ Rails.application.routes.draw do
     get 'categories/new' => 'categories#new'
     post 'categories/create' => 'categories#create'
     get 'categories/index' => 'categories#index'
-    get 'categories/:id/edit' => 'categories#edit'
+    get 'categories/:id/edit' => 'categories#edit', as: "categories_edit"
     patch 'categories/:id/update' => 'categories#update'
     delete 'categories/:id/delete' => 'categories#destroy'
     get 'mypage' => 'admins#index'
@@ -52,6 +51,7 @@ Rails.application.routes.draw do
     resources :requesters, only:[:index]
     resources :rooms, only:[:index, :show]
     resources :orders, only:[:index, :show]
+    resources :offers, only:[:index, :show]
     resources :users, only:[:index, :show]
     patch "users/:id"  => "users#delete", as: "delete_user"
     patch "requesters/:id"  => "requesters#delete", as: "delete_requester"
@@ -148,5 +148,6 @@ Rails.application.routes.draw do
   end
   
   resources :messages, only:[:index, :create]
+  resources :news, only:[:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

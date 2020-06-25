@@ -18,8 +18,8 @@
       <tr>
     	  <td><%= category.name %></td>
         <td>
-          <%= link_to "編集", admins_categories_index_path(category.id), class:"btn btn-success"%>
-          <%= link_to "削除", admins_categories_index_path(category.id), class:"btn btn-danger"%>
+          <%= link_to "編集", admins_categories_edit_path(category.id), class:"btn btn-success"%>
+          <%= link_to "削除", admins_categories_edit_path(category.id), method: :delete, class:"btn btn-danger"%>
         </td>
       </tr>
       <% end %>

@@ -5,10 +5,19 @@
       <mark>カテゴリ</mark>
     </h4>
   
-  <div>
-  <%= link_to "カテゴリ新規追加", admins_categories_new_path, class:"btn btn-success"%>
-  <%= link_to "登録カテゴリ一覧", admins_categories_index_path, class:"btn btn-success"%>
-  </div>
+    <div>
+      <%= link_to "カテゴリ新規追加", admins_categories_new_path, class:"btn btn-success"%>
+      <%= link_to "登録カテゴリ一覧", admins_categories_index_path, class:"btn btn-success"%>
+    </div>
+
+    <h4 class="edit-title">
+      <mark>登録発注者管理</mark>
+    </h4>
+
+    <div>
+      <%= link_to "案件一覧", admins_orders_path, class:"btn btn-success"%>
+      <%= link_to "登録発注者一覧", admins_requesters_path, class:"btn btn-success"%>
+    </div>
 
   </div>
 
@@ -17,9 +26,26 @@
       <mark>お知らせ</mark>
     </h4>
 
-  <div>
-  <%= link_to "お知らせ新規追加", admins_news_new_path, class:"btn btn-success"%>
-  </div>
+    <div>
+      <%= link_to "お知らせ新規追加", admins_news_new_path, class:"btn btn-success"%>
+    </div>
+
+    <h4 class="edit-title">
+      <mark>登録企業管理</mark>
+    </h4>
+
+    <div>
+      <%= link_to "募集中求人一覧", admins_offers_path, class:"btn btn-success"%>
+      <%= link_to "登録企業一覧", admins_companies_path, class:"btn btn-success"%>
+    </div>
+
+    <h4 class="edit-title">
+      <mark>登録ユーザー管理</mark>
+    </h4>
+
+    <div>
+      <%= link_to "登録ユーザー一覧", admins_users_path, class:"btn btn-success"%>
+    </div>
 
   </div>
 

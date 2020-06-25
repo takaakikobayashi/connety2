@@ -1,2 +1,25 @@
-<h1>Admins::Categories#edit</h1>
-<p>Find me in app/views/admins/categories/edit.html.erb</p>
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-4">
+
+    <div class="edit-title">
+      <h4><mark>カテゴリ編集</mark></h4>
+    </div>
+
+    <%= form_for @category, url: admins_categories_edit_path do |f| %>
+    <%= render "layouts/error_message", title: @category %>
+
+        <table border="0", class="edit-tasks">
+          <tr>
+            <th class="form">カテゴリ名</th>
+            <td><%= f.text_field :name, autocomplete: "name", class: "form-control" %></td>
+          </tr>
+        </table>
+
+        <div class="button">
+          <%= f.submit("編集する",class: 'btn btn-success', style: 'width: 250px') %>
+        </div>
+
+    <% end %>
+
+  </div>
+</div>
