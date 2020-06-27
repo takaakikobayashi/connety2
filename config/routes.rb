@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get 'contacts/new'
-  get 'contacts/create'
+  post 'contacts/new'
   root 'home#top'
   get  "home/about"  => "home#about"
   get  "home/requesters"  => "home#requesters"

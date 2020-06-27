@@ -10,9 +10,9 @@ class ContactMailer < ApplicationMailer
     mail to: ENV['MAIL'], subject: "お問い合わせを受け付けました"
   end
 
-  def send_when_admin_reply(user, contact)
-    @user = user
+  def send_when_admin_reply(contact)
+    @contact = contact
     @answer = contact.reply_text
-    mail to: user.email, subject: '【Connety運営】お問い合わせありがとうございます'
+    mail to: contact.email, subject: '【Connety運営】お問い合わせありがとうございます'
   end
 end
