@@ -1,23 +1,23 @@
-<div class="c-index">
-  <h4><mark>ユーザー一覧</mark></h4>
-</div>
+    <div class="c-index">
+      <h4><mark>ユーザー一覧</mark></h4>
+    </div>
 
     <table class="table table-bordered">
       <tr>
-    	<th>登録日</th>
-    	<th>ユーザー名</th>
-    	<th>学年</th>
+    	  <th>登録日</th>
+    	  <th>ユーザー名</th>
+    	  <th>学年</th>
         <th>電話番号</th>
         <th>メールアドレス</th>
         <th>学習状況</th>
         <th>アカウント停止</th>
       </tr>
       <% @users.each do |user| %>
-    	<tr>
-    	  <td><%= user.created_at.strftime('%Y/%m/%d') %></td>
-    	  <td><%= link_to "#{user.full_name}", user_path(user.id) %></td>
-    	  <td><%= user.grade %></td>
-    	  <td><%= user.phone_number %></td>
+    	  <tr>
+    	    <td><%= user.created_at.strftime('%Y/%m/%d') %></td>
+    	    <td><%= link_to "#{user.full_name}", user_path(user.id) %></td>
+    	    <td><%= user.grade %></td>
+    	    <td><%= user.phone_number %></td>
           <td><%= user.email %></td>
           <td>
             <% if user.learning_status == true %>
@@ -26,13 +26,13 @@
               <p>学習中</p>
             <% end %>
           </td>
-            <% if user.is_active == true %>
-              <td>
-                <%= link_to "アカウント停止", admins_delete_user_path(id: user.id), method: :patch, data: { confirm: '本当に停止にしますか？' }, class: "btn btn-danger" %>
-              </td>
-            <% else %>
-              <td>アカウント停止中</td>
-            <% end %>
-    	</tr>
+          <% if user.is_active == true %>
+            <td>
+              <%= link_to "アカウント停止", admins_delete_user_path(id: user.id), method: :patch, data: { confirm: '本当に停止にしますか？' }, class: "btn btn-danger" %>
+            </td>
+          <% else %>
+            <td>アカウント停止中</td>
+          <% end %>
+    	  </tr>
       <% end %>
     </table>

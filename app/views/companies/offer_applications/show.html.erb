@@ -1,95 +1,96 @@
-<table border="0">
-  <tr style="height:70px">
-    <th></th>
-    <td>
-      <%= attachment_image_tag @offer, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'350x250' %>
-    </td>
-  </tr>
+    <table border="0">
+      <tr style="height:70px">
+        <th></th>
+        <td>
+          <%= attachment_image_tag @offer, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'350x250' %>
+        </td>
+      </tr>
 
-  <tr>
-    <th>公開状態</th>
-    <td>
-      <% if @offer.is_active == true %>
-        <p>公開</p>
-      <% else %>
-        <p>非公開</p>
-      <% end %>
-    </td>
-  </tr>
-
-  <tr style="height:70px">
-    <th class="form">会社名</th>
-    <td><%= current_company.name %></td>
-  </tr>
-
-  <tr style="height:70px">
-    <th>業種</th>
-    <td><%= @offer.industry %></td>
-  </tr>
-
-  <tr style="height:70px">
-    <th>職種</th>
-    <td><%= @offer.occupation %></td>
-  </tr>
-
-  <tr style="height:70px">
-    <th>勤務地</th>
-    <td><%= @offer.work_location %></td>
-  </tr>
-
-  <tr style="height:70px">
-    <th>アピールポイント</th>
-    <td><%= @offer.appeal_point %></td>
-  </tr>
-
-  <tr style="height:70px">
-    <th>仕事内容</th>
-    <td><%= @offer.job_description %></td>
-  </tr>
-
-  <tr style="height:70px">
-    <th>雇用形態</th>
-    <td><%= @offer.employment_status %></td>
-  </tr>
-
-  <tr style="height:70px">
-    <th>勤務時間</th>
-    <td><%= @offer.working_hour %></td>
-  </tr>
-
-  <tr style="height:70px">
-    <th>給与</th>
-    <td><%= @offer.salary %></td>
-  </tr>
-
-  <tr style="height:70px">
-    <th>募集要件</th>
-    <td><%= @offer.application_condition %></td>
-  </tr>
-
-  <tr style="height:70px">
-    <th>休日休暇</th>
-    <td><%= @offer.vacation %></td>
-  </tr>
-
-  <tr style="height:70px">
-    <th>福利厚生</th>
-    <td><%= @offer.welfare %></td>
-  </tr>
-</table>
-
-      <% if @offer.is_active == true %>
-        <%= link_to "非公開にする", company_delete_offers_path(company_id: current_company.id,id: @offer.id), method: :patch, class:"btn btn-danger"%>
-      <% else %>
-        <%= link_to "公開する", company_release_offers_path(company_id: current_company.id,id: @offer.id), method: :patch, class: 'btn btn-success' %>
-      <% end %>
-      <% if @room.present? %>
-        <%=  link_to "DM", company_show_rooms_path(company_id: current_company.id,id: @room.id), class:"btn btn-success"%>
-      <% else %>
-        <%=  form_for @newroom, url: company_create_rooms_path(company_id: current_company.id) do |f| %>
-          <%= fields_for @user do |u| %>
-            <%= u.hidden_field :user_id, :value=> @offer_application.user.id %>
+      <tr>
+        <th>公開状態</th>
+        <td>
+          <% if @offer.is_active == true %>
+            <p>公開</p>
+          <% else %>
+            <p>非公開</p>
           <% end %>
-          <%= f.submit "DM",class: 'btn btn-success', style:"margin-right:130px" %>
+        </td>
+      </tr>
+
+      <tr style="height:70px">
+        <th class="form">会社名</th>
+        <td><%= current_company.name %></td>
+      </tr>
+
+      <tr style="height:70px">
+        <th>業種</th>
+        <td><%= @offer.industry %></td>
+      </tr>
+
+      <tr style="height:70px">
+        <th>職種</th>
+        <td><%= @offer.occupation %></td>
+      </tr>
+
+      <tr style="height:70px">
+        <th>勤務地</th>
+        <td><%= @offer.work_location %></td>
+      </tr>
+
+      <tr style="height:70px">
+        <th>アピールポイント</th>
+        <td><%= @offer.appeal_point %></td>
+      </tr>
+
+      <tr style="height:70px">
+        <th>仕事内容</th>
+        <td><%= @offer.job_description %></td>
+      </tr>
+
+      <tr style="height:70px">
+        <th>雇用形態</th>
+        <td><%= @offer.employment_status %></td>
+      </tr>
+
+      <tr style="height:70px">
+        <th>勤務時間</th>
+        <td><%= @offer.working_hour %></td>
+      </tr>
+
+      <tr style="height:70px">
+        <th>給与</th>
+        <td><%= @offer.salary %></td>
+      </tr>
+
+      <tr style="height:70px">
+        <th>募集要件</th>
+        <td><%= @offer.application_condition %></td>
+      </tr>
+
+      <tr style="height:70px">
+        <th>休日休暇</th>
+        <td><%= @offer.vacation %></td>
+      </tr>
+
+      <tr style="height:70px">
+        <th>福利厚生</th>
+        <td><%= @offer.welfare %></td>
+      </tr>
+    </table>
+
+    <% if @offer.is_active == true %>
+      <%= link_to "非公開にする", company_delete_offers_path(company_id: current_company.id,id: @offer.id), method: :patch, class:"btn btn-danger"%>
+    <% else %>
+      <%= link_to "公開する", company_release_offers_path(company_id: current_company.id,id: @offer.id), method: :patch, class: 'btn btn-success' %>
+    <% end %>
+    
+    <% if @room.present? %>
+      <%=  link_to "DM", company_show_rooms_path(company_id: current_company.id,id: @room.id), class:"btn btn-success"%>
+    <% else %>
+      <%=  form_for @newroom, url: company_create_rooms_path(company_id: current_company.id) do |f| %>
+        <%= fields_for @user do |u| %>
+          <%= u.hidden_field :user_id, :value=> @offer_application.user.id %>
         <% end %>
+        <%= f.submit "DM",class: 'btn btn-success', style:"margin-right:130px" %>
       <% end %>
+    <% end %>

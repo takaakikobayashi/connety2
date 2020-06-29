@@ -1,32 +1,32 @@
-<div class="c-index">
-  <h4><mark>発注者一覧</mark></h4>
-</div>
+    <div class="c-index">
+      <h4><mark>発注者一覧</mark></h4>
+    </div>
 
-      <table class="table table-bordered">
+    <table class="table table-bordered">
     	<tr>
     	  <th>登録日</th>
-          <th>所属会社/屋号</th>
+        <th>所属会社/屋号</th>
     	  <th>登録発注者名</th>
     	  <th>メール</th>
-          <th>電話番号</th>
-          <th>住所</th>
-          <th>アカウント停止</th>
+        <th>電話番号</th>
+        <th>住所</th>
+        <th>アカウント停止</th>
     	</tr>
-        <% @requesters.each do |requester| %>
+      <% @requesters.each do |requester| %>
     	  <tr>
     	    <td><%= requester.created_at.strftime('%Y/%m/%d') %></td>
-    		<td><%= requester.business_name %></td>
-    		<td><%= requester.name %></td>
-    		<td><%= requester.email %></td>
-            <td><%= requester.phone_number %></td>
-            <td><%= requester.address %>円</td>
-            <% if requester.is_active == true %>
-              <td>
-                <%= link_to "アカウント停止", admins_delete_requester_path(id: requester.id), method: :patch, data: { confirm: '本当に停止にしますか？' }, class: "btn btn-danger" %>
-              </td>
-            <% else %>
-              <td>アカウント停止中</td>
-            <% end %>
+    		  <td><%= requester.business_name %></td>
+    		  <td><%= requester.name %></td>
+    		  <td><%= requester.email %></td>
+          <td><%= requester.phone_number %></td>
+          <td><%= requester.address %>円</td>
+          <% if requester.is_active == true %>
+            <td>
+              <%= link_to "アカウント停止", admins_delete_requester_path(id: requester.id), method: :patch, data: { confirm: '本当に停止にしますか？' }, class: "btn btn-danger" %>
+            </td>
+          <% else %>
+            <td>アカウント停止中</td>
+          <% end %>
     	  </tr>
-        <% end %>
-      </table>
+      <% end %>
+    </table>

@@ -3,24 +3,24 @@
   <div class="connety-about">お知らせ</div>
   <h4><div class="check">最新情報を素早くお知らせ</div></h4>
 
-    <div class="newsrelease">
-      <% if @news.empty? %>
-        <p style="text-align: center">お知らせはありません</p>
-      <% else %>
-        <% @news.each do |news| %>
-          <ul class="news_list">
-      	    <li>
-      	      <p><%= news.created_at.strftime("%Y/%m/%d %H:%M:%S") %></p>
-      	      <p><%= news.category %></p>
-      	      <p><%= news.content %></p>
-      	    </li>
-          </ul>
-        <% end %>
+  <div class="newsrelease">
+    <% if @news.empty? %>
+      <p style="text-align: center">お知らせはありません</p>
+    <% else %>
+      <% @news.each do |news| %>
+        <ul class="news_list">
+      	   <li>
+      	     <p><%= news.created_at.strftime("%Y/%m/%d %H:%M:%S") %></p>
+      	     <p><%= news.category %></p>
+      	     <p><%= news.content %></p>
+      	   </li>
+        </ul>
       <% end %>
-    </div>
+    <% end %>
+  </div>
 
-    <div class="paginate-tag">
-      <%= paginate @news %>
-    </div>
+  <div class="paginate-tag">
+    <%= paginate @news %>
+  </div>
 
 </div>

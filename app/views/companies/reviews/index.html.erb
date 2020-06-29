@@ -5,22 +5,22 @@
       <h4><mark>振り返り一覧</mark></h4>
     </div>
 
-      <table class="table table-bordered">
+    <table class="table table-bordered">
+      <tr>
+    	  <th>日付</th>
+    		<th>テーマ</th>
+    		<th>できたこと</th>
+        <th>できなかったこと</th>
+    	</tr>
+      <% @reviews.each do |review| %>
     	  <tr>
-    		  <th>日付</th>
-    		  <th>テーマ</th>
-    		  <th>できたこと</th>
-          <th>できなかったこと</th>
+    		  <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
+    		  <td><%= review.theme %></td>
+    		  <td><%= review.completion %></td>
+          <td><%= review.halfway %></td>
     	  </tr>
-        <% @reviews.each do |review| %>
-    	    <tr>
-    		    <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
-    		    <td><%= review.theme %></td>
-    		    <td><%= review.completion %></td>
-            <td><%= review.halfway %></td>
-    	    </tr>
-        <% end %>
-      </table>
+      <% end %>
+    </table>
 
   </div>
 </div>

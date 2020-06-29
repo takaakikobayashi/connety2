@@ -6,18 +6,18 @@
     </div>
 
     <%= form_for @category, url: admins_categories_edit_path do |f| %>
-    <%= render "layouts/error_message", title: @category %>
+      <%= render "layouts/error_message", title: @category %>
 
-        <table border="0", class="edit-tasks">
-          <tr>
-            <th class="form">カテゴリ名</th>
-            <td><%= f.text_field :name, autocomplete: "name", class: "form-control" %></td>
-          </tr>
-        </table>
+      <table border="0", class="edit-tasks">
+        <tr>
+          <th class="form">カテゴリ名</th>
+          <td><%= f.text_field :name, autocomplete: "name", class: "form-control" %></td>
+        </tr>
+      </table>
 
-        <div class="button">
-          <%= f.submit("編集する",class: 'btn btn-success', style: 'width: 250px') %>
-        </div>
+      <div class="button">
+        <%= f.submit("編集する",class: 'btn btn-success', style: 'width: 250px') %>
+      </div>
 
     <% end %>
 
