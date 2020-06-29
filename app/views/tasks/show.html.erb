@@ -16,12 +16,12 @@
           <th>削除</th>
         </tr>
         <% @tasks.each do |task| %>
-    	  <tr>
-    	    <td><%= task.name %></td>
-    	    <td><%= task.deadline %></td>
-          <td><%= link_to "元に戻す", user_return_task_path(user_id: params[:user_id],id: task.id), method: :patch,class: "btn btn-success" %></td>
-          <td><%= link_to "削除", user_task_path(user_id: params[:user_id],id: task.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %></td>
-    	  </tr>
+    	    <tr>
+    	      <td><%= task.name %></td>
+    	      <td><%= task.deadline %></td>
+            <td><%= link_to "元に戻す", user_return_task_path(user_id: params[:user_id],id: task.id), method: :patch,class: "btn btn-success" %></td>
+            <td><%= link_to "削除", user_task_path(user_id: params[:user_id],id: task.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %></td>
+    	    </tr>
         <% end %>
       </table>
     <% end %>

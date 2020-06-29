@@ -1,37 +1,37 @@
-<div class="o-index">
-  <h4><mark>オファー</mark></h4>
-</div>
+    <div class="o-index">
+      <h4><mark>オファー</mark></h4>
+    </div>
 
-<%= form_for @order, url: requester_create_orders_path(requester_id: current_requester.id,user_id: params[:user_id]) do |f| %>
-  <%= render "layouts/error_message", title: @order %>
-  <table border="0">
-    <tr style="height:70px">
-      <th class="form">依頼額</th>
-      <td>
-        <% f.label :cost %>
-        <%= f.text_field :cost, autofocus: true, autocomplete: "cost", class: "form-control" %>
-      </td>
-    </tr>
+    <%= form_for @order, url: requester_create_orders_path(requester_id: current_requester.id,user_id: params[:user_id]) do |f| %>
+      <%= render "layouts/error_message", title: @order %>
+      <table border="0">
+        <tr style="height:70px">
+          <th class="form">依頼額</th>
+          <td>
+            <% f.label :cost %>
+            <%= f.text_field :cost, autofocus: true, autocomplete: "cost", class: "form-control" %>
+          </td>
+        </tr>
 
-    <tr style="height:70px">
-      <th>依頼内容</th>
-      <td>
-        <% f.label :request_content %>
-        <%= f.text_field :request_content, autofocus: true, autocomplete: "request_content", class: "form-control" %>
-      </td>
-    </tr>
+        <tr style="height:70px">
+          <th>依頼内容</th>
+          <td>
+            <% f.label :request_content %>
+            <%= f.text_field :request_content, autofocus: true, autocomplete: "request_content", class: "form-control" %>
+          </td>
+        </tr>
 
-    <tr style="height:70px">
-      <th>依頼詳細</th>
-      <td>
-        <% f.label :request_detail %>
-        <%= f.text_field :request_detail, autofocus: true, autocomplete: "request_detail", class: "form-control" %>
-      </td>
-    </tr>
-  </table>
+        <tr style="height:70px">
+          <th>依頼詳細</th>
+          <td>
+            <% f.label :request_detail %>
+            <%= f.text_field :request_detail, autofocus: true, autocomplete: "request_detail", class: "form-control" %>
+          </td>
+        </tr>
+      </table>
 
-  <div class="actions">
-    <%= f.submit "オファーする", class:"btn btn-success center-block", style:"width:150px" %>
-  </div>
+      <div class="actions">
+        <%= f.submit "オファーする", class:"btn btn-success center-block", style:"width:150px" %>
+      </div>
       
-<% end %>
+    <% end %>

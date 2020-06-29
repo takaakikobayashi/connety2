@@ -5,26 +5,26 @@
       <h4><mark>目標</mark></h4>
     </div>
 
-     <table border="0">
-        <tr style="height:70px">
-          <th class="form">目標</th>
-          <td><%= @setting_goal.target %></td>
-        </tr>
+    <table border="0">
+      <tr style="height:70px">
+        <th class="form">目標</th>
+        <td><%= @setting_goal.target %></td>
+      </tr>
 
-        <tr style="height:70px">
-          <th>目標達成のための懸念点</th>
-          <td><%= @setting_goal.concern %></td>
-        </tr>
+      <tr style="height:70px">
+        <th>目標達成のための懸念点</th>
+        <td><%= @setting_goal.concern %></td>
+      </tr>
 
-        <tr style="height:70px">
-          <th>コミットメント</th>
-          <td><%= @setting_goal.commitment %></td>
-        </tr>
-      </table>
+      <tr style="height:70px">
+        <th>コミットメント</th>
+        <td><%= @setting_goal.commitment %></td>
+      </tr>
+    </table>
       
-      <div class="actions">
-        <%=link_to "編集", edit_user_setting_goal_path(user_id: params[:user_id],id: 1),class: "btn btn-success", style:"width:250px" %>
-      </div>
+    <div class="actions">
+      <%=link_to "編集", edit_user_setting_goal_path(user_id: params[:user_id],id: 1),class: "btn btn-success", style:"width:250px" %>
+    </div>
       
   </div>
 </div>

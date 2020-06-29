@@ -52,50 +52,50 @@
   	    <div class="scholastic_record">
 
           <% @scholastic_records.each do |scholastic_record| %>
-          <% if scholastic_record.user.is_active == false %>
-          <% else %>
-            <div class="user">
-              <%= attachment_image_tag scholastic_record.user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'40x40' %><br>
-              <%= link_to user_path(scholastic_record.user.id) do %>
+            <% if scholastic_record.user.is_active == false %>
+            <% else %>
+              <div class="user">
+                <%= attachment_image_tag scholastic_record.user, :image, :fill, 350, 250, format: "jpg", fallback: "no-image.jpg", size:'40x40' %><br>
+                <%= link_to user_path(scholastic_record.user.id) do %>
                 <%= scholastic_record.user.user_name %>
-              <% end %>
-            </div>
-
-            <div class="record">
-              <%= link_to user_scholastic_record_path(user_id: scholastic_record.user.id,id: scholastic_record.id) do %>
-                <div class="list">
-                  <span>
-                    <p>学習内容</p>
-                    <%= scholastic_record.learning_content %>
-                  </span>
-                  <span>
-                    <p id="detail">学習詳細</p>
-                    <%= scholastic_record.learning_detail %>
-                  </span>
-                  <span>
-                    <p>学習時間</p>
-                    <%= scholastic_record.learning_time %>時間
-                    <%= scholastic_record.learning_time_min %>分
-                  </span>
-                </div>
-              <% end %>
-            </div>
-
-            <div class="like">
-              <% if scholastic_record.liked_by?(current_user) %>
-                <%= link_to user_scholastic_record_likes_path(user_id: current_user.id,scholastic_record_id: scholastic_record.id), method: :delete do %>
-                  <span class="glyphicon glyphicon-heart" style="color: red;"></span>
-                  <%= scholastic_record.likes.count %>
                 <% end %>
-              <% else %>
-                <%= link_to user_scholastic_record_likes_path(user_id: current_user.id,scholastic_record_id: scholastic_record.id), method: :post do %>
-                  <span class="glyphicon glyphicon-heart-empty"><%= scholastic_record.likes.count %></span>
+              </div>
+
+              <div class="record">
+                <%= link_to user_scholastic_record_path(user_id: scholastic_record.user.id,id: scholastic_record.id) do %>
+                  <div class="list">
+                    <span>
+                      <p>学習内容</p>
+                      <%= scholastic_record.learning_content %>
+                    </span>
+                    <span>
+                      <p id="detail">学習詳細</p>
+                      <%= scholastic_record.learning_detail %>
+                    </span>
+                    <span>
+                      <p>学習時間</p>
+                      <%= scholastic_record.learning_time %>時間
+                      <%= scholastic_record.learning_time_min %>分
+                    </span>
+                  </div>
                 <% end %>
-              <% end %>
-              <span class="comment-count", style="margin-left: 10px">
-                <%= link_to "#{scholastic_record.comments.count}コメント", user_scholastic_record_path(user_id: scholastic_record.user.id,id: scholastic_record.id) %>
-              </span>
-            </div>
+              </div>
+
+              <div class="like">
+                <% if scholastic_record.liked_by?(current_user) %>
+                  <%= link_to user_scholastic_record_likes_path(user_id: current_user.id,scholastic_record_id: scholastic_record.id), method: :delete do %>
+                    <span class="glyphicon glyphicon-heart" style="color: red;"></span>
+                    <%= scholastic_record.likes.count %>
+                  <% end %>
+                <% else %>
+                  <%= link_to user_scholastic_record_likes_path(user_id: current_user.id,scholastic_record_id: scholastic_record.id), method: :post do %>
+                    <span class="glyphicon glyphicon-heart-empty"><%= scholastic_record.likes.count %></span>
+                  <% end %>
+                <% end %>
+                <span class="comment-count", style="margin-left: 10px">
+                  <%= link_to "#{scholastic_record.comments.count}コメント", user_scholastic_record_path(user_id: scholastic_record.user.id,id: scholastic_record.id) %>
+                </span>
+              </div>
             <% end %>
           <% end %>
 
