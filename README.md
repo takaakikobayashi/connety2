@@ -30,6 +30,14 @@
 ### 主な利用シーン
 プログラミングや動画編集などを身につけるために学習をしている時
 
+## 言語等
+### Ruby ~> 2.5.7
+Ruby on Rails ~> 5.2.3
+### HTML&CSS
+bootstrap ~> 3.4.1
+### JavaScript
+jQuery ~> 4.3.5
+
 ## 設計書
 <img width="1008" alt="ER図" src="https://user-images.githubusercontent.com/47805823/84849310-fa0a1c80-b08f-11ea-8d6d-151561048220.png">
 
